@@ -467,6 +467,9 @@ zoom)
       appFiles+=("/Users/$loggedInUser/Library/Mobile Documents/iCloud~us~zoom~videomeetings")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings.plist")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings")
+      appFiles+=("/Library/PrivilegedHelperTools/us.zoom.ZoomDaemon")
+      appFiles+=("/Library/Audio/Plug-Ins/HAL/ZoomAudioDevice.driver")
+      appLaunchDaeomons+=("/Library/LaunchDaemons/us.zoom.ZoomDaemon.plist")
       ;;
     *) # if no specified event is triggered, use default information
       appTitle="No Application selected. Not doing anything."
