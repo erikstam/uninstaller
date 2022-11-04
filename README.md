@@ -1,0 +1,2 @@
+# uninstaller
+macOS uninstaller script
