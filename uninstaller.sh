@@ -511,10 +511,13 @@ zoom)
     displayNotification "Quitting $appTitle..." "Uninstalling in progress"
   fi
 
+
+if [ ! -z "$appProcesses[1]" ]; then
   for process in "${appProcesses[@]}"
   do
     quitApp
   done
+  fi
 
   # If there is a uninstall script available, run that Scripts
   printlog "Run uninstall script if available..."
