@@ -95,7 +95,7 @@ atlassiancompanion)
       appProcesses+=("Atlassian Companion")
       appFiles+=("/Applications/Atlassian Companion.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Atlassian Companion")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.aplication.name.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.aplication.name.plist")
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.aplication.name.plist")
       ;;
 atom)
@@ -290,8 +290,8 @@ microsoftdefender)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.wdav.tray.plist")
       appFiles+=("/Library/Preferences/com.microsoft.wdav.tray.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.microsoft.wdav.tray.plist")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.microsoft.fresno.plist")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.microsoft.fresno.uninstall.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.fresno.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.fresno.uninstall.plist")
       ;;
 microsoftremotedesktop)
       appTitle="Microsoft Remote Desktop"
@@ -327,12 +327,12 @@ munki)
       appFiles+=("/usr/local/munki")
       appFiles+=("/Library/Managed Installs")
       appFiles+=("/Library/Preferences/ManagedInstalls.plist")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.googlecode.munki.appusaged.plist")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.googlecode.munki.authrestartd.plist")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.googlecode.munki.logouthelper.plist")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.googlecode.munki.managedsoftwareupdate-check.plist")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.googlecode.munki.managedsoftwareupdate-install.plist")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.googlecode.munki.managedsoftwareupdate-manualcheck.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.googlecode.munki.appusaged.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.googlecode.munki.authrestartd.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.googlecode.munki.logouthelper.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.googlecode.munki.managedsoftwareupdate-check.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.googlecode.munki.managedsoftwareupdate-install.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.googlecode.munki.managedsoftwareupdate-manualcheck.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.googlecode.munki.app_usage_monitor.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.googlecode.munki.ManagedSoftwareCenter.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.googlecode.munki.managedsoftwareupdate-loginwindow.plist")
@@ -344,7 +344,7 @@ nessus)
       appProcesses+=("nessusd")
       appFiles+=("/Library/NessusAgent")
       appFiles+=("/Library/PreferencePanes/Nessus Agent Preferences.prefPane")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.tenablesecurity.nessusagent.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.tenablesecurity.nessusagent.plist")
       ;;
 Nexthinkcollector)
       appTitle="Nexthink Collector"
@@ -382,7 +382,7 @@ privileges)
       appTitle="Privileges"
       appFiles+=("/Applications/Privileges.app")
       appFiles+=("/Library/Preferences/privilegesCheckAdmin.plist")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.abnamro.nl.privilegesCheckAdmin.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.abnamro.nl.privilegesCheckAdmin.plist")
       appLaunchAgents+=("/Library/LaunchAgents/corp.sap.privileges.plist")
       ;;
 sketch)
@@ -404,7 +404,7 @@ temp)
       appTitle="Application name"
       appProcesses+=("Application porcess name")
       appFiles+=("/Applications/Application name.app")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/com.aplication.name.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.aplication.name.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.aplication.name.plist")
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.aplication.name.plist")
       ;;
@@ -469,7 +469,7 @@ zoom)
       appFiles+=("/Users/$loggedInUser/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings")
       appFiles+=("/Library/PrivilegedHelperTools/us.zoom.ZoomDaemon")
       appFiles+=("/Library/Audio/Plug-Ins/HAL/ZoomAudioDevice.driver")
-      appLaunchDaeomons+=("/Library/LaunchDaemons/us.zoom.ZoomDaemon.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/us.zoom.ZoomDaemon.plist")
       ;;
     *) # if no specified event is triggered, use default information
       appTitle="No Application selected. Not doing anything."
@@ -491,7 +491,7 @@ zoom)
       displayNotification "Removing LaunchDaemons..." "Uninstalling in progress"
   fi
 
-  for launchDaemon in "${appLaunchDaeomons[@]}"
+  for launchDaemon in "${appLaunchDaemons[@]}"
   do
     removeLaunchDaemons
   done
