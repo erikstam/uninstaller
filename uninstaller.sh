@@ -49,7 +49,7 @@ logLocation="/private/var/log/appAssassin.log"
 uninstallApp() {
   # Check which event is triggered and add extra information.
   case $1 in
-    1password)
+1password)
       appTitle="1Password"
       appProcesses+=("1Password 7")
       appProcesses+=("1Password Extension Helper")
@@ -75,22 +75,22 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.apple.Safari/Extensions/")
       appFiles+=("/Users/$loggedInUser/Library/WebKit/com.agilebits.onepassword4/")
       ;;
-    adobeacrobatdc)
+adobeacrobatdc)
       appTitle="Adobe Acrobat DC"
       appProcesses+=("Adobe Acrobat")
       appScript+=("/Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool /Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/MacOS/Acrobat Uninstaller /Applications/Adobe Acrobat DC/Adobe Acrobat.app")
       ;;
-    adobeacrobat2017)
+adobeacrobat2017)
       appTitle="Adobe Acrobat 2017"
       appProcesses+=("Adobe Acrobat")
       appScript+=("/Applications/Adobe Acrobat 2017/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool Uninstall /Applications/Adobe Acrobat 2017/Adobe Acrobat.app")
       ;;
-    androidstudio)
+androidstudio)
       appTitle="Android Studio"
       appProcesses+=("Android Studio")
       appFiles+=("/Applications/Android Studio.app")
       ;;
-    atlassiancompanion)
+atlassiancompanion)
       appTitle="Atlassian Companion"
       appProcesses+=("Atlassian Companion")
       appFiles+=("/Applications/Atlassian Companion.app")
@@ -98,7 +98,7 @@ uninstallApp() {
       appLaunchDaeomons+=("/Library/LaunchDaemons/com.aplication.name.plist")
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.aplication.name.plist")
       ;;
-    atom)
+atom)
       appTitle="Atom"
       appProcesses+=("Atom")
       appFiles+=("/Applications/Atom.app")
@@ -108,7 +108,7 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.atom.ShipIt")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.github.atom.savedState")
       ;;
-    axurerp8)
+axurerp8)
       appTitle="Axure RP 8"
       appProcesses+=("Axure RP 8")
       appFiles+=("/Applications/Axure RP 8.app")
@@ -119,7 +119,7 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/.config/.mono/certs/")
       appFiles+=("/Users/$loggedInUser/.config/.isolated-storage/")
       ;;
-    axurerp9)
+axurerp9)
       appTitle="Axure RP 9"
       appProcesses+=("Axure RP 9")
       appFiles+=("/Applications/Axure RP 9.app")
@@ -130,13 +130,21 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/.config/.mono/certs/")
       appFiles+=("/Users/$loggedInUser/.config/.isolated-storage/")
       ;;
-    citrixendpointanalysis)
+bbedit)
+      appTitle="BBEdit"
+      appProcesses+=("BBEdit")
+      appFiles+=("/Applications/BBEdit.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/BBEdit")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.barebones.bbedit.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.barebones.bbedit")
+      ;;
+citrixendpointanalysis)
       appTitle="Citrix Endpoint Analysis"
       ;;
-    citrixworkspace)
+citrixworkspace)
       appTitle="Citrix Workspace"
       ;;
-    depnotify)
+depnotify)
       appTitle="DEPNotify"
       appProcesses+=("DEPNotify")
       appFiles+=("/Applications/Utilities/DEPNotify.app")
@@ -144,11 +152,11 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Caches/menu.nomad.DEPNotify")
       appFiles+=("/Users/$loggedInUser/Library/WebKit/menu.nomad.DEPNotify")
       ;;
-    desktoppr)
+desktoppr)
       appTitle="Desktoppr"
       appFiles+=("/usr/local/bin/desktoppr")
       ;;
-    docker)
+docker)
       appTitle="Docker Desktop"
       appProcesses+=("Docker")
       appProcesses+=("Docker Desktop")
@@ -175,11 +183,11 @@ uninstallApp() {
       appLaunchAgents+=("/Library/LaunchDaemons/com.docker.vmnetd.plist")
       #appScript+=("/Applications/Docker.app/Contents/MacOS/Docker --uninstall")
       ;;
-    dockutil)
+dockutil)
       appTitle="Dockutil"
       appFiles+=("/usr/local/bin/dockutil")
       ;;
-    drawio) # Last checked: 09-03-2022
+drawio) # Last checked: 09-03-2022
       appTitle="Draw.io"
       appFiles+=("/Applications/Drawio.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/draw.io")
@@ -189,7 +197,16 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Logs/draw.io")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jgraph.drawio.desktop.savedState")
       ;;
-    firefox)
+figma) 
+      appTitle="Figma"
+      appProcesses+=("Figma")
+      appFiles+=("/Applications/Figma.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Figma")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/figma-desktop")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.figma.Desktop.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.figma.agent")
+      ;;
+firefox)
       appTitle="FireFox"
       appProcesses+=("firefox")
       appFiles+=("/Applications/Firefox.app")
@@ -197,7 +214,7 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Caches/Mozilla/updates/Applications/Firefox/macAttributionData")
       appFiles+=("/Users/$loggedInUser/Library/Caches/Firefox")
       ;;
-    googlechrome)
+googlechrome)
       appTitle="Google Chrome"
       appProcesses+=("Google Chrome")
       appFiles+=("/Applications/Google Chrome.app")
@@ -217,13 +234,13 @@ uninstallApp() {
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.google.keystone.agent.plist")
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.google.keystone.xpcservice.plist")
       ;;
-    icons)
+icons)
       appTitle="Icons"
       appProcesses+=("Icons")
       appFiles+=("/Applications/Icons.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Scrips/corp.sap.Icons")
       ;;
-    invisionstudio)
+invisionstudio)
       appTitle="InVision Studio"
       appProcesses+=("InVision Studio")
       appFiles+=("/Applications/InVision Studio.app")
@@ -231,7 +248,7 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Preferences/invision.invision-studio.plist")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/Containers/Icons")
       ;;
-    jamfpro)
+jamfpro)
       appTitle="Jamf Pro"
       appProcesses+=("Composer")
       appProcesses+=("Jamf Admin")
@@ -242,7 +259,7 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jamfsoftware.Composer.plist")
       appFiles+=("/Library/Application Support/JAMF/Composer")
       ;;
-    jetbrainsintellijidea)
+jetbrainsintellijidea)
       appTitle="JetBrains IntelliJ IDEA"
       appProcesses+=("IntelliJ IDEA")
       appFiles+=("/Applications/IntelliJ IDEA.app")
@@ -250,21 +267,21 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jamfsoftware.admin.plist")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jamfsoftware.admin.plist")
       ;;
-    jetbrainspycharm)
+jetbrainspycharm)
       appTitle="JetBrains PyCharm"
       appProcesses+=("PyCharm")
       appFiles+=("/Applications/PyCharm.app")
       ;;
-    kalturacapture)
+kalturacapture)
       appTitle="Kaltura Capture"
       appProcesses+=("KalturaCapture")
       appFiles+=("/Applications/KalturaCapture.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/lecture-capture-app")
       ;;
-    microsoft365)
+microsoft365)
       appTitle="Microsoft 365"
       ;;
-    microsoftdefender)
+microsoftdefender)
       appTitle="Microsoft Defender"
       appProcesses+=("wdav")
       appFiles+=("/Applications/Microsoft Defender.app")
@@ -276,14 +293,14 @@ uninstallApp() {
       appLaunchDaeomons+=("/Library/LaunchDaemons/com.microsoft.fresno.plist")
       appLaunchDaeomons+=("/Library/LaunchDaemons/com.microsoft.fresno.uninstall.plist")
       ;;
-    microsoftremotedesktop)
+microsoftremotedesktop)
       appTitle="Microsoft Remote Desktop"
       appProcesses+=("Microsoft Remote Desktop")
       appFiles+=("/Applications/Microsoft Remote Desktop.app")
       appFiles+=("/Users/$loggedInUser/Library/Containers/com.microsoft.rdc.macos")
       appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.com.microsoft.rdc")
       ;;
-    microsoftedge)
+microsoftedge)
       appTitle="Microsoft Edge"
       appFiles+=("/Applications/Microsoft Edge.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Microsoft Edge")
@@ -294,7 +311,7 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.microsoft.edgemac")
       appFiles+=("/Library/Microsoft/Edge")
       ;;
-    mindjetmindmanager)
+mindjetmindmanager)
       appTitle="Mindjet MindManager"
       appProcesses+=("Mindjet MindManager")
       appFiles+=("/Applications/Mindjet MindManager.app")
@@ -302,36 +319,36 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Mindjet")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.mindjet.mindmanager.12.plist")
       ;;
-    nessus)
+nessus)
       appTitle="Nessus"
       appProcesses+=("nessusd")
       appFiles+=("/Library/NessusAgent")
       appFiles+=("/Library/PreferencePanes/Nessus Agent Preferences.prefPane")
       appLaunchDaeomons+=("/Library/LaunchDaemons/com.tenablesecurity.nessusagent.plist")
       ;;
-    Nexthinkcollector)
+Nexthinkcollector)
       appTitle="Nexthink Collector"
       ;;
-    nomad)
+nomad)
       appTitle="NoMAD"
       appProcesses+=("NoMAD")
       appFiles+=("/Applications/NoMAD.app")
       appLaunchAgents+=("/Library/LaunchAgents/com.trusourcelabs.NoMAD.plist")
       ;;
-    nudge)
+nudge)
       appTitle="Nudge"
       appProcesses+=("Nudge")
       appFiles+=("/Applications/Utilities/Nudge.app")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.github.macadmins.Nudge.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.github.macadmins.Nudge.plist")
       ;;
-    postman)
+postman)
       appTitle="Postman"
       appProcesses+=("Postman")
       appFiles+=("/Applications/Postman.app")
       appFiles+=("/Users/$loggedInUser/Application Support/Postman")
       ;;
-    principle)
+principle)
       appTitle="Principle"
       appProcesses+=("Principle")
       appFiles+=("/Applications/Principle.app")
@@ -341,29 +358,29 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.danielhooper.principle.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.danielhooper.principle.savedState")
       ;;
-    privileges)
+privileges)
       appTitle="Privileges"
       appFiles+=("/Applications/Privileges.app")
       appFiles+=("/Library/Preferences/privilegesCheckAdmin.plist")
       appLaunchDaeomons+=("/Library/LaunchDaemons/com.abnamro.nl.privilegesCheckAdmin.plist")
       appLaunchAgents+=("/Library/LaunchAgents/corp.sap.privileges.plist")
       ;;
-    sketch)
+sketch)
       appTitle="Sketch"
       appFiles+=("/Applications/Sketch.app")
       ;;
-    snow)
+snow)
       appTitle="Snow"
       ;;
-    sourcetree) ## Nog testen
+sourcetree) ## Nog testen
       appTitle="Sourcetree"
       appProcesses+=("sourcetree")
       appFiles+=("/Applications/Sourcetree.app")
       ;;
-    symantecdlpagent)
+symantecdlpagent)
       appTitle="Symantec DLP agent"
       ;;
-    temp)
+temp)
       appTitle="Application name"
       appProcesses+=("Application porcess name")
       appFiles+=("/Applications/Application name.app")
@@ -371,16 +388,16 @@ uninstallApp() {
       appLaunchAgents+=("/Library/LaunchAgents/com.aplication.name.plist")
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.aplication.name.plist")
       ;;
-    verasecuserselfservice)
+verasecuserselfservice)
       appTitle="Versasec User Self-Service"
       appProcesses+=("vSEC:CMS User Self-Service")
       appFiles+=("/Applications/UssMac.app")
       ;;
-    visualstudiocode)
+visualstudiocode)
       appTitle="Visual Studio Code"
       appFiles+=("/Applications/Visual Studio Code.app")
       ;;
-    vlc)
+vlc)
       appTitle="VLC"
       appProcess+=("VLC")
       appFiles+=("/Applications/VLC.app")
@@ -390,46 +407,46 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Caches/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/org.videolan.vlc")
       ;;
-    wacomdriver)
+wacomdriver)
       appTitle="Wacom driver"
       ;;
-    yammer)
+yammer)
       appTitle="Yammer"
       appProcesses+=("yammer")
       appFiles+=("/Applications/Yammer.app")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.Yammer.plist")
       ;;
-    zscaler)
+zscaler)
       appTitle="Zscaler"
       ;;
-    zoom)
+zoom)
       appTitle="Zoom"
-      appProcesses="zoom"
-      appFiles+="/Applications/zoom.us.app"
-      appFiles+="/Users/$loggedInUser/Applications/zoom.us.app"
-      appFiles+="/Library/Internet Plug-Ins/ZoomUsPlugIn.plugin"
-      appFiles+="/Users/$loggedInUser/Library/Internet Plug-Ins/ZoomUsPlugIn.plugin"
-      appFiles+="/Users/$loggedInUser/.zoomus"
-      appFiles+="/Users/$loggedInUser/Library/Application Support/zoom.us"
-      appFiles+="/Library/Caches/us.zoom.xos"
-      appFiles+="/Users/$loggedInUser/Library/Caches/us.zoom.xos"
-      appFiles+="/Users/$loggedInUser/Library/Preferences/us.zoom.xos"
-      appFiles+="/Library/Preferences/us.zoom.xos"
-      appFiles+="/Library/Logs/zoom.us"
-      appFiles+="/Users/$loggedInUser/Library/Logs/zoom.us"
-      appFiles+="/Library/Logs/zoominstall.log"
-      appFiles+="/Users/$loggedInUser/Library/Logs/zoominstall.log"
-      appFiles+="/Library/Preferences/ZoomChat.plist"
-      appFiles+="/Users/$loggedInUser/Library/Preferences/ZoomChat.plist"
-      appFiles+="/Library/Preferences/us.zoom.xos.plist"
-      appFiles+="/Users/$loggedInUser/Library/Preferences/us.zoom.xos.plist"
-      appFiles+="/Users/$loggedInUser/Library/Saved Application State/us.zoom.xos.savedState"
-      appFiles+="/Users/$loggedInUser/Library/Cookies/us.zoom.xos.binarycookies"
-      appFiles+="/Users/$loggedInUser/Library/Preferences/us.zoom.xos.Hotkey.plist"
-      appFiles+="/Users/$loggedInUser/Library/Preferences/us.zoom.airhost.plist"
-      appFiles+="/Users/$loggedInUser/Library/Mobile Documents/iCloud~us~zoom~videomeetings"
-      appFiles+="/Users/$loggedInUser/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings.plist"
-      appFiles+="/Users/$loggedInUser/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings"
+      appProcesses=("zoom")
+      appFiles+=("/Applications/zoom.us.app")
+      appFiles+=("/Users/$loggedInUser/Applications/zoom.us.app")
+      appFiles+=("/Library/Internet Plug-Ins/ZoomUsPlugIn.plugin")
+      appFiles+=("/Users/$loggedInUser/Library/Internet Plug-Ins/ZoomUsPlugIn.plugin")
+      appFiles+=("/Users/$loggedInUser/.zoomus")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/zoom.us")
+      appFiles+=("/Library/Caches/us.zoom.xos")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/us.zoom.xos")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/us.zoom.xos")
+      appFiles+=("/Library/Preferences/us.zoom.xos")
+      appFiles+=("/Library/Logs/zoom.us")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/zoom.us")
+      appFiles+=("/Library/Logs/zoominstall.log")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/zoominstall.log")
+      appFiles+=("/Library/Preferences/ZoomChat.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/ZoomChat.plist")
+      appFiles+=("/Library/Preferences/us.zoom.xos.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/us.zoom.xos.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/us.zoom.xos.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Cookies/us.zoom.xos.binarycookies")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/us.zoom.xos.Hotkey.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/us.zoom.airhost.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Mobile Documents/iCloud~us~zoom~videomeetings")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings")
       ;;
     *) # if no specified event is triggered, use default information
       appTitle="No Application selected. Not doing anything."
@@ -439,7 +456,7 @@ uninstallApp() {
 
   # Get app version
   appVersion=$(defaults read "$appFiles[1]/Contents/Info.plist" $appVersionKey)
-  appBundleIdentifier=$(default read "$appFiles[1]/Contents/Info.plist" $appBundleIdentifierKey)
+  appBundleIdentifier=$(defaults read "$appFiles[1]/Contents/Info.plist" $appBundleIdentifierKey)
 
   if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
     displayNotification "Starting to uninstall $appTitle $appVersion..." "Uninstalling $appTitle"
@@ -506,8 +523,12 @@ uninstallApp() {
   if [[ $loggedInUser != "loginwindow" && ( $NOTIFY == "success" || $NOTIFY == "all" ) ]]; then
     displayNotification "$appTitle is uninstalled." "Uninstalling completed!"
   fi
-
+  
+printlog "Checking for receipt.."
+receipts=$(pkgutil --pkgs | grep -c $appBundleIdentifier)
+if [[ "receipts" != "0" ]]; then
   /usr/sbin/pkgutil --forget $appBundleIdentifier
+fi
 
 }
 
@@ -607,16 +628,28 @@ displayNotification() { # $1: message $2: title
 runUninstallScript() {
 
   # run Install script
-  #if [ -f "$appScript" ]; then
+  if [ -f "$appScript" ]; then
     printlog "Executing $appScript"
     "$appScript"
-  #fi
+  fi
   # What if the script has parameters? How to check for the script?
 
 }
 ####################################
 # Code
 ####################################
+
+if [[ $# -eq 0 ]]; then
+  # "no label as argument -> show all labels
+  grep -E '^[a-z0-9\_-]*(\)|\|\\)$' "$0" | tr -d ')|\' | grep -v -E '^(broken.*|longversion|version|valuesfromarguments)$' | sort
+  exit 0
+fi
+
+# check for root
+if [ "$(whoami)" != "root" ]; then
+    echo "not running as root, exiting"
+    exit 1
+fi
 
 uninstallApp "$label"
 
