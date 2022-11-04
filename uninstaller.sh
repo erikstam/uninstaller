@@ -543,11 +543,13 @@ zoom)
   if [[ $loggedInUser != "loginwindow" && ( $NOTIFY == "success" || $NOTIFY == "all" ) ]]; then
     displayNotification "$appTitle is uninstalled." "Uninstalling completed!"
   fi
-  
+
+if [ ! -z "$appBundleIdentifier" ]; then
 printlog "Checking for receipt.."
 receipts=$(pkgutil --pkgs | grep -c $appBundleIdentifier)
 if [[ "receipts" != "0" ]]; then
   /usr/sbin/pkgutil --forget $appBundleIdentifier
+fi
 fi
 
 }
