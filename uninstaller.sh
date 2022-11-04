@@ -95,8 +95,6 @@ atlassiancompanion)
       appProcesses+=("Atlassian Companion")
       appFiles+=("/Applications/Atlassian Companion.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Atlassian Companion")
-      appLaunchDaemons+=("/Library/LaunchDaemons/com.aplication.name.plist")
-      appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.aplication.name.plist")
       ;;
 atom)
       appTitle="Atom"
@@ -402,11 +400,11 @@ symantecdlpagent)
       ;;
 temp)
       appTitle="Application name"
-      appProcesses+=("Application porcess name")
+      appProcesses+=("Application process name")
       appFiles+=("/Applications/Application name.app")
-      appLaunchDaemons+=("/Library/LaunchDaemons/com.aplication.name.plist")
-      appLaunchAgents+=("/Library/LaunchAgents/com.aplication.name.plist")
-      appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.aplication.name.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.application.name.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.application.name.plist")
+      appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.application.name.plist")
       ;;
 verasecuserselfservice)
       appTitle="Versasec User Self-Service"
