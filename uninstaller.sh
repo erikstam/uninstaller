@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+# Uninstaller script
+
+# Last modification date
+LAST_MOD_DATE="2022-11-15"
+
 # set to 0 for production, 1 for debugging
 # no actual uninstallation will be performed
 DEBUG=0
@@ -256,6 +261,21 @@ invisionstudio)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/invision.invision-studio.plist")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/Containers/Icons")
       ;;
+jamfconnect)
+      appTitle="Jamf Connect"
+      appProcesses+=("Jamf Connect")
+      appFiles+=("/Applications/Jamf Connect.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")
+      appFiles+=("/usr/local/bin/authchanger")
+      appFiles+=("/usr/local/lib/pam/pam_saml.so.2")
+      appFiles+=("/Library/Security/SecurityAgentPlugins/JamfConnectLogin.bundle")
+      appFiles+=("/Library/Application Support/JamfConnect")
+      appLaunchAgents+=("/Library/LaunchAgents/com.jamf.connect.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.jamf.connect.unlock.login.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.jamf.connect.daemon.plist")
+      preflightCommand+=("/usr/local/bin/authchanger -reset")
+      postflightCommand+=("")
+      ;;
 jamfpro)
       appTitle="Jamf Pro"
       appProcesses+=("Composer")
@@ -492,6 +512,17 @@ zoom)
   if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
     displayNotification "Starting to uninstall $appTitle $appVersion..." "Uninstalling $appTitle"
   fi
+  
+  
+# Running preflight commands
+  printlog "Running $appTitle - preflightCommand"
+  
+    for precommand in "${preflightCommand[@]}"
+  do
+    zsh -c "$precommand"
+  done
+
+  
 
   # Remove LaunchDaemons
   printlog "Uninstalling $appTitle - LaunchDaemons"
@@ -550,6 +581,17 @@ if [ ! -z "$appProcesses[1]" ]; then
   do
 	  removeFileDirectory
   done
+  
+  
+  # Running postflight commands
+  printlog "Running $appTitle - postflightCommand"
+  
+    for postcommand in "${postflightCommand[@]}"
+  do
+    zsh -c "$postcommand"
+  done
+  
+  
 
   # restart prefsd to ensure caches are cleared
   /usr/bin/killall cfprefs
