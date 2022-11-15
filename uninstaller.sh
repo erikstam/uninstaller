@@ -287,6 +287,13 @@ jamfpro)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jamfsoftware.Composer.plist")
       appFiles+=("/Library/Application Support/JAMF/Composer")
       ;;
+jamfprotect)
+      appTitle="JamfProtect"
+      appFiles+=("/Applications/JamfProtect.app")
+      appFiles+=("/Library/Application Support/JamfProtect")
+      appLaunchAgents+=("/Library/LaunchAgents/com.jamf.protect.agent.plist")
+      preflightCommand+=("/Applications/JamfProtect.app/Contents/MacOS/JamfProtect uninstall")
+      ;;
 jetbrainsintellijidea)
       appTitle="JetBrains IntelliJ IDEA"
       appProcesses+=("IntelliJ IDEA")
