@@ -185,7 +185,8 @@ dockutil)
       appTitle="Dockutil"
       appFiles+=("/usr/local/bin/dockutil")
       ;;
-drawio) # Last checked: 09-03-2022
+drawio)
+# Last checked: 09-03-2022
       appTitle="Draw.io"
       appFiles+=("/Applications/Drawio.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/draw.io")
@@ -195,7 +196,7 @@ drawio) # Last checked: 09-03-2022
       appFiles+=("/Users/$loggedInUser/Library/Logs/draw.io")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jgraph.drawio.desktop.savedState")
       ;;
-figma) 
+figma)
       appTitle="Figma"
       appProcesses+=("Figma")
       appFiles+=("/Applications/Figma.app")
@@ -204,6 +205,15 @@ figma)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.figma.Desktop.plist")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.figma.agent")
       ;;
+filemakerpro19)
+      appTitle="FileMaker Pro"
+      appProcesses+=("FileMaker Pro")
+      appFiles+=("/Applications/FileMaker Pro.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/FileMaker")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.filemaker.client.pro12.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.filemaker.client.pro12")
+      appFiles+=("/Users/Shared/FileMaker/FileMaker Pro/19.0")
+      ;;      
 firefox)
       appTitle="FireFox"
       appProcesses+=("firefox")
