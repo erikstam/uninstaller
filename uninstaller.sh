@@ -253,6 +253,11 @@ icons)
       appFiles+=("/Applications/Icons.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Scrips/corp.sap.Icons")
       ;;
+    imovie)
+      appTitle="iMovie"
+      appProcesses+=("iMovie")
+      appFiles+=("/Applications/iMovie.app")
+      ;;
 invisionstudio)
       appTitle="InVision Studio"
       appProcesses+=("InVision Studio")
@@ -437,6 +442,12 @@ sourcetree) ## Nog testen
       appTitle="Sourcetree"
       appProcesses+=("sourcetree")
       appFiles+=("/Applications/Sourcetree.app")
+      ;;
+supportapp)
+      appTitle="Support app"
+      appProcesses+=("Support")
+      appFiles+=("/Applications/Support.app")
+      appLaunchAgents+=("/Library/LaunchAgents/nl.root3.support.plist")
       ;;
 symantecdlpagent)
       appTitle="Symantec DLP agent"
