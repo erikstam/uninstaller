@@ -10,7 +10,7 @@ LAST_MOD_DATE="2022-11-23"
 DEBUG=0
 
 # notify behavior
-NOTIFY=success
+NOTIFY=silent
 # options:
 #   - success      notify the user on success
 #   - silent       no notifications
@@ -298,6 +298,22 @@ jamfprotect)
       appFiles+=("/Library/Application Support/JamfProtect")
       appLaunchAgents+=("/Library/LaunchAgents/com.jamf.protect.agent.plist")
       preflightCommand+=("/Applications/JamfProtect.app/Contents/MacOS/JamfProtect uninstall")
+      ;;
+java8oracle)
+      appTitle="Java 8"
+      appProcesses+=("java")
+      appFiles+=("/Library/Internet Plug-Ins/JavaAppletPlugin.plugin")
+      appFiles+=("/Library/PreferencePanes/JavaControlPanel.prefPane")
+      appFiles+=("/Library/Preferences/com.oracle.java.Helper-Tool.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/Oracle.MacJREInstaller")    
+      appFiles+=("/Users/$loggedInUser/Library/Application\ Support/Oracle/Java")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.oracle.java.JavaAppletPlugin.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.oracle.javadeployment.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Oracle/Java")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/JREInstaller")                       
+      appLaunchAgents+=("/Library/LaunchAgents/com.oracle.java.Java-Updater.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.oracle.java.Helper-Tool.plist")
+      appReceipts+=("com.oracle.jre")
       ;;
 jetbrainsintellijidea)
       appTitle="JetBrains IntelliJ IDEA"
