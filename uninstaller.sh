@@ -3,7 +3,7 @@
 # Uninstaller script
 
 # Last modification date
-LAST_MOD_DATE="2022-11-16"
+LAST_MOD_DATE="2022-11-23"
 
 # set to 0 for production, 1 for debugging
 # no actual uninstallation will be performed
