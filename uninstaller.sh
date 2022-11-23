@@ -452,6 +452,26 @@ supportapp)
 symantecdlpagent)
       appTitle="Symantec DLP agent"
       ;;
+teamviewer)
+      appTitle="TeamViewer"
+      appProcesses+=("TeamViewer")
+      appFiles+=("/Applications/TeamViewer.app")
+      appFiles+=("/Library/Application Support/TeamViewer/")
+      appFiles+=("/Library/PrivilegedHelperTools/com.teamviewer.Helper")
+      appFiles+=("/Library/Preferences/com.teamviewer.teamviewer.preferences.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/TeamViewer/")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.teamviewer.TeamViewer.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.teamviewer.teamviewer.preferences.Machine.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.teamviewer.teamviewer.preferences.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.teamviewer.Helper.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.teamviewer.teamviewer_service.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.teamviewer.teamviewer_desktop.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.teamviewer.teamviewer.plist")
+      appReceipts+=("com.teamviewer.teamviewer")
+      appReceipts+=("com.teamviewer.teamviewerPriviledgedHelper")
+      appReceipts+=("com.teamviewer.remoteaudiodriver")     
+      appReceipts+=("com.teamviewer.AuthorizationPlugin")
+      ;;
 temp)
       appTitle="Application name"
       appProcesses+=("Application process name")
@@ -459,6 +479,9 @@ temp)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.application.name.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.application.name.plist")
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.application.name.plist")
+      appReceipts+=("com.application.AuthorizationPlugin")
+      preflightCommand+=("/usr/local/bin/authchanger -reset")
+      postflightCommand+=("touch /tmp/ready")
       ;;
 verasecuserselfservice)
       appTitle="Versasec User Self-Service"
@@ -631,6 +654,15 @@ if [[ "receipts" != "0" ]]; then
   /usr/sbin/pkgutil --forget $appBundleIdentifier
 fi
 fi
+
+  # Remove manual receipts
+  printlog "Removing $appTitle receipts"
+  
+    for receipt in "${appReceipts[@]}"
+  do
+    /usr/sbin/pkgutil --forget $receipt
+  done
+  
 
 }
 
