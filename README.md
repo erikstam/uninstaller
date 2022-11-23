@@ -31,6 +31,7 @@ uninstaller.sh firefox
 | appFiles  | files/folders to be removed  |  appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")|
 | appLaunchAgents  | path to launchagent plist  |  appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")|
 | appLaunchDaemons  | path to launchdaemon plist  |  appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")|
+| appReceipts  | receipt to forget  |  appReceipts+=("com.teamviewer.AuthorizationPlugin")|
 | preflightCommand (EXPERIMENTAL) | command to run BEFORE uninstalling |  preflightCommand+=("/usr/local/bin/authchanger -reset")|
 | postflightCommand (EXPERIMENTAL) | command to run AFTER uninstalling |  postflightCommand+=("touch /tmp/.uninstall-done")|
 
