@@ -3,7 +3,7 @@
 # Uninstaller script
 
 # Last modification date
-LAST_MOD_DATE="2022-11-23"
+LAST_MOD_DATE="2022-11-30"
 
 # set to 0 for production, 1 for debugging
 # no actual uninstallation will be performed
@@ -400,6 +400,12 @@ munki)
       appLaunchAgents+=("/Library/LaunchAgents/com.googlecode.munki.managedsoftwareupdate-loginwindow.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.googlecode.munki.munki-notifier.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.googlecode.munki.MunkiStatus.plist")
+      appReceipts+=("com.googlecode.munki.admin")
+      appReceipts+=("com.googlecode.munki.app")
+      appReceipts+=("com.googlecode.munki.core")     
+      appReceipts+=("com.googlecode.munki.launchd")
+      appReceipts+=("com.googlecode.munki.app_usage")     
+      appReceipts+=("com.googlecode.munki.python")
       ;;
 nessus)
       appTitle="Nessus"
@@ -716,24 +722,28 @@ quitApp() {
 }
 
 removeFileDirectory() {
-  if [ -f "$file" ]; then
-  # file exists and can be removed
-    printlog "Removing file $file"
-    if [ "$DEBUG" -eq 0 ]; then
-      /bin/rm -f "$file"
-    fi
-  else
-    if [ -d "$file" ]; then
-      # it is not a file, it is a directory and can be removed
-      printlog "Removing directory $file..."
-      if [ "$DEBUG" -eq 0 ]; then
-        /bin/rm -Rf "$file"
-      fi
-    else
-      # it is not a file nor it is a directory. Don't remove.
-      printlog "INFO: $file is not an existing file or folder"
-    fi
-  fi
+	if [ -f "$file" ]; then
+		# file exists and can be removed
+		printlog "Removing file $file"
+		if [ "$DEBUG" -eq 0 ]; then
+			/bin/rm -f "$file"
+		fi
+	elif [ -d "$file" ]; then
+		# it is not a file, it is a directory and can be removed
+		printlog "Removing directory $file..."
+		if [ "$DEBUG" -eq 0 ]; then
+			/bin/rm -Rf "$file"
+		fi
+	elif [ -L "$file" ]; then
+		# it is an alias
+		printlog "Removing alias $file..."
+		if [ "$DEBUG" -eq 0 ]; then
+			/bin/rm -f "$file"
+		fi
+	else
+		# it is not a file, alias or a directory. Don't remove.
+		printlog "INFO: $file is not an existing file or folder"
+	fi
 }
 
 removeLaunchDaemons() {
