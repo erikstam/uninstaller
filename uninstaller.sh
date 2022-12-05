@@ -453,6 +453,14 @@ privileges)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.abnamro.nl.privilegesCheckAdmin.plist")
       appLaunchAgents+=("/Library/LaunchAgents/corp.sap.privileges.plist")
       ;;
+pycharmce)
+      appTitle="PyCharm CE"
+      appProcesses+=("pycharm")
+      appFiles+=("/Applications/PyCharm CE.app")
+      appReceipts+=("com.jetbrains.pycharm.ce")     
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jetbrains.pycharm.ce.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jetbrains.pycharm.ce.savedState")
+      ;;     
 sketch)
       appTitle="Sketch"
       appFiles+=("/Applications/Sketch.app")
