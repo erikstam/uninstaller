@@ -1,8 +1,6 @@
 # Intro
 Installing apps is easy, just run a package. But what about removing/uninstalling the app?
-Not every developer creates an uninstaller script or removal tool so who are you gonna call when you want to uninstall some software? Erik!!
-
-Unfortunately you cannot upload Erik to your favorite MDM so he created this script instead.
+Not every developer creates an uninstaller script or removal tool so the idea for uninstaller was born.
 
 ## What does uninstaller do?
 uninstaller.sh removes software including preferences, license info, cache files, etc. It will not remove user data.
