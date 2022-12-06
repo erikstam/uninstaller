@@ -453,6 +453,13 @@ privileges)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.abnamro.nl.privilegesCheckAdmin.plist")
       appLaunchAgents+=("/Library/LaunchAgents/corp.sap.privileges.plist")
       ;;
+proxyman)
+      appTitle="Proxyman"
+      appProcesses+=("Proxyman")
+      appFiles+=("/Applications/Proxyman.app")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.proxyman.iconappmanager.userdefaults.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.proxyman.NSProxy.plist")
+      ;;
 pycharmce)
       appTitle="PyCharm CE"
       appProcesses+=("pycharm")
