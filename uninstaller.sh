@@ -3,14 +3,14 @@
 # Uninstaller script
 
 # Last modification date
-LAST_MOD_DATE="2022-11-15"
+LAST_MOD_DATE="2022-11-30"
 
 # set to 0 for production, 1 for debugging
 # no actual uninstallation will be performed
 DEBUG=0
 
 # notify behavior
-NOTIFY=success
+NOTIFY=silent
 # options:
 #   - success      notify the user on success
 #   - silent       no notifications
@@ -299,6 +299,22 @@ jamfprotect)
       appLaunchAgents+=("/Library/LaunchAgents/com.jamf.protect.agent.plist")
       preflightCommand+=("/Applications/JamfProtect.app/Contents/MacOS/JamfProtect uninstall")
       ;;
+java8oracle)
+      appTitle="Java 8"
+      appProcesses+=("java")
+      appFiles+=("/Library/Internet Plug-Ins/JavaAppletPlugin.plugin")
+      appFiles+=("/Library/PreferencePanes/JavaControlPanel.prefPane")
+      appFiles+=("/Library/Preferences/com.oracle.java.Helper-Tool.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/Oracle.MacJREInstaller")    
+      appFiles+=("/Users/$loggedInUser/Library/Application\ Support/Oracle/Java")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.oracle.java.JavaAppletPlugin.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.oracle.javadeployment.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Oracle/Java")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/JREInstaller")                       
+      appLaunchAgents+=("/Library/LaunchAgents/com.oracle.java.Java-Updater.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.oracle.java.Helper-Tool.plist")
+      appReceipts+=("com.oracle.jre")
+      ;;
 jetbrainsintellijidea)
       appTitle="JetBrains IntelliJ IDEA"
       appProcesses+=("IntelliJ IDEA")
@@ -384,6 +400,12 @@ munki)
       appLaunchAgents+=("/Library/LaunchAgents/com.googlecode.munki.managedsoftwareupdate-loginwindow.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.googlecode.munki.munki-notifier.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.googlecode.munki.MunkiStatus.plist")
+      appReceipts+=("com.googlecode.munki.admin")
+      appReceipts+=("com.googlecode.munki.app")
+      appReceipts+=("com.googlecode.munki.core")     
+      appReceipts+=("com.googlecode.munki.launchd")
+      appReceipts+=("com.googlecode.munki.app_usage")     
+      appReceipts+=("com.googlecode.munki.python")
       ;;
 nessus)
       appTitle="Nessus"
@@ -431,6 +453,14 @@ privileges)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.abnamro.nl.privilegesCheckAdmin.plist")
       appLaunchAgents+=("/Library/LaunchAgents/corp.sap.privileges.plist")
       ;;
+pycharmce)
+      appTitle="PyCharm CE"
+      appProcesses+=("pycharm")
+      appFiles+=("/Applications/PyCharm CE.app")
+      appReceipts+=("com.jetbrains.pycharm.ce")     
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jetbrains.pycharm.ce.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jetbrains.pycharm.ce.savedState")
+      ;;     
 sketch)
       appTitle="Sketch"
       appFiles+=("/Applications/Sketch.app")
@@ -452,6 +482,26 @@ supportapp)
 symantecdlpagent)
       appTitle="Symantec DLP agent"
       ;;
+teamviewer)
+      appTitle="TeamViewer"
+      appProcesses+=("TeamViewer")
+      appFiles+=("/Applications/TeamViewer.app")
+      appFiles+=("/Library/Application Support/TeamViewer/")
+      appFiles+=("/Library/PrivilegedHelperTools/com.teamviewer.Helper")
+      appFiles+=("/Library/Preferences/com.teamviewer.teamviewer.preferences.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/TeamViewer/")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.teamviewer.TeamViewer.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.teamviewer.teamviewer.preferences.Machine.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.teamviewer.teamviewer.preferences.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.teamviewer.Helper.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.teamviewer.teamviewer_service.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.teamviewer.teamviewer_desktop.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.teamviewer.teamviewer.plist")
+      appReceipts+=("com.teamviewer.teamviewer")
+      appReceipts+=("com.teamviewer.teamviewerPriviledgedHelper")
+      appReceipts+=("com.teamviewer.remoteaudiodriver")     
+      appReceipts+=("com.teamviewer.AuthorizationPlugin")
+      ;;
 temp)
       appTitle="Application name"
       appProcesses+=("Application process name")
@@ -459,6 +509,9 @@ temp)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.application.name.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.application.name.plist")
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.application.name.plist")
+      appReceipts+=("com.application.AuthorizationPlugin")
+      preflightCommand+=("/usr/local/bin/authchanger -reset")
+      postflightCommand+=("touch /tmp/ready")
       ;;
 verasecuserselfservice)
       appTitle="Versasec User Self-Service"
@@ -632,6 +685,15 @@ if [[ "receipts" != "0" ]]; then
 fi
 fi
 
+  # Remove manual receipts
+  printlog "Removing $appTitle receipts"
+  
+    for receipt in "${appReceipts[@]}"
+  do
+    /usr/sbin/pkgutil --forget $receipt
+  done
+  
+
 }
 
 printlog() {
@@ -668,24 +730,28 @@ quitApp() {
 }
 
 removeFileDirectory() {
-  if [ -f "$file" ]; then
-  # file exists and can be removed
-    printlog "Removing file $file"
-    if [ "$DEBUG" -eq 0 ]; then
-      /bin/rm -f "$file"
-    fi
-  else
-    if [ -d "$file" ]; then
-      # it is not a file, it is a directory and can be removed
-      printlog "Removing directory $file..."
-      if [ "$DEBUG" -eq 0 ]; then
-        /bin/rm -Rf "$file"
-      fi
-    else
-      # it is not a file nor it is a directory. Don't remove.
-      printlog "INFO: $file is not an existing file or folder"
-    fi
-  fi
+	if [ -f "$file" ]; then
+		# file exists and can be removed
+		printlog "Removing file $file"
+		if [ "$DEBUG" -eq 0 ]; then
+			/bin/rm -f "$file"
+		fi
+	elif [ -d "$file" ]; then
+		# it is not a file, it is a directory and can be removed
+		printlog "Removing directory $file..."
+		if [ "$DEBUG" -eq 0 ]; then
+			/bin/rm -Rf "$file"
+		fi
+	elif [ -L "$file" ]; then
+		# it is an alias
+		printlog "Removing alias $file..."
+		if [ "$DEBUG" -eq 0 ]; then
+			/bin/rm -f "$file"
+		fi
+	else
+		# it is not a file, alias or a directory. Don't remove.
+		printlog "INFO: $file is not an existing file or folder"
+	fi
 }
 
 removeLaunchDaemons() {
