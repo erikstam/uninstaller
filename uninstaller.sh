@@ -3,7 +3,7 @@
 # Uninstaller script
 
 # Last modification date
-LAST_MOD_DATE="2022-11-30"
+LAST_MOD_DATE="2022-12-09"
 
 # set to 0 for production, 1 for debugging
 # no actual uninstallation will be performed
@@ -593,25 +593,28 @@ zoom)
       ;;
   esac
 
+  printlog "Uninstaller started - build $LAST_MOD_DATE"
+
   # Get app version
-  appVersion=$(defaults read "$appFiles[1]/Contents/Info.plist" $appVersionKey)
-  appBundleIdentifier=$(defaults read "$appFiles[1]/Contents/Info.plist" $appBundleIdentifierKey)
+  if [ -f "$appFiles[1]/Contents/Info.plist" ]; then
+    appVersion=$(defaults read "$appFiles[1]/Contents/Info.plist" $appVersionKey)
+    appBundleIdentifier=$(defaults read "$appFiles[1]/Contents/Info.plist" $appBundleIdentifierKey)
+  fi    
+
 
   if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
     displayNotification "Starting to uninstall $appTitle $appVersion..." "Uninstalling $appTitle"
   fi
   
   
-# Running preflight commands
+  # Running preflight commands
   printlog "Running $appTitle - preflightCommand"
-  
-    for precommand in "${preflightCommand[@]}"
+  for precommand in "${preflightCommand[@]}"
   do
     zsh -c "$precommand"
   done
 
-  
-
+ 
   # Remove LaunchDaemons
   printlog "Uninstalling $appTitle - LaunchDaemons"
   if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
@@ -622,6 +625,7 @@ zoom)
   do
     removeLaunchDaemons
   done
+
 
   # Remove LaunchAgents
   printlog "Uninstalling $appTitle - LaunchAgents"
@@ -634,37 +638,41 @@ zoom)
     removeLaunchAgents
   done
 
+
   # Stop app appProcesses
   printlog "Checking for blocking processes..."
   if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
     displayNotification "Quitting $appTitle..." "Uninstalling in progress"
   fi
 
-
-if [ ! -z "$appProcesses[1]" ]; then
-  for process in "${appProcesses[@]}"
-  do
+  if [ ! -z "$appProcesses[1]" ]; then
+    for process in "${appProcesses[@]}"
+    do
+      quitApp
+    done
+  else
+    # use $appTitle if no separate appProcesses are defined
+    process="$appTitle"
     quitApp
-  done
   fi
+
 
   # If there is a uninstall script available, run that Scripts
   printlog "Run uninstall script if available..."
   if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
     displayNotification "Running uninstall script..." "Uninstalling in progress"
   fi
-
   for script in "${appScripts[@]}"
   do
     runUninstallScript
   done
+
 
   # Remove Files and Directories
   printlog "Uninstalling $appTitle - Files and Directories"
   if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
     displayNotification "Removing $appTitle files..." "Uninstalling in progress"
   fi
-
   for file in "${appFiles[@]}"
   do
 	  removeFileDirectory
@@ -672,38 +680,40 @@ if [ ! -z "$appProcesses[1]" ]; then
   
   
   # Running postflight commands
-  printlog "Running $appTitle - postflightCommand"
-  
-    for postcommand in "${postflightCommand[@]}"
+  printlog "Running $appTitle - postflightCommand" 
+  for postcommand in "${postflightCommand[@]}"
   do
     zsh -c "$postcommand"
   done
+    
   
-  
+  if [ ! -z "$appBundleIdentifier" ]; then
+	printlog "Checking for receipt.."
+	receipts=$(pkgutil --pkgs | grep -c $appBundleIdentifier)
+	if [[ "receipts" != "0" ]]; then
+		/usr/sbin/pkgutil --forget $appBundleIdentifier
+	fi
+  fi
 
+
+  # Remove manual receipts
+  printlog "Removing $appTitle receipts" 
+  if [ ! -z "${appReceipts[@]}" ]; then
+  for receipt in "${appReceipts[@]}"
+  do
+    /usr/sbin/pkgutil --forget $receipt
+  done
+  fi
+  
+  
   # restart prefsd to ensure caches are cleared
-  /usr/bin/killall cfprefs
+  /usr/bin/killall -q cfprefs
 
   if [[ $loggedInUser != "loginwindow" && ( $NOTIFY == "success" || $NOTIFY == "all" ) ]]; then
     displayNotification "$appTitle is uninstalled." "Uninstalling completed!"
   fi
+  printlog "Uninstaller Finished"
 
-if [ ! -z "$appBundleIdentifier" ]; then
-printlog "Checking for receipt.."
-receipts=$(pkgutil --pkgs | grep -c $appBundleIdentifier)
-if [[ "receipts" != "0" ]]; then
-  /usr/sbin/pkgutil --forget $appBundleIdentifier
-fi
-fi
-
-  # Remove manual receipts
-  printlog "Removing $appTitle receipts"
-  
-    for receipt in "${appReceipts[@]}"
-  do
-    /usr/sbin/pkgutil --forget $receipt
-  done
-  
 
 }
 
@@ -766,7 +776,6 @@ removeFileDirectory() {
 }
 
 removeLaunchDaemons() {
-
   # remove LaunchDaemon
   if [ -f "$launchDaemon" ]; then
     # LaunchDaemon exists and can be removed
@@ -779,7 +788,6 @@ removeLaunchDaemons() {
 }
 
 removeLaunchAgents() {
-
   # remove launchAgent
   if [ -f "$launchAgent" ]; then
     # launchAgent exists and can be removed
@@ -806,15 +814,14 @@ displayNotification() { # $1: message $2: title
 }
 
 runUninstallScript() {
-
   # run Install script
   if [ -f "$appScript" ]; then
     printlog "Executing $appScript"
     "$appScript"
   fi
   # What if the script has parameters? How to check for the script?
-
 }
+
 ####################################
 # Code
 ####################################
