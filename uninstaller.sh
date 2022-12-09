@@ -150,6 +150,14 @@ citrixendpointanalysis)
       ;;
 citrixworkspace)
       appTitle="Citrix Workspace"
+      appFiles+=("/Applications/Citrix Workspace.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Citrix Workspace")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.citrix.receiver.nomas")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.citrix.receiver.nomas")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.citrix.receiver.nomas")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/Citrix Workspace")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.citrix.receiver.nomas.plist")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.citrix.receiver.nomas.plist")
       ;;
 depnotify)
       appTitle="DEPNotify"
@@ -257,7 +265,7 @@ icons)
       appFiles+=("/Applications/Icons.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Scrips/corp.sap.Icons")
       ;;
-    imovie)
+imovie)
       appTitle="iMovie"
       appProcesses+=("iMovie")
       appFiles+=("/Applications/iMovie.app")
@@ -479,10 +487,14 @@ sketch)
 snow)
       appTitle="Snow"
       ;;
-sourcetree) ## Nog testen
+sourcetree)
       appTitle="Sourcetree"
-      appProcesses+=("sourcetree")
       appFiles+=("/Applications/Sourcetree.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/sourcetree/")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/sourcetree/")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.torusknot.SourceTreeNotMAS")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.torusknot.SourceTreeNotMAS.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.torusknot.SourceTreeNotMAS.savedState")
       ;;
 supportapp)
       appTitle="Support app"
@@ -608,7 +620,7 @@ zoom)
   
   
   # Running preflight commands
-  printlog "Running $appTitle - preflightCommand"
+  printlog "$appTitle - Running preflightCommand"
   for precommand in "${preflightCommand[@]}"
   do
     zsh -c "$precommand"
