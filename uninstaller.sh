@@ -10,11 +10,22 @@ LAST_MOD_DATE="2022-12-11"
 DEBUG=0
 
 # notify behavior
-NOTIFY=silent
+NOTIFY=success
 # options:
 #   - success      notify the user on success
 #   - silent       no notifications
 #   - all          all notifications (great for Self Service installation)
+
+# notification type
+NOTIFICATIONTYPE=jamf
+# options:
+#   - jamf				show notifications using the jamf Management Action binary
+#   - swiftdialog       show notifications using swiftdialog
+#   - applescript       show notifications using applescript
+
+# Notification Sources
+jamfManagementAction="/Library/Application Support/JAMF/bin/Management Action.app/Contents/MacOS/Management Action"
+swiftDialog="/usr/local/bin/dialog"
 
 
 # - appVersionKey: (optional)
@@ -47,9 +58,7 @@ loggedInUserID=$( /usr/bin/id -u "$loggedInUser" )
 # Logging
 logLocation="/private/var/log/appAssassin.log"
 
-# Notification Sources
-manageaction="/Library/Application Support/JAMF/bin/Management Action.app/Contents/MacOS/Management Action"
-swiftDialogAction="/usr/local/bin/dialog"
+
 
 #######################
 # Functions
@@ -794,16 +803,31 @@ removeLaunchAgents() {
 
 displayNotification() { # $1: message $2: title
 
-  message=${1:-"Message"}
-  title=${2:-"Notification"}
+	message=${1:-"Message"}
+	title=${2:-"Notification"}
 
-  if [ -x "$manageaction" ]; then
-    "$manageaction" -message "$message" -title "$title"
-  elif [ -x "$swiftDialogAction" ]; then
-      "$swiftDialogAction" --message "$message" --title "$title"
-  else
-    runAsUser osascript -e "display notification \"$message\" with title \"$title\""
-  fi
+	case $NOTIFICATIONTYPE in
+		jamf)
+			if [ -x "$jamfManagementAction" ]; then
+				"$jamfManagementAction" -message "$message" -title "$title"
+			else
+				printlog "ERROR: $jamfManagementAction not installed for showing notifications."
+			fi
+			;;
+		swiftdialog)
+			if [ -x "$swiftDialog" ]; then
+				"$swiftDialog" --message "$message" --title "$title" --mini
+			else
+				printlog "ERROR: $swiftDialog not installed for showing notifications."
+			fi
+			;;
+		applescript)
+			runAsUser osascript -e "display notification \"$message\" with title \"$title\""
+			;;		
+		*) # unknown NOTIFICATIONTYPE, using applescript
+      		runAsUser osascript -e "display notification \"$message\" with title \"$title\""
+      		;;
+	esac
 }
 
 
