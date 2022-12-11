@@ -3,7 +3,7 @@
 # Uninstaller script
 
 # Last modification date
-LAST_MOD_DATE="2022-12-09"
+LAST_MOD_DATE="2022-12-11"
 
 # set to 0 for production, 1 for debugging
 # no actual uninstallation will be performed
@@ -38,7 +38,7 @@ else
 fi
 
 # lowercase the label
-label=${(L)label}
+label=${label:l}
 
 # get loggedInUser user
 loggedInUser=$( /usr/sbin/scutil <<< "show State:/Users/ConsoleUser" | /usr/bin/awk '/Name :/ { print $3 }' )
@@ -87,12 +87,12 @@ uninstallApp() {
 adobeacrobatdc)
       appTitle="Adobe Acrobat DC"
       appProcesses+=("Adobe Acrobat")
-      appScript+=("/Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool /Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/MacOS/Acrobat Uninstaller /Applications/Adobe Acrobat DC/Adobe Acrobat.app")
+      preflightCommand+=("/Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool /Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/MacOS/Acrobat Uninstaller /Applications/Adobe Acrobat DC/Adobe Acrobat.app")
       ;;
 adobeacrobat2017)
       appTitle="Adobe Acrobat 2017"
       appProcesses+=("Adobe Acrobat")
-      appScript+=("/Applications/Adobe Acrobat 2017/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool Uninstall /Applications/Adobe Acrobat 2017/Adobe Acrobat.app")
+      preflightCommand+=("/Applications/Adobe Acrobat 2017/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool Uninstall /Applications/Adobe Acrobat 2017/Adobe Acrobat.app")
       ;;
 androidstudio)
       appTitle="Android Studio"
@@ -196,7 +196,7 @@ docker)
       appFiles+=("/usr/local/bin/docker-credential-osxkeychain")
       appFiles+=("/usr/local/lib/docker")
       appLaunchAgents+=("/Library/LaunchDaemons/com.docker.vmnetd.plist")
-      #appScript+=("/Applications/Docker.app/Contents/MacOS/Docker --uninstall")
+      preflightCommand+=("/Applications/Docker.app/Contents/MacOS/Docker --uninstall")
       ;;
 dockutil)
       appTitle="Dockutil"
@@ -253,9 +253,6 @@ googlechrome)
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.google.Keystone")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.google.Chrome.savedState")
       appFiles+=("/Library/Google/Chrome")
-      appFiles+=("/private/var/folders/vr/ghgpz6n125sg35t0mnf29dl80000gn/C/com.google.Chrome")
-      appFiles+=("/private/var/folders/vr/ghgpz6n125sg35t0mnf29dl80000gn/C/com.google.Chrome.helper")
-      appFiles+=("/private/var/folders/vr/ghgpz6n125sg35t0mnf29dl80000gn/C/com.apple.Safari.SafeBrowsing/Google")
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.google.keystone.agent.plist")
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.google.keystone.xpcservice.plist")
       ;;
@@ -346,9 +343,6 @@ kalturacapture)
       appFiles+=("/Applications/KalturaCapture.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/lecture-capture-app")
       ;;
-microsoft365)
-      appTitle="Microsoft 365"
-      ;;
 microsoftdefender)
       appTitle="Microsoft Defender"
       appProcesses+=("wdav")
@@ -426,9 +420,6 @@ nessus)
       appFiles+=("/Library/PreferencePanes/Nessus Agent Preferences.prefPane")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.tenablesecurity.nessusagent.plist")
       ;;
-Nexthinkcollector)
-      appTitle="Nexthink Collector"
-      ;;
 nomad)
       appTitle="NoMAD"
       appProcesses+=("NoMAD")
@@ -461,8 +452,10 @@ principle)
 privileges)
       appTitle="Privileges"
       appFiles+=("/Applications/Privileges.app")
-      appFiles+=("/Library/Preferences/privilegesCheckAdmin.plist")
-      appLaunchDaemons+=("/Library/LaunchDaemons/com.abnamro.nl.privilegesCheckAdmin.plist")
+      appFiles+=("/Library/PrivilegedHelperTools/corp.sap.privileges.helper")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/corp.sap.privileges")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/corp.sap.privileges")
+      appLaunchDaemons+=("/Library/LaunchDaemons/corp.sap.privileges.helper.plist")
       appLaunchAgents+=("/Library/LaunchAgents/corp.sap.privileges.plist")
       ;;
 proxyman)
@@ -484,8 +477,23 @@ sketch)
       appTitle="Sketch"
       appFiles+=("/Applications/Sketch.app")
       ;;
-snow)
-      appTitle="Snow"
+skype)
+      appTitle="Skype"
+      appFiles+=("/Applications/Skype.app")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.skype.skype/")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.skype.skype.ShipIt/")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.skype.skype")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/Skype Helper (Renderer)")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.skype.skype.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.skype.skype.savedState")
+      ;;
+spotify)
+      appTitle="Spotify"
+      appFiles+=("/Applications/Spotify.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Spotify/")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.spotify.client")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.spotify.client.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.spotify.client.savedState")
       ;;
 sourcetree)
       appTitle="Sourcetree"
@@ -500,10 +508,9 @@ supportapp)
       appTitle="Support app"
       appProcesses+=("Support")
       appFiles+=("/Applications/Support.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/nl.root3.support")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/nl.root3.support")
       appLaunchAgents+=("/Library/LaunchAgents/nl.root3.support.plist")
-      ;;
-symantecdlpagent)
-      appTitle="Symantec DLP agent"
       ;;
 teamviewer)
       appTitle="TeamViewer"
@@ -525,17 +532,6 @@ teamviewer)
       appReceipts+=("com.teamviewer.remoteaudiodriver")     
       appReceipts+=("com.teamviewer.AuthorizationPlugin")
       ;;
-temp)
-      appTitle="Application name"
-      appProcesses+=("Application process name")
-      appFiles+=("/Applications/Application name.app")
-      appLaunchDaemons+=("/Library/LaunchDaemons/com.application.name.plist")
-      appLaunchAgents+=("/Library/LaunchAgents/com.application.name.plist")
-      appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.application.name.plist")
-      appReceipts+=("com.application.AuthorizationPlugin")
-      preflightCommand+=("/usr/local/bin/authchanger -reset")
-      postflightCommand+=("touch /tmp/ready")
-      ;;
 verasecuserselfservice)
       appTitle="Versasec User Self-Service"
       appProcesses+=("vSEC:CMS User Self-Service")
@@ -555,17 +551,11 @@ vlc)
       appFiles+=("/Users/$loggedInUser/Library/Caches/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/org.videolan.vlc")
       ;;
-wacomdriver)
-      appTitle="Wacom driver"
-      ;;
 yammer)
       appTitle="Yammer"
       appProcesses+=("yammer")
       appFiles+=("/Applications/Yammer.app")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.Yammer.plist")
-      ;;
-zscaler)
-      appTitle="Zscaler"
       ;;
 zoom)
       appTitle="Zoom"
@@ -599,8 +589,8 @@ zoom)
       appFiles+=("/Library/Audio/Plug-Ins/HAL/ZoomAudioDevice.driver")
       appLaunchDaemons+=("/Library/LaunchDaemons/us.zoom.ZoomDaemon.plist")
       ;;
-    *) # if no specified event is triggered, use default information
-      appTitle="No Application selected. Not doing anything."
+    *) # if no specified event/label is triggered, do nothing
+      printlog "ERROR: Unknown label: $label"
       exit 1
       ;;
   esac
@@ -608,9 +598,9 @@ zoom)
   printlog "Uninstaller started - build $LAST_MOD_DATE"
 
   # Get app version
-  if [ -f "$appFiles[1]/Contents/Info.plist" ]; then
-    appVersion=$(defaults read "$appFiles[1]/Contents/Info.plist" $appVersionKey)
-    appBundleIdentifier=$(defaults read "$appFiles[1]/Contents/Info.plist" $appBundleIdentifierKey)
+  if [ -f "${appFiles[1]}/Contents/Info.plist" ]; then
+    appVersion=$(defaults read "${appFiles[1]}/Contents/Info.plist" $appVersionKey)
+    appBundleIdentifier=$(defaults read "${appFiles[1]}/Contents/Info.plist" $appBundleIdentifierKey)
   fi    
 
 
@@ -657,7 +647,7 @@ zoom)
     displayNotification "Quitting $appTitle..." "Uninstalling in progress"
   fi
 
-  if [ ! -z "$appProcesses[1]" ]; then
+  if [ -n "${appProcesses[1]}" ]; then
     for process in "${appProcesses[@]}"
     do
       quitApp
@@ -667,17 +657,6 @@ zoom)
     process="$appTitle"
     quitApp
   fi
-
-
-  # If there is a uninstall script available, run that Scripts
-  printlog "Run uninstall script if available..."
-  if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
-    displayNotification "Running uninstall script..." "Uninstalling in progress"
-  fi
-  for script in "${appScripts[@]}"
-  do
-    runUninstallScript
-  done
 
 
   # Remove Files and Directories
@@ -699,23 +678,25 @@ zoom)
   done
     
   
-  if [ ! -z "$appBundleIdentifier" ]; then
+  if [ -n "$appBundleIdentifier" ]; then
 	printlog "Checking for receipt.."
-	receipts=$(pkgutil --pkgs | grep -c $appBundleIdentifier)
-	if [[ "receipts" != "0" ]]; then
-		/usr/sbin/pkgutil --forget $appBundleIdentifier
+	receipts=$(pkgutil --pkgs | grep -c "$appBundleIdentifier")
+	if [[ "$receipts" != "0" ]]; then
+		/usr/sbin/pkgutil --forget "$appBundleIdentifier"
 	fi
   fi
 
 
   # Remove manual receipts
+  if [ -n "${appReceipts[1]}" ]; then
   printlog "Removing $appTitle receipts" 
-  if [ ! -z "${appReceipts[@]}" ]; then
   for receipt in "${appReceipts[@]}"
   do
-    /usr/sbin/pkgutil --forget $receipt
+    /usr/sbin/pkgutil --forget "$receipt"
   done
   fi
+  
+
   
   
   # restart prefsd to ensure caches are cleared
@@ -742,13 +723,13 @@ printlog() {
 runAsUser() {
   if [ "$loggedInUser" != "loginwindow" ]; then
     uid=$(id -u "$loggedInUser")
-    /bin/launchctl/launchctl asuser $uid sudo -u $loggedInUser "$@"
+    /bin/launchctl asuser "$uid" sudo -u "$loggedInUser" "$@"
   fi
 }
 
 quitApp() {
   processStatus=$( /usr/bin/pgrep -x "$process")
-  if [ $processStatus ]; then
+  if [ "$processStatus" ]; then
     printlog "Found blocking process $process"
 
     if [ "$DEBUG" -eq 0 ]; then
@@ -794,7 +775,7 @@ removeLaunchDaemons() {
     printlog "Removing launchDaemon $launchDaemon..."
     if [ "$DEBUG" -eq 0 ]; then
       /bin/launchctl unload "$launchDaemon"
-      /bin/rm -Rf $launchDaemon
+      /bin/rm -Rf "$launchDaemon"
     fi
   fi
 }
@@ -806,7 +787,7 @@ removeLaunchAgents() {
     printlog "Removing launchAgent $launchAgent..."
     if [ "$DEBUG" -eq 0 ]; then
       /bin/launchctl asuser "$loggedInUserID" launchctl unload -F "$launchAgent"
-      /bin/rm -Rf $launchAgent
+      /bin/rm -Rf "$launchAgent"
     fi
   fi
 }
@@ -825,14 +806,6 @@ displayNotification() { # $1: message $2: title
   fi
 }
 
-runUninstallScript() {
-  # run Install script
-  if [ -f "$appScript" ]; then
-    printlog "Executing $appScript"
-    "$appScript"
-  fi
-  # What if the script has parameters? How to check for the script?
-}
 
 ####################################
 # Code
@@ -840,7 +813,7 @@ runUninstallScript() {
 
 if [[ $# -eq 0 ]]; then
   # "no label as argument -> show all labels
-  grep -E '^[a-z0-9\_-]*(\)|\|\\)$' "$0" | tr -d ')|\' | grep -v -E '^(broken.*|longversion|version|valuesfromarguments)$' | sort
+  grep -E '^[a-z0-9\_-]*(\)|\|\\)$' "$0" | tr -d ')' | sort
   exit 0
 fi
 
