@@ -1,0 +1,17 @@
+googlechrome)
+      appTitle="Google Chrome"
+      appProcesses+=("Google Chrome")
+      appFiles+=("/Applications/Google Chrome.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Google/Chrome")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.google.Chrome.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.google.Keystone.Agent.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.google.Keystone")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.google.SoftwareUpdate")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/Google")
+      appFiles+=("/Users/$loggedInUser/Library/Google")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.google.Keystone")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.google.Chrome.savedState")
+      appFiles+=("/Library/Google/Chrome")
+      appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.google.keystone.agent.plist")
+      appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.google.keystone.xpcservice.plist")
+      ;;
