@@ -82,7 +82,6 @@ uninstallApp() {
       appFiles+=("/Users/$loggedInUser/Library/Group Containers/2BUA8C4S2C.com.agilebits")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.agilebits.onepassword7-updater")
       appFiles+=("/Users/$loggedInUser/Library/Logs/1Password")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/2BUA8C4S2C.com.agilebits")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/2BUA8C4S2C.com.agilebits.onepassword7-helper")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.agilebits.onepassword7")
