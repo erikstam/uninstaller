@@ -2,6 +2,8 @@
 
 # uninstaller
 # Removes software and related files
+#
+# https://github.com/erikstam/uninstaller
 
 # set to 0 for production, 1 for debugging
 # no actual uninstallation will be performed
@@ -37,8 +39,8 @@ appBundleIdentifierKey="CFBundleIdentifier"
 # MARK: Last Modification Date
 
 # Last modification date
-LAST_MOD_DATE="2022-12-11"
-BUILD_DATE="Mon Dec 12 16:20:01 CET 2022"
+LAST_MOD_DATE="2022-12-22"
+BUILD_DATE="Thu Dec 22 21:22:59 CET 2022"
 
 # MARK: Functions
 
@@ -193,7 +195,8 @@ fi
 
 # Check which event is triggered and add extra information.
 case $1 in
-1password)
+1password7)
+# Needs more testing
       appTitle="1Password"
       appProcesses+=("1Password 7")
       appProcesses+=("1Password Extension Helper")
@@ -218,6 +221,29 @@ case $1 in
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.agilebits.onepassword7-updater")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.apple.Safari/Extensions/")
       appFiles+=("/Users/$loggedInUser/Library/WebKit/com.agilebits.onepassword4/")
+      ;;
+1password8)
+# Needs more testing
+      appTitle="1Password"
+      appProcesses+=("1Password")
+      appProcesses+=("1Password Extension Helper")
+      appProcesses+=("1password")
+      appFiles+=("/Applications/1Password.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/1Password")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.agilebits.onepassword.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/1Password")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/1Password 8")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/1Password Launcher")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/2BUA8C4S2C.com.agilebits")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/1Password")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/2BUA8C4S2C.com.agilebits")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/2BUA8C4S2C.com.agilebits.onepassword-helper")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.agilebits.onepassword")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.agilebits.onepassword-launcher")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.agilebits.onepassword.1PasswordSafariAppExtension")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.agilebits.onepasswordslsnativemessaginghost")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.apple.Safari/Extensions/")
       ;;
 adobeacrobat2017)
       appTitle="Adobe Acrobat 2017"
@@ -373,6 +399,7 @@ firefox)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/org.mozilla.firefox.plist")
       appFiles+=("/Users/$loggedInUser/Library/Caches/Mozilla/updates/Applications/Firefox/macAttributionData")
       appFiles+=("/Users/$loggedInUser/Library/Caches/Firefox")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.mozilla.firefox.savedState")
       ;;
 googlechrome)
       appTitle="Google Chrome"
@@ -414,7 +441,7 @@ jamfconnect)
       appTitle="Jamf Connect"
       appProcesses+=("Jamf Connect")
       appFiles+=("/Applications/Jamf Connect.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")
+      appFiles+=("/Library/Application Support/JamfConnect")
       appFiles+=("/usr/local/bin/authchanger")
       appFiles+=("/usr/local/lib/pam/pam_saml.so.2")
       appFiles+=("/Library/Security/SecurityAgentPlugins/JamfConnectLogin.bundle")
@@ -685,6 +712,7 @@ vlc)
       appFiles+=("/Users/$loggedInUser/Library/Application Support/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/Caches/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/org.videolan.vlc")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.videolan.vlc.savedState")
       ;;
 yammer)
       appTitle="Yammer"

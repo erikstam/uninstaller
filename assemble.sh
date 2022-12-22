@@ -6,6 +6,8 @@
 #
 # 
 
+# Last modification date
+LAST_MOD_DATE="2022-12-22"
 
 #setup some folders
 repo_dir=$(dirname ${0:A})
@@ -78,8 +80,5 @@ if [[ $buildScript -eq 1 ]]; then
     cp $destination_file $repo_dir/uninstaller.sh
     chmod 755 $repo_dir/uninstaller.sh
 fi
-
-
-
 
 exit $exit_code

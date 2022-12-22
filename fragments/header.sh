@@ -2,6 +2,8 @@
 
 # uninstaller
 # Removes software and related files
+#
+# https://github.com/erikstam/uninstaller
 
 # set to 0 for production, 1 for debugging
 # no actual uninstallation will be performed
