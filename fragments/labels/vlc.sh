@@ -7,4 +7,5 @@ vlc)
       appFiles+=("/Users/$loggedInUser/Library/Application Support/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/Caches/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/org.videolan.vlc")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.videolan.vlc.savedState")
       ;;
