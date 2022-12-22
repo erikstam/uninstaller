@@ -1,4 +1,5 @@
-1password)
+1password7)
+# Needs more testing
       appTitle="1Password"
       appProcesses+=("1Password 7")
       appProcesses+=("1Password Extension Helper")

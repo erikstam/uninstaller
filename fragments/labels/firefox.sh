@@ -5,4 +5,5 @@ firefox)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/org.mozilla.firefox.plist")
       appFiles+=("/Users/$loggedInUser/Library/Caches/Mozilla/updates/Applications/Firefox/macAttributionData")
       appFiles+=("/Users/$loggedInUser/Library/Caches/Firefox")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.mozilla.firefox.savedState")
       ;;

@@ -2,7 +2,7 @@ jamfconnect)
       appTitle="Jamf Connect"
       appProcesses+=("Jamf Connect")
       appFiles+=("/Applications/Jamf Connect.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")
+      appFiles+=("/Library/Application Support/JamfConnect")
       appFiles+=("/usr/local/bin/authchanger")
       appFiles+=("/usr/local/lib/pam/pam_saml.so.2")
       appFiles+=("/Library/Security/SecurityAgentPlugins/JamfConnectLogin.bundle")
