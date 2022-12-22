@@ -5,4 +5,5 @@ spotify)
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.spotify.client")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.spotify.client.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.spotify.client.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.spotify.client")
       ;;

@@ -86,27 +86,35 @@ displayNotification() { # $1: message $2: title
   
   message=${1:-"Message"}
   title=${2:-"Notification"}
+  FallBacktoAS=false
   
   case $NOTIFICATIONTYPE in
     jamf)
       if [ -x "$jamfManagementAction" ]; then
         "$jamfManagementAction" -message "$message" -title "$title"
       else
-        printlog "ERROR: $jamfManagementAction not installed for showing notifications."
+        printlog "ERROR: $jamfManagementAction not installed for showing notifications. Falling back to AppleScript"
+        FallBacktoAS=true
       fi
     ;;
     swiftdialog)
       if [ -x "$swiftDialog" ]; then
         "$swiftDialog" --message "$message" --title "$title" --mini
       else
-        printlog "ERROR: $swiftDialog not installed for showing notifications."
+        printlog "ERROR: $swiftDialog not installed for showing notifications.  Falling back to AppleScript"
       fi
     ;;
     applescript)
-      runAsUser osascript -e "display notification \"$message\" with title \"$title\""
+      FallBacktoAS=true
     ;;		
     *) # unknown NOTIFICATIONTYPE, using applescript
-      runAsUser osascript -e "display notification \"$message\" with title \"$title\""
+      FallBacktoAS=true
     ;;
   esac
+  
+  if [ FallBacktoAS=true ]; then
+  	runAsUser osascript -e "display notification \"$message\" with title \"$title\""
+  fi
+  
 }
+

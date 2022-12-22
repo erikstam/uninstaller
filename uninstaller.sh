@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-22"
-BUILD_DATE="Thu Dec 22 21:22:59 CET 2022"
+BUILD_DATE="Thu Dec 22 22:56:40 CET 2022"
 
 # MARK: Functions
 
@@ -130,30 +130,38 @@ displayNotification() { # $1: message $2: title
   
   message=${1:-"Message"}
   title=${2:-"Notification"}
+  FallBacktoAS=false
   
   case $NOTIFICATIONTYPE in
     jamf)
       if [ -x "$jamfManagementAction" ]; then
         "$jamfManagementAction" -message "$message" -title "$title"
       else
-        printlog "ERROR: $jamfManagementAction not installed for showing notifications."
+        printlog "ERROR: $jamfManagementAction not installed for showing notifications. Falling back to AppleScript"
+        FallBacktoAS=true
       fi
     ;;
     swiftdialog)
       if [ -x "$swiftDialog" ]; then
         "$swiftDialog" --message "$message" --title "$title" --mini
       else
-        printlog "ERROR: $swiftDialog not installed for showing notifications."
+        printlog "ERROR: $swiftDialog not installed for showing notifications.  Falling back to AppleScript"
       fi
     ;;
     applescript)
-      runAsUser osascript -e "display notification \"$message\" with title \"$title\""
+      FallBacktoAS=true
     ;;		
     *) # unknown NOTIFICATIONTYPE, using applescript
-      runAsUser osascript -e "display notification \"$message\" with title \"$title\""
+      FallBacktoAS=true
     ;;
   esac
+  
+  if [ FallBacktoAS=true ]; then
+  	runAsUser osascript -e "display notification \"$message\" with title \"$title\""
+  fi
+  
 }
+
 # MARK: Arguments
 
 # Argument parsing
@@ -255,6 +263,16 @@ adobeacrobatdc)
       appProcesses+=("Adobe Acrobat")
       preflightCommand+=("/Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool /Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/MacOS/Acrobat Uninstaller /Applications/Adobe Acrobat DC/Adobe Acrobat.app")
       ;;
+adobeareaderdc)
+      appTitle="Adobe Acrobat Reader"
+      appProcesses+=("AdobeReader")
+      appFiles+=("/Applications/Adobe Acrobat Reader.app")
+      appFiles+=("/Library/Preferences/com.adobe.reader.DC.WebResource.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.adobe.Reader")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.adobe.Reader")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.adobe.Reader.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.adobe.Reader.savedState")
+      ;;
 androidstudio)
       appTitle="Android Studio"
       appProcesses+=("Android Studio")
@@ -305,6 +323,8 @@ bbedit)
       appFiles+=("/Users/$loggedInUser/Library/Application Support/BBEdit")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.barebones.bbedit.plist")
       appFiles+=("/Users/$loggedInUser/Library/Containers/com.barebones.bbedit")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.barebones.bbedit")
+      postflightCommand+=("rm -r /Users/$loggedInUser/Library/Caches/com.apple.helpd/Generated/com.barebones.bbedit.help*")
       ;;
 citrixendpointanalysis)
       appTitle="Citrix Endpoint Analysis"
@@ -665,6 +685,7 @@ spotify)
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.spotify.client")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.spotify.client.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.spotify.client.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.spotify.client")
       ;;
 supportapp)
       appTitle="Support app"
@@ -701,7 +722,11 @@ verasecuserselfservice)
       ;;
 visualstudiocode)
       appTitle="Visual Studio Code"
+      # appProcesses+=("Code") # Electron app...
       appFiles+=("/Applications/Visual Studio Code.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Code")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.VSCode.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.microsoft.VSCode.savedState")
       ;;
 vlc)
       appTitle="VLC"
