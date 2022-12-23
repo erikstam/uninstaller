@@ -39,8 +39,8 @@ appBundleIdentifierKey="CFBundleIdentifier"
 # MARK: Last Modification Date
 
 # Last modification date
-LAST_MOD_DATE="2022-12-22"
-BUILD_DATE="Thu Dec 22 22:56:40 CET 2022"
+LAST_MOD_DATE="2022-12-23"
+BUILD_DATE="Fri Dec 23 16:01:47 CET 2022"
 
 # MARK: Functions
 
@@ -293,6 +293,7 @@ atom)
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.atom")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.atom.ShipIt")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.github.atom.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.github.atom")
       ;;
 axurerp8)
       appTitle="Axure RP 8"
@@ -338,7 +339,8 @@ citrixworkspace)
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.citrix.receiver.nomas")
       appFiles+=("/Users/$loggedInUser/Library/Logs/Citrix Workspace")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.citrix.receiver.nomas.plist")
-      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.citrix.receiver.nomas.plist")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.citrix.receiver.nomas")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.citrix.receiver.nomas.savedState")
       ;;
 depnotify)
       appTitle="DEPNotify"
@@ -347,10 +349,15 @@ depnotify)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/menu.nomad.DEPNotify.plist")
       appFiles+=("/Users/$loggedInUser/Library/Caches/menu.nomad.DEPNotify")
       appFiles+=("/Users/$loggedInUser/Library/WebKit/menu.nomad.DEPNotify")
+      appFiles+=("/var/tmp/com.depnotify.provisioning.done")
+      appFiles+=("/var/tmp/depnotify.log")
+      appFiles+=("/var/tmp/depnotifyDebug.log")
+      appReceipts+=("menu.nomad.depnotify")
       ;;
 desktoppr)
       appTitle="Desktoppr"
       appFiles+=("/usr/local/bin/desktoppr")
+      appReceipts+=("com.scriptingosx.desktoppr")
       ;;
 docker)
       appTitle="Docker Desktop"
@@ -382,6 +389,7 @@ docker)
 dockutil)
       appTitle="Dockutil"
       appFiles+=("/usr/local/bin/dockutil")
+      appReceipts+=("dockutil.cli.tool")
       ;;
 drawio)
 # Last checked: 09-03-2022
@@ -410,6 +418,9 @@ filemakerpro19)
       appFiles+=("/Users/$loggedInUser/Library/Application Support/FileMaker")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.filemaker.client.pro12.plist")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.filemaker.client.pro12")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.filemaker.client.pro12")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.filemaker.client.pro12.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.filemaker.client.pro12")
       appFiles+=("/Users/Shared/FileMaker/FileMaker Pro/19.0")
       ;;      
 firefox)
@@ -442,12 +453,19 @@ icons)
       appTitle="Icons"
       appProcesses+=("Icons")
       appFiles+=("/Applications/Icons.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Scrips/corp.sap.Icons")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/7R5ZEU67FQ.corp.sap.Icons")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/corp.sap.Icons")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/corp.sap.Icons.Make-Icon-Set")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/corp.sap.Icons")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/corp.sap.Icons.Make-Icon-Set")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/7R5ZEU67FQ.corp.sap.Icons")
       ;;
 imovie)
       appTitle="iMovie"
       appProcesses+=("iMovie")
       appFiles+=("/Applications/iMovie.app")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.apple.iMovieApp")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.apple.iMovieApp")
       ;;
 invisionstudio)
       appTitle="InVision Studio"
@@ -619,7 +637,9 @@ postman)
       appTitle="Postman"
       appProcesses+=("Postman")
       appFiles+=("/Applications/Postman.app")
-      appFiles+=("/Users/$loggedInUser/Application Support/Postman")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Postman")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.postmanlabs.mac.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.postmanlabs.mac.savedState")
       ;;
 principle)
       appTitle="Principle"

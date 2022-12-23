@@ -5,4 +5,8 @@ depnotify)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/menu.nomad.DEPNotify.plist")
       appFiles+=("/Users/$loggedInUser/Library/Caches/menu.nomad.DEPNotify")
       appFiles+=("/Users/$loggedInUser/Library/WebKit/menu.nomad.DEPNotify")
+      appFiles+=("/var/tmp/com.depnotify.provisioning.done")
+      appFiles+=("/var/tmp/depnotify.log")
+      appFiles+=("/var/tmp/depnotifyDebug.log")
+      appReceipts+=("menu.nomad.depnotify")
       ;;

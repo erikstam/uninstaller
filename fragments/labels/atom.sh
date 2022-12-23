@@ -7,4 +7,5 @@ atom)
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.atom")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.atom.ShipIt")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.github.atom.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.github.atom")
       ;;
