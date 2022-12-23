@@ -1,6 +1,6 @@
 zoom)
       appTitle="Zoom"
-      appProcesses=("zoom")
+      appProcesses=("zoom.us")
       appFiles+=("/Applications/zoom.us.app")
       appFiles+=("/Users/$loggedInUser/Applications/zoom.us.app")
       appFiles+=("/Library/Internet Plug-Ins/ZoomUsPlugIn.plugin")
@@ -28,5 +28,6 @@ zoom)
       appFiles+=("/Users/$loggedInUser/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings")
       appFiles+=("/Library/PrivilegedHelperTools/us.zoom.ZoomDaemon")
       appFiles+=("/Library/Audio/Plug-Ins/HAL/ZoomAudioDevice.driver")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/BJ4HAAB9B3.ZoomClient3rd")
       appLaunchDaemons+=("/Library/LaunchDaemons/us.zoom.ZoomDaemon.plist")
       ;;

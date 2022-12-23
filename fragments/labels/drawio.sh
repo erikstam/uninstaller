@@ -1,7 +1,7 @@
 drawio)
-# Last checked: 09-03-2022
       appTitle="Draw.io"
-      appFiles+=("/Applications/Drawio.app")
+      appProcesses+=("draw.io")
+      appFiles+=("/Applications/draw.io.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/draw.io")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jgraph.drawio.desktop.plist")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.jgraph.drawio.desktop.ShipIt")

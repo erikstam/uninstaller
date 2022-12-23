@@ -7,4 +7,5 @@ skype)
       appFiles+=("/Users/$loggedInUser/Library/Logs/Skype Helper (Renderer)")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.skype.skype.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.skype.skype.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Microsoft/Skype for Desktop")
       ;;
