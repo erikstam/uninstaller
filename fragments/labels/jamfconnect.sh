@@ -11,5 +11,4 @@ jamfconnect)
       appLaunchAgents+=("/Library/LaunchAgents/com.jamf.connect.unlock.login.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.jamf.connect.daemon.plist")
       preflightCommand+=("/usr/local/bin/authchanger -reset")
-      postflightCommand+=("")
       ;;

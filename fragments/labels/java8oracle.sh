@@ -1,6 +1,7 @@
 java8oracle)
       appTitle="Java 8"
       appProcesses+=("java")
+      appFiles+=("/Library/Application Support/Oracle/Java")
       appFiles+=("/Library/Internet Plug-Ins/JavaAppletPlugin.plugin")
       appFiles+=("/Library/PreferencePanes/JavaControlPanel.prefPane")
       appFiles+=("/Library/Preferences/com.oracle.java.Helper-Tool.plist")

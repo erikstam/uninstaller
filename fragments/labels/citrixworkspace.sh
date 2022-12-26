@@ -1,8 +1,13 @@
 citrixworkspace)
       appTitle="Citrix Workspace"
       appFiles+=("/Applications/Citrix Workspace.app")
+      appFiles+=("/Library/Application Support/Citrix Workspace Updater")
+      appFiles+=("/Library/Application Support/Citrix Receiver")
+      appFiles+=("/Library/Application Support/Citrix")
+      appFiles+=("/Library/Application Support/Citrix Enterprise Browser")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Citrix Workspace")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Citrix Receiver")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Citrix")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/com.citrix.receiver.helper")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/com.citrix.receiver.nomas")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.citrix.receiver.nomas")
