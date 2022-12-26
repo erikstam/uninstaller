@@ -19,17 +19,38 @@ uninstaller.sh firefox
 ```
 
 ## How can i add my own titles to the script?
-(work in progress)
+Just like Installomator (https://github.com/Installomator/Installomator) you can add your own labels for software you want to uninstall. Add your softwaretitle as separate file to the labels folder and run the assemble.sh script to generate a new uninstaller script to the build folder.
+ Many thanks to the installomator-team for the separate labels mechanism and assemble script.
+ 
+You can use these variables in your own label script.
 
 
-| Label  | Description | Example |
-| ------------- | ------------- |-------------|
-| appTitle  | Software Title  |  appTitle="Jamf Connect"|
-| appProcesses  | Process to kill during uninstall  |  appProcesses+=("Jamf Connect")|
-| appFiles  | files/folders to be removed  |  appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")|
-| appLaunchAgents  | path to launchagent plist  |  appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")|
-| appLaunchDaemons  | path to launchdaemon plist  |  appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")|
-| appReceipts  | receipt to forget  |  appReceipts+=("com.teamviewer.AuthorizationPlugin")|
-| preflightCommand (EXPERIMENTAL) | command to run BEFORE uninstalling |  preflightCommand+=("/usr/local/bin/authchanger -reset")|
-| postflightCommand (EXPERIMENTAL) | command to run AFTER uninstalling |  postflightCommand+=("touch /tmp/.uninstall-done")|
+| Key  | Description | Remarks | Example |
+| ------------- | ------------- |-------------|-------------|
+| appTitle  | Software Title  |  | appTitle="Jamf Connect"|
+| appProcesses  | Process to kill during uninstall  | appTitle is used if appProcesses is left empty | appProcesses+=("Jamf Connect")|
+| appFiles  | files/folders to be removed. | First entry MUST contain the full path to the application. Addition lines can contain path to plist file, app support folders or other data that must be installed |  appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")|
+| appLaunchAgents  | path to launchagent plist. | plist will be unloaded and removed |  appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")|
+| appLaunchDaemons  | path to launchdaemon plist. | plist will be unloaded and removed  |  appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")|
+| appReceipts  | receipt to forget  | BundleIdentifier from Info.plist is used if left empty  | appReceipts+=("com.teamviewer.AuthorizationPlugin")|
+| preflightCommand | command to run BEFORE uninstalling |  | preflightCommand+=("/usr/local/bin/authchanger -reset")|
+| postflightCommand | command to run AFTER uninstalling |  | postflightCommand+=("touch /tmp/.uninstall-done")|
 
+
+Example label
+```
+jamfconnect)
+      appTitle="Jamf Connect"
+      appProcesses+=("Jamf Connect")
+      appFiles+=("/Applications/Jamf Connect.app")
+      appFiles+=("/Library/Application Support/JamfConnect")
+      appFiles+=("/usr/local/bin/authchanger")
+      appFiles+=("/usr/local/lib/pam/pam_saml.so.2")
+      appFiles+=("/Library/Security/SecurityAgentPlugins/JamfConnectLogin.bundle")
+      appFiles+=("/Library/Application Support/JamfConnect")
+      appLaunchAgents+=("/Library/LaunchAgents/com.jamf.connect.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.jamf.connect.unlock.login.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.jamf.connect.daemon.plist")
+      preflightCommand+=("/usr/local/bin/authchanger -reset")
+      ;;
+```
