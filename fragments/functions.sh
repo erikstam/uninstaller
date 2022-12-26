@@ -4,7 +4,7 @@ printlog() {
   timestamp=$(/bin/date +%F\ %T)
   
   if [ "$(whoami)" = "root" ]; then
-    echo "$timestamp" "$1" | tee -a $logLocation
+    echo "$timestamp" "$1" | tee -a "$logLocation"
   else
     echo "$timestamp" "$1"
   fi
@@ -112,7 +112,7 @@ displayNotification() { # $1: message $2: title
     ;;
   esac
   
-  if [ FallBacktoAS=true ]; then
+  if [[ "$FallBacktoAS" == true ]]; then
   	runAsUser osascript -e "display notification \"$message\" with title \"$title\""
   fi
   

@@ -4,7 +4,7 @@
       ;;
 esac
 
-printlog "Uninstaller started - build $LAST_MOD_DATE"
+printlog "Uninstaller started - version $LAST_MOD_DATE (build: $BUILD_DATE)"
 
 # Get app version
 if [ -f "${appFiles[1]}/Contents/Info.plist" ]; then
@@ -20,7 +20,9 @@ fi
 printlog "$appTitle - Running preflightCommand"
 for precommand in "${preflightCommand[@]}"
 do
-	zsh -c "$precommand"
+    if [ "$DEBUG" -eq 0 ]; then
+      	zsh -c "$precommand"
+    fi
 done
 
 
@@ -81,7 +83,9 @@ done
 printlog "Running $appTitle - postflightCommand" 
 for postcommand in "${postflightCommand[@]}"
 do
-	zsh -c "$postcommand"
+    if [ "$DEBUG" -eq 0 ]; then
+      	zsh -c "$postcommand"
+    fi
 done
 
 
@@ -89,7 +93,9 @@ if [ -n "$appBundleIdentifier" ]; then
 	printlog "Checking for receipt.."
 	receipts=$(pkgutil --pkgs | grep -c "$appBundleIdentifier")
 	if [[ "$receipts" != "0" ]]; then
-		/usr/sbin/pkgutil --forget "$appBundleIdentifier"
+	    if [ "$DEBUG" -eq 0 ]; then
+      		/usr/sbin/pkgutil --forget "$appBundleIdentifier"
+    	fi	
 	fi
 fi
 
@@ -99,7 +105,9 @@ if [ -n "${appReceipts[1]}" ]; then
 	printlog "Removing $appTitle receipts" 
 	for receipt in "${appReceipts[@]}"
 	do
-		/usr/sbin/pkgutil --forget "$receipt"
+		if [ "$DEBUG" -eq 0 ]; then
+      		/usr/sbin/pkgutil --forget "$receipt"
+    	fi	
 	done
 fi
 
