@@ -1,0 +1,15 @@
+microsoftdefender)
+      appTitle="Microsoft Defender"
+      appProcesses+=("wdav")
+      appFiles+=("/Applications/Microsoft Defender.app")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.wdav.mainux.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.wdav.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.wdav.tray.plist")
+      appFiles+=("/Library/Preferences/com.microsoft.wdav.tray.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.microsoft.wdav.tray")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.microsoft.wdav.mainux")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.com.microsoft.wdav")
+      appLaunchAgents+=("/Library/LaunchAgents/com.microsoft.wdav.tray.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.fresno.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.fresno.uninstall.plist")
+      ;;

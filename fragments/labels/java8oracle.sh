@@ -1,0 +1,17 @@
+java8oracle)
+      appTitle="Java 8"
+      appProcesses+=("java")
+      appFiles+=("/Library/Application Support/Oracle/Java")
+      appFiles+=("/Library/Internet Plug-Ins/JavaAppletPlugin.plugin")
+      appFiles+=("/Library/PreferencePanes/JavaControlPanel.prefPane")
+      appFiles+=("/Library/Preferences/com.oracle.java.Helper-Tool.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/Oracle.MacJREInstaller")    
+      appFiles+=("/Users/$loggedInUser/Library/Application\ Support/Oracle/Java")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.oracle.java.JavaAppletPlugin.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.oracle.javadeployment.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Oracle/Java")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/JREInstaller")                       
+      appLaunchAgents+=("/Library/LaunchAgents/com.oracle.java.Java-Updater.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.oracle.java.Helper-Tool.plist")
+      appReceipts+=("com.oracle.jre")
+      ;;
