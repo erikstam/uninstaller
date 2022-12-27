@@ -39,8 +39,8 @@ appBundleIdentifierKey="CFBundleIdentifier"
 # MARK: Last Modification Date
 
 # Last modification date
-LAST_MOD_DATE="2022-12-23"
-BUILD_DATE="Fri Dec 23 16:01:47 CET 2022"
+LAST_MOD_DATE="2022-12-27"
+BUILD_DATE="Tue Dec 27 10:22:23 CET 2022"
 
 # MARK: Functions
 
@@ -48,7 +48,7 @@ printlog() {
   timestamp=$(/bin/date +%F\ %T)
   
   if [ "$(whoami)" = "root" ]; then
-    echo "$timestamp" "$1" | tee -a $logLocation
+    echo "$timestamp" "$1" | tee -a "$logLocation"
   else
     echo "$timestamp" "$1"
   fi
@@ -156,7 +156,7 @@ displayNotification() { # $1: message $2: title
     ;;
   esac
   
-  if [ FallBacktoAS=true ]; then
+  if [[ "$FallBacktoAS" == true ]]; then
   	runAsUser osascript -e "display notification \"$message\" with title \"$title\""
   fi
   
@@ -253,16 +253,6 @@ case $1 in
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.agilebits.onepasswordslsnativemessaginghost")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.apple.Safari/Extensions/")
       ;;
-adobeacrobat2017)
-      appTitle="Adobe Acrobat 2017"
-      appProcesses+=("Adobe Acrobat")
-      preflightCommand+=("/Applications/Adobe Acrobat 2017/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool Uninstall /Applications/Adobe Acrobat 2017/Adobe Acrobat.app")
-      ;;
-adobeacrobatdc)
-      appTitle="Adobe Acrobat DC"
-      appProcesses+=("Adobe Acrobat")
-      preflightCommand+=("/Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/Library/LaunchServices/com.adobe.Acrobat.RemoverTool /Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/Acrobat Uninstaller.app/Contents/MacOS/Acrobat Uninstaller /Applications/Adobe Acrobat DC/Adobe Acrobat.app")
-      ;;
 adobeareaderdc)
       appTitle="Adobe Acrobat Reader"
       appProcesses+=("AdobeReader")
@@ -277,45 +267,26 @@ androidstudio)
       appTitle="Android Studio"
       appProcesses+=("Android Studio")
       appFiles+=("/Applications/Android Studio.app")
+      appFiles+=("/Users/$loggedInUser/.android")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.google.android.studio.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/Google/AndroidStudio2021.3")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.google.android.studio.plist")
       ;;
-atlassiancompanion)
-      appTitle="Atlassian Companion"
-      appProcesses+=("Atlassian Companion")
-      appFiles+=("/Applications/Atlassian Companion.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/Atlassian Companion")
+androidstudiosdk)
+      appTitle="Android Studio SDK"
+      appFiles+=("/Users/$loggedInUser/Library/Android/sdk")
       ;;
 atom)
       appTitle="Atom"
       appProcesses+=("Atom")
       appFiles+=("/Applications/Atom.app")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.github.atom.plist")
+      appFiles+=("/Users/$loggedInUser/.atom")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Atom")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.atom")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.atom.ShipIt")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.github.atom.savedState")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.github.atom")
-      ;;
-axurerp8)
-      appTitle="Axure RP 8"
-      appProcesses+=("Axure RP 8")
-      appFiles+=("/Applications/Axure RP 8.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/Axure")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.axure.*.plist")
-      appFiles+=("/Users/$loggedInUser/Axure/")
-      appFiles+=("/Users/$loggedInUser/.local/share/Axure/")
-      appFiles+=("/Users/$loggedInUser/.config/.mono/certs/")
-      appFiles+=("/Users/$loggedInUser/.config/.isolated-storage/")
-      ;;
-axurerp9)
-      appTitle="Axure RP 9"
-      appProcesses+=("Axure RP 9")
-      appFiles+=("/Applications/Axure RP 9.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/Axure")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.axure.*.plist")
-      appFiles+=("/Users/$loggedInUser/Axure/")
-      appFiles+=("/Users/$loggedInUser/.local/share/Axure/")
-      appFiles+=("/Users/$loggedInUser/.config/.mono/certs/")
-      appFiles+=("/Users/$loggedInUser/.config/.isolated-storage/")
       ;;
 bbedit)
       appTitle="BBEdit"
@@ -325,15 +296,20 @@ bbedit)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.barebones.bbedit.plist")
       appFiles+=("/Users/$loggedInUser/Library/Containers/com.barebones.bbedit")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.barebones.bbedit")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.barebones.bbedit.sfl2")
       postflightCommand+=("rm -r /Users/$loggedInUser/Library/Caches/com.apple.helpd/Generated/com.barebones.bbedit.help*")
-      ;;
-citrixendpointanalysis)
-      appTitle="Citrix Endpoint Analysis"
       ;;
 citrixworkspace)
       appTitle="Citrix Workspace"
       appFiles+=("/Applications/Citrix Workspace.app")
+      appFiles+=("/Library/Application Support/Citrix Workspace Updater")
+      appFiles+=("/Library/Application Support/Citrix Receiver")
+      appFiles+=("/Library/Application Support/Citrix")
+      appFiles+=("/Library/Application Support/Citrix Enterprise Browser")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Citrix Workspace")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Citrix Receiver")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Citrix")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.citrix.receiver.helper")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/com.citrix.receiver.nomas")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.citrix.receiver.nomas")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.citrix.receiver.nomas")
@@ -359,42 +335,15 @@ desktoppr)
       appFiles+=("/usr/local/bin/desktoppr")
       appReceipts+=("com.scriptingosx.desktoppr")
       ;;
-docker)
-      appTitle="Docker Desktop"
-      appProcesses+=("Docker")
-      appProcesses+=("Docker Desktop")
-      appProcesses+=("com.docker.hyperkit")
-      appFiles+=("/Applications/Utilities/Docker.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.docker.helper")
-      appFiles+=("/Users/$loggedInUser/Library/Caches/com.docker.docker")
-      appFiles+=("/Users/$loggedInUser/Library/Containers/com.docker.docker")
-      appFiles+=("/Users/$loggedInUser/Library/Containers/com.docker.helper")
-      appFiles+=("/Library/PrivilegedHelperTools/com.docker.vmnetd")
-      appFiles+=("/Users/$loggedInUser/.docker")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/Docker Desktop")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.docker.docker.plist")
-      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.electron.docker-frontend.savedState")
-      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.com.docker")
-      appFiles+=("/Users/$loggedInUser/Library/Logs/Docker Desktop")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.electron.docker-frontend.plist")
-      appFiles+=("/Users/$loggedInUser/Library/Cookies/com.docker.docker.binarycookies")
-      appFiles+=("/usr/local/lib/docker")
-      appFiles+=("/usr/local/bin/docker-machine")
-      appFiles+=("/usr/local/bin/docker-compose")
-      appFiles+=("/usr/local/bin/docker-credential-osxkeychain")
-      appFiles+=("/usr/local/lib/docker")
-      appLaunchAgents+=("/Library/LaunchDaemons/com.docker.vmnetd.plist")
-      preflightCommand+=("/Applications/Docker.app/Contents/MacOS/Docker --uninstall")
-      ;;
 dockutil)
       appTitle="Dockutil"
       appFiles+=("/usr/local/bin/dockutil")
       appReceipts+=("dockutil.cli.tool")
       ;;
 drawio)
-# Last checked: 09-03-2022
       appTitle="Draw.io"
-      appFiles+=("/Applications/Drawio.app")
+      appProcesses+=("draw.io")
+      appFiles+=("/Applications/draw.io.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/draw.io")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jgraph.drawio.desktop.plist")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.jgraph.drawio.desktop.ShipIt")
@@ -467,14 +416,6 @@ imovie)
       appFiles+=("/Users/$loggedInUser/Library/Containers/com.apple.iMovieApp")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.apple.iMovieApp")
       ;;
-invisionstudio)
-      appTitle="InVision Studio"
-      appProcesses+=("InVision Studio")
-      appFiles+=("/Applications/InVision Studio.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/InVision Studio")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/invision.invision-studio.plist")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/Containers/Icons")
-      ;;
 jamfconnect)
       appTitle="Jamf Connect"
       appProcesses+=("Jamf Connect")
@@ -488,7 +429,6 @@ jamfconnect)
       appLaunchAgents+=("/Library/LaunchAgents/com.jamf.connect.unlock.login.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.jamf.connect.daemon.plist")
       preflightCommand+=("/usr/local/bin/authchanger -reset")
-      postflightCommand+=("")
       ;;
 jamfpro)
       appTitle="Jamf Pro"
@@ -500,17 +440,22 @@ jamfpro)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jamfsoftware.admin.plist")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jamfsoftware.Composer.plist")
       appFiles+=("/Library/Application Support/JAMF/Composer")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jamfsoftware.Composer.savedState")
+      appFiles+=("/Library/PrivilegedHelperTools/com.jamfsoftware.Composer.helper")    
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.jamfsoftware.Composer.helper.plist")  
       ;;
 jamfprotect)
       appTitle="JamfProtect"
       appFiles+=("/Applications/JamfProtect.app")
       appFiles+=("/Library/Application Support/JamfProtect")
       appLaunchAgents+=("/Library/LaunchAgents/com.jamf.protect.agent.plist")
-      preflightCommand+=("/Applications/JamfProtect.app/Contents/MacOS/JamfProtect uninstall")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.jamf.protect.daemon.plist")
+      #preflightCommand+=("/Applications/JamfProtect.app/Contents/MacOS/JamfProtect uninstall")
       ;;
 java8oracle)
       appTitle="Java 8"
       appProcesses+=("java")
+      appFiles+=("/Library/Application Support/Oracle/Java")
       appFiles+=("/Library/Internet Plug-Ins/JavaAppletPlugin.plugin")
       appFiles+=("/Library/PreferencePanes/JavaControlPanel.prefPane")
       appFiles+=("/Library/Preferences/com.oracle.java.Helper-Tool.plist")
@@ -524,25 +469,6 @@ java8oracle)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.oracle.java.Helper-Tool.plist")
       appReceipts+=("com.oracle.jre")
       ;;
-jetbrainsintellijidea)
-      appTitle="JetBrains IntelliJ IDEA"
-      appProcesses+=("IntelliJ IDEA")
-      appFiles+=("/Applications/IntelliJ IDEA.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/JetBrains/IntelliJIdea2021.3")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jamfsoftware.admin.plist")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jamfsoftware.admin.plist")
-      ;;
-jetbrainspycharm)
-      appTitle="JetBrains PyCharm"
-      appProcesses+=("PyCharm")
-      appFiles+=("/Applications/PyCharm.app")
-      ;;
-kalturacapture)
-      appTitle="Kaltura Capture"
-      appProcesses+=("KalturaCapture")
-      appFiles+=("/Applications/KalturaCapture.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/lecture-capture-app")
-      ;;
 microsoftdefender)
       appTitle="Microsoft Defender"
       appProcesses+=("wdav")
@@ -551,6 +477,9 @@ microsoftdefender)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.wdav.plist")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.wdav.tray.plist")
       appFiles+=("/Library/Preferences/com.microsoft.wdav.tray.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.microsoft.wdav.tray")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.microsoft.wdav.mainux")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.com.microsoft.wdav")
       appLaunchAgents+=("/Library/LaunchAgents/com.microsoft.wdav.tray.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.fresno.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.fresno.uninstall.plist")
@@ -562,30 +491,38 @@ microsoftedge)
       appFiles+=("/Users/$loggedInUser/Library/Caches/Microsoft Edge")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.microsoft.edgemac.savedState")
       appFiles+=("/Users/$loggedInUser/Library/WebKit/com.microsoft.edgemac")
+      appFiles+=("/Users/$loggedInUser/Library/Microsoft/EdgeUpdater")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.edgemac.plist")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.microsoft.edgemac")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.microsoft.edgemac.wdgExtension")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.microsoft.edgemac.wdgExtension")
       appFiles+=("/Library/Microsoft/Edge")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Microsoft/EdgeUpdater")
+      appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.microsoft.EdgeUpdater.update.plist")
+      postflightCommand+=("rm /Users/$loggedInUser/Library/LaunchAgents/com.microsoft.EdgeUpdater.*")
       ;;
 microsoftremotedesktop)
       appTitle="Microsoft Remote Desktop"
       appProcesses+=("Microsoft Remote Desktop")
       appFiles+=("/Applications/Microsoft Remote Desktop.app")
       appFiles+=("/Users/$loggedInUser/Library/Containers/com.microsoft.rdc.macos")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.microsoft.rdc.macos.qlx")
       appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.com.microsoft.rdc")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.com.microsoft.oneauth")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.microsoft.rdc.macos.qlx")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.microsoft.rdc.macos")
       ;;
-microsofttodo)
-      appTitle="Microsoft To Do"
-      appProcesses+=("Microsoft To Do")
-      appFiles+=("/Applications/Microsoft To Do.app")
-      appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.com.microsoft.to-do-mac")
-      ;;
-mindjetmindmanager)
-      appTitle="Mindjet MindManager"
-      appProcesses+=("Mindjet MindManager")
-      appFiles+=("/Applications/Mindjet MindManager.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/Mindjet MindManager")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/Mindjet")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.mindjet.mindmanager.12.plist")
+mindmanager)
+      appTitle="MindManager"
+      appProcesses+=("MindManager")
+      appFiles+=("/Applications/MindManager.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/MindManager")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.mindjet.mindmanager.22.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.mindjet.mindmanager.22")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.mindjet.mindmanager.22.binarycookies")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.mindjet.mindmanager.22.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.mindjet.mindmanager.22")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.mindjet.mindmanager.22.sfl2")
       ;;
 munki)
       appTitle="Managed Software Center"
@@ -613,18 +550,12 @@ munki)
       appReceipts+=("com.googlecode.munki.app_usage")     
       appReceipts+=("com.googlecode.munki.python")
       ;;
-nessus)
-      appTitle="Nessus"
-      appProcesses+=("nessusd")
-      appFiles+=("/Library/NessusAgent")
-      appFiles+=("/Library/PreferencePanes/Nessus Agent Preferences.prefPane")
-      appLaunchDaemons+=("/Library/LaunchDaemons/com.tenablesecurity.nessusagent.plist")
-      ;;
 nomad)
       appTitle="NoMAD"
       appProcesses+=("NoMAD")
       appFiles+=("/Applications/NoMAD.app")
       appLaunchAgents+=("/Library/LaunchAgents/com.trusourcelabs.NoMAD.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.trusourcelabs.NoMAD.plist")
       ;;
 nudge)
       appTitle="Nudge"
@@ -641,16 +572,6 @@ postman)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.postmanlabs.mac.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.postmanlabs.mac.savedState")
       ;;
-principle)
-      appTitle="Principle"
-      appProcesses+=("Principle")
-      appFiles+=("/Applications/Principle.app")
-      appFiles+=("/Users/$loggedInUser/Application Support/com.danielhooper.principle")
-      appFiles+=("/Users/$loggedInUser/Caches/com.danielhooper.principle")
-      appFiles+=("/Users/$loggedInUser/HTTPStorages/com.danielhooper.principle")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.danielhooper.principle.plist")
-      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.danielhooper.principle.savedState")
-      ;;
 privileges)
       appTitle="Privileges"
       appFiles+=("/Applications/Privileges.app")
@@ -666,6 +587,14 @@ proxyman)
       appFiles+=("/Applications/Proxyman.app")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.proxyman.iconappmanager.userdefaults.plist")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.proxyman.NSProxy.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.proxyman.NSProxy")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/Proxyman")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.proxyman.NSProxy")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.proxyman.NSProxy")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.proxyman.NSProxy.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.proxyman.NSProxy")
+      appFiles+=("/Library/LaunchDaemons/com.proxyman.NSProxy.HelperTool.plist")
+      appFiles+=("/Library/PrivilegedHelperTools/com.proxyman.NSProxy.HelperTool")
       ;;
 pycharmce)
       appTitle="PyCharm CE"
@@ -678,6 +607,16 @@ pycharmce)
 sketch)
       appTitle="Sketch"
       appFiles+=("/Applications/Sketch.app")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.bohemiancoding.sketch3")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.bohemiancoding.sketch3.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.bohemiancoding.sketch3.plist")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.bohemiancoding.sketch3") 
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.bohemiancoding.sketch3.QuickLook-Thumbnail")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.bohemiancoding.sketch3.QuickLook-Preview")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.bohemiancoding.sketch3")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.bohemiancoding.sketch3")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.bohemiancoding.sketch3.QuickLook-Thumbnail")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.bohemiancoding.sketch3.QuickLook-Preview")
       ;;
 skype)
       appTitle="Skype"
@@ -688,6 +627,7 @@ skype)
       appFiles+=("/Users/$loggedInUser/Library/Logs/Skype Helper (Renderer)")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.skype.skype.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.skype.skype.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Microsoft/Skype for Desktop")
       ;;
 sourcetree)
       appTitle="Sourcetree"
@@ -713,6 +653,7 @@ supportapp)
       appFiles+=("/Applications/Support.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/nl.root3.support")
       appFiles+=("/Users/$loggedInUser/Library/Containers/nl.root3.support")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/nl.root3.support.sfl2")
       appLaunchAgents+=("/Library/LaunchAgents/nl.root3.support.plist")
       ;;
 teamviewer)
@@ -726,6 +667,9 @@ teamviewer)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.teamviewer.TeamViewer.plist")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.teamviewer.teamviewer.preferences.Machine.plist")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.teamviewer.teamviewer.preferences.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/TeamViewer/")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.teamviewer.TeamViewer")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.teamviewer.TeamViewer")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.teamviewer.Helper.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.teamviewer.teamviewer_service.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.teamviewer.teamviewer_desktop.plist")
@@ -735,18 +679,15 @@ teamviewer)
       appReceipts+=("com.teamviewer.remoteaudiodriver")     
       appReceipts+=("com.teamviewer.AuthorizationPlugin")
       ;;
-verasecuserselfservice)
-      appTitle="Versasec User Self-Service"
-      appProcesses+=("vSEC:CMS User Self-Service")
-      appFiles+=("/Applications/UssMac.app")
-      ;;
 visualstudiocode)
       appTitle="Visual Studio Code"
       # appProcesses+=("Code") # Electron app...
       appFiles+=("/Applications/Visual Studio Code.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Code")
+      appFiles+=("/Users/$loggedInUser/.vscode")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.VSCode.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.microsoft.VSCode.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.microsoft.vscode.sfl2")
       ;;
 vlc)
       appTitle="VLC"
@@ -759,15 +700,23 @@ vlc)
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.videolan.vlc.savedState")
       ;;
-yammer)
-      appTitle="Yammer"
-      appProcesses+=("yammer")
-      appFiles+=("/Applications/Yammer.app")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.Yammer.plist")
+xcreds)
+      appTitle="XCreds"
+      appProcess+=("XCreds")
+      appFiles+=("/Applications/XCreds.app")
+      appFiles+=("/Library/Application Support/xcreds")
+      appFiles+=("/Library/LaunchAgents/com.twocanoes.xcreds-overlay.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.twocanoes.xcreds")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.twocanoes.xcreds")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.twocanoes.xcreds.binarycookies")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/xcreds.log")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.twocanoes.xcreds.plist")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.twocanoes.xcreds")
+      preflightCommand+=("/Applications/XCreds.app/Contents/Resources/xcreds_login.sh -r")
       ;;
 zoom)
       appTitle="Zoom"
-      appProcesses=("zoom")
+      appProcesses=("zoom.us")
       appFiles+=("/Applications/zoom.us.app")
       appFiles+=("/Users/$loggedInUser/Applications/zoom.us.app")
       appFiles+=("/Library/Internet Plug-Ins/ZoomUsPlugIn.plugin")
@@ -795,6 +744,7 @@ zoom)
       appFiles+=("/Users/$loggedInUser/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings")
       appFiles+=("/Library/PrivilegedHelperTools/us.zoom.ZoomDaemon")
       appFiles+=("/Library/Audio/Plug-Ins/HAL/ZoomAudioDevice.driver")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/BJ4HAAB9B3.ZoomClient3rd")
       appLaunchDaemons+=("/Library/LaunchDaemons/us.zoom.ZoomDaemon.plist")
       ;;
 *) # if no specified event/label is triggered, do nothing
@@ -803,7 +753,7 @@ zoom)
       ;;
 esac
 
-printlog "Uninstaller started - build $LAST_MOD_DATE"
+printlog "Uninstaller started - version $LAST_MOD_DATE (build: $BUILD_DATE)"
 
 # Get app version
 if [ -f "${appFiles[1]}/Contents/Info.plist" ]; then
@@ -819,7 +769,9 @@ fi
 printlog "$appTitle - Running preflightCommand"
 for precommand in "${preflightCommand[@]}"
 do
-	zsh -c "$precommand"
+    if [ "$DEBUG" -eq 0 ]; then
+      	zsh -c "$precommand"
+    fi
 done
 
 
@@ -880,7 +832,9 @@ done
 printlog "Running $appTitle - postflightCommand" 
 for postcommand in "${postflightCommand[@]}"
 do
-	zsh -c "$postcommand"
+    if [ "$DEBUG" -eq 0 ]; then
+      	zsh -c "$postcommand"
+    fi
 done
 
 
@@ -888,7 +842,9 @@ if [ -n "$appBundleIdentifier" ]; then
 	printlog "Checking for receipt.."
 	receipts=$(pkgutil --pkgs | grep -c "$appBundleIdentifier")
 	if [[ "$receipts" != "0" ]]; then
-		/usr/sbin/pkgutil --forget "$appBundleIdentifier"
+	    if [ "$DEBUG" -eq 0 ]; then
+      		/usr/sbin/pkgutil --forget "$appBundleIdentifier"
+    	fi	
 	fi
 fi
 
@@ -898,7 +854,9 @@ if [ -n "${appReceipts[1]}" ]; then
 	printlog "Removing $appTitle receipts" 
 	for receipt in "${appReceipts[@]}"
 	do
-		/usr/sbin/pkgutil --forget "$receipt"
+		if [ "$DEBUG" -eq 0 ]; then
+      		/usr/sbin/pkgutil --forget "$receipt"
+    	fi	
 	done
 fi
 

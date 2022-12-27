@@ -39,8 +39,8 @@ appBundleIdentifierKey="CFBundleIdentifier"
 # MARK: Last Modification Date
 
 # Last modification date
-LAST_MOD_DATE="2022-12-26"
-BUILD_DATE="Mon Dec 26 22:11:53 CET 2022"
+LAST_MOD_DATE="2022-12-27"
+BUILD_DATE="Tue Dec 27 10:22:23 CET 2022"
 
 # MARK: Functions
 
