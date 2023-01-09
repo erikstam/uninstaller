@@ -54,3 +54,7 @@ jamfconnect)
       preflightCommand+=("/usr/local/bin/authchanger -reset")
       ;;
 ```
+
+
+## Can i help by adding new software labels?
+YES! We encourage everyone to contribute to this project. You can add new labels in a github fork and create a pull request. Or you create an issue and put your code in there so we can add it later. Do not edit the main script (uninstaller.sh) because this is generates by the assemble.sh script.
