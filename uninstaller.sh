@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Mon Jan 30 16:09:20 CET 2023"
+BUILD_DATE="Mon Jan 30 19:51:21 CET 2023"
 
 # MARK: Functions
 
@@ -615,6 +615,14 @@ pycharmce)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jetbrains.pycharm.ce.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jetbrains.pycharm.ce.savedState")
       ;;     
+silverlight)
+      appTitle="Silverlight"
+      appProcesses+=("SLLauncher")
+      appFiles+=("/Library/Application Support/Microsoft/Silverlight/OutOfBrowser/SLLauncher.app")
+      appFiles+=("/Library/Application Support/Microsoft/Silverlight")
+      appFiles+=("/Library/Internet Plug-Ins/Silverlight.plugin")
+      appReceipts+=("com.microsoft.Silverlightinstaller")
+      ;;
 sketch)
       appTitle="Sketch"
       appFiles+=("/Applications/Sketch.app")
@@ -658,6 +666,14 @@ spotify)
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.spotify.client.savedState")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.spotify.client")
       ;;
+superman)
+      appTitle="superman"
+      appProcesses+=("support")
+      appFiles+=("/Applications/Support.app")
+      appFiles+=("/usr/local/bin/super")
+      appFiles+=("/var/run/super.pid")
+      appLaunchAgents+=("/Library/LaunchAgents/com.macjutsu.super.plist")
+      ;;
 supportapp)
       appTitle="Support app"
       appProcesses+=("Support")
@@ -689,6 +705,18 @@ teamviewer)
       appReceipts+=("com.teamviewer.teamviewerPriviledgedHelper")
       appReceipts+=("com.teamviewer.remoteaudiodriver")     
       appReceipts+=("com.teamviewer.AuthorizationPlugin")
+      ;;
+textwrangler)
+      appTitle="TextWrangler"
+      appProcesses+=("TextWrangler")
+      appFiles+=("/Applications/TextWrangler.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/TextWrangler")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.barebones.textwrangler.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.barebones.textwrangler")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.barebones.textwrangler")
+      appFiles+=("/usr/local/bin/edit")
+      appFiles+=("/usr/local/bin/twdiff")
+      appFiles+=("/usr/local/bin/twfind")
       ;;
 visualstudiocode)
       appTitle="Visual Studio Code"
