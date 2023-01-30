@@ -27,6 +27,8 @@ quitApp() {
       #runAsUser osascript -e "tell app \"$process\" to quit"
       # pkill "$process"
       /usr/bin/killall "$process"
+      # small delay after kill action
+      sleep 3
     fi
   else
     printlog "Found no blocking process..."

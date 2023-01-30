@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Tue Dec 27 10:22:23 CET 2022"
+BUILD_DATE="Mon Jan 30 16:09:20 CET 2023"
 
 # MARK: Functions
 
@@ -71,6 +71,8 @@ quitApp() {
       #runAsUser osascript -e "tell app \"$process\" to quit"
       # pkill "$process"
       /usr/bin/killall "$process"
+      # small delay after kill action
+      sleep 3
     fi
   else
     printlog "Found no blocking process..."
@@ -550,6 +552,15 @@ munki)
       appReceipts+=("com.googlecode.munki.app_usage")     
       appReceipts+=("com.googlecode.munki.python")
       ;;
+mysqlworkbench)
+      appTitle="MySQLWorkbench"
+      appProcesses+=("MySQLWorkbench")
+      appFiles+=("/Applications/MySQLWorkbench.app")
+      appFiles+=("/Users/$loggedInUser//Library/Preferences/com.oracle.workbench.MySQLWorkbench.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.oracle.workbench.MySQLWorkbench.savedState")
+      # unsure what to do with the Application Support folder because it contains the connections file...
+      # appFiles+=("/Users/$loggedInUser/Library/Application Support/MySQL") 
+      ;;
 nomad)
       appTitle="NoMAD"
       appProcesses+=("NoMAD")
@@ -699,6 +710,56 @@ vlc)
       appFiles+=("/Users/$loggedInUser/Library/Caches/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.videolan.vlc.savedState")
+      ;;
+wacomdrivers)
+      appTitle="Wacom Center"
+      appFiles+=("/Applications/Wacom Tablet.localized/Wacom Center.app")
+      appFiles+=("/Applications/Wacom Tablet.localized")
+      appFiles+=("/Library/Application Support/Tablet/")
+      appFiles+=("/Library/Frameworks/WacomMultiTouch.framework")
+      appFiles+=("/Library/PreferencePanes/WacomCenter.prefpane")
+      appFiles+=("/Library/PreferencePanes/WacomTablet.prefpane")
+      appFiles+=("/Library/Preferences/Tablet")
+      appFiles+=("/Library/PrivilegedHelperTools/com.wacom.DataStoreMgr.app")
+      appFiles+=("/Library/PrivilegedHelperTools/com.wacom.IOManager")
+      appFiles+=("/Library/PrivilegedHelperTools/com.wacom.UpdateHelper")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.wacom.ProfessionalTablet.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.wacom.wacomtablet.prefs")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.wacom.wacomtouch.prefs")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/EG27766DY7.com.wacom.WacomTabletDriver")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/com.wacom.TabletDriver")
+      appLaunchAgents+=("/Library/LaunchAgents/com.wacom.DataStoreMgr.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.wacom.IOManager.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.wacom.wacomtablet.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.wacom.UpdateHelper.plist")
+     ;;
+whatsapp)
+      appTitle="WhatsApp"
+      appFiles+=("/Applications/WhatsApp.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/WhatsApp")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/net.whatsapp.WhatsApp")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/WhatsApp")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/WhatsApp.ShipIt")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/net.whatsapp.WhatsApp")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/WhatsApp.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.net.whatsapp.WhatsApp.private")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.com.facebook.family")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.net.whatsapp.WhatsAppSMB.shared")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.net.whatsapp.WhatsAppSMB.private")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.net.whatsapp.family")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/WhatsApp.plist")
+      ;;
+windscribe)
+      appTitle="Windscribe"
+      appFiles+=("/Applications/Windscribe.app")
+      appFiles+=("/Library/PrivilegedHelperTools/com.windscribe.helper.macos")
+      appFiles+=("/Library/Logs/com.windscribe.helper.macos")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.windscribe.launcher.macos")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Windscribe")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.windscribe.launcher.macos")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.windscribe.Windscribe2.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.windscribe.gui.macos.savedState")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.windscribe.helper.macos.plist")
       ;;
 xcreds)
       appTitle="XCreds"
