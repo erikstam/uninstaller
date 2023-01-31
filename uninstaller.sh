@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Mon Jan 30 19:51:21 CET 2023"
+BUILD_DATE="Tue Jan 31 22:10:32 CET 2023"
 
 # MARK: Functions
 
@@ -382,6 +382,18 @@ firefox)
       appFiles+=("/Users/$loggedInUser/Library/Caches/Mozilla/updates/Applications/Firefox/macAttributionData")
       appFiles+=("/Users/$loggedInUser/Library/Caches/Firefox")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.mozilla.firefox.savedState")
+      ;;
+githubdesktop)
+      appTitle="GitHub Desktop"
+      appFiles+=("/Applications/GitHub Desktop.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/GitHub Desktop")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.GitHubClient")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.GitHubClient.ShipIt")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.github.GitHubClient")      
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.github.GitHubClient.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/GitHub Desktop")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.github.GitHubClient.savedState") 
+      appReceipts+=("com.github.GitHubClient")
       ;;
 googlechrome)
       appTitle="Google Chrome"
