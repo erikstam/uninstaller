@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Tue Jan 31 22:10:32 CET 2023"
+BUILD_DATE="Wed Feb  1 08:13:42 CET 2023"
 
 # MARK: Functions
 
@@ -633,6 +633,7 @@ silverlight)
       appFiles+=("/Library/Application Support/Microsoft/Silverlight/OutOfBrowser/SLLauncher.app")
       appFiles+=("/Library/Application Support/Microsoft/Silverlight")
       appFiles+=("/Library/Internet Plug-Ins/Silverlight.plugin")
+      appFiles+=("/Applications/Microsoft Silverlight")
       appReceipts+=("com.microsoft.Silverlightinstaller")
       ;;
 sketch)
@@ -723,6 +724,7 @@ textwrangler)
       appProcesses+=("TextWrangler")
       appFiles+=("/Applications/TextWrangler.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/TextWrangler")
+      appFiles+=("/Users/$loggedInUser/Library/TextWrangler")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.barebones.textwrangler.plist")
       appFiles+=("/Users/$loggedInUser/Library/Containers/com.barebones.textwrangler")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.barebones.textwrangler")
