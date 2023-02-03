@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Tue Dec 27 10:22:23 CET 2022"
+BUILD_DATE="Thu Feb  2 13:27:11 CET 2023"
 
 # MARK: Functions
 
@@ -71,6 +71,8 @@ quitApp() {
       #runAsUser osascript -e "tell app \"$process\" to quit"
       # pkill "$process"
       /usr/bin/killall "$process"
+      # small delay after kill action
+      sleep 3
     fi
   else
     printlog "Found no blocking process..."
@@ -297,6 +299,10 @@ bbedit)
       appFiles+=("/Users/$loggedInUser/Library/Containers/com.barebones.bbedit")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.barebones.bbedit")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.barebones.bbedit.sfl2")
+      appFiles+=("/usr/local/bin/bbdiff")
+      appFiles+=("/usr/local/bin/bbedit")
+      appFiles+=("/usr/local/bin/bbfind")
+      appFiles+=("/usr/local/bin/bbresults")      
       postflightCommand+=("rm -r /Users/$loggedInUser/Library/Caches/com.apple.helpd/Generated/com.barebones.bbedit.help*")
       ;;
 citrixworkspace)
@@ -380,6 +386,18 @@ firefox)
       appFiles+=("/Users/$loggedInUser/Library/Caches/Mozilla/updates/Applications/Firefox/macAttributionData")
       appFiles+=("/Users/$loggedInUser/Library/Caches/Firefox")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.mozilla.firefox.savedState")
+      ;;
+githubdesktop)
+      appTitle="GitHub Desktop"
+      appFiles+=("/Applications/GitHub Desktop.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/GitHub Desktop")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.GitHubClient")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.github.GitHubClient.ShipIt")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.github.GitHubClient")      
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.github.GitHubClient.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/GitHub Desktop")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.github.GitHubClient.savedState") 
+      appReceipts+=("com.github.GitHubClient")
       ;;
 googlechrome)
       appTitle="Google Chrome"
@@ -550,6 +568,15 @@ munki)
       appReceipts+=("com.googlecode.munki.app_usage")     
       appReceipts+=("com.googlecode.munki.python")
       ;;
+mysqlworkbench)
+      appTitle="MySQLWorkbench"
+      appProcesses+=("MySQLWorkbench")
+      appFiles+=("/Applications/MySQLWorkbench.app")
+      appFiles+=("/Users/$loggedInUser//Library/Preferences/com.oracle.workbench.MySQLWorkbench.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.oracle.workbench.MySQLWorkbench.savedState")
+      # unsure what to do with the Application Support folder because it contains the connections file...
+      # appFiles+=("/Users/$loggedInUser/Library/Application Support/MySQL") 
+      ;;
 nomad)
       appTitle="NoMAD"
       appProcesses+=("NoMAD")
@@ -604,6 +631,15 @@ pycharmce)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jetbrains.pycharm.ce.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jetbrains.pycharm.ce.savedState")
       ;;     
+silverlight)
+      appTitle="Silverlight"
+      appProcesses+=("SLLauncher")
+      appFiles+=("/Library/Application Support/Microsoft/Silverlight/OutOfBrowser/SLLauncher.app")
+      appFiles+=("/Library/Application Support/Microsoft/Silverlight")
+      appFiles+=("/Library/Internet Plug-Ins/Silverlight.plugin")
+      appFiles+=("/Applications/Microsoft Silverlight")
+      appReceipts+=("com.microsoft.Silverlightinstaller")
+      ;;
 sketch)
       appTitle="Sketch"
       appFiles+=("/Applications/Sketch.app")
@@ -647,6 +683,14 @@ spotify)
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.spotify.client.savedState")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.spotify.client")
       ;;
+superman)
+      appTitle="superman"
+      appProcesses+=("support")
+      appFiles+=("/Applications/Support.app")
+      appFiles+=("/usr/local/bin/super")
+      appFiles+=("/var/run/super.pid")
+      appLaunchAgents+=("/Library/LaunchAgents/com.macjutsu.super.plist")
+      ;;
 supportapp)
       appTitle="Support app"
       appProcesses+=("Support")
@@ -679,6 +723,19 @@ teamviewer)
       appReceipts+=("com.teamviewer.remoteaudiodriver")     
       appReceipts+=("com.teamviewer.AuthorizationPlugin")
       ;;
+textwrangler)
+      appTitle="TextWrangler"
+      appProcesses+=("TextWrangler")
+      appFiles+=("/Applications/TextWrangler.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/TextWrangler")
+      appFiles+=("/Users/$loggedInUser/Library/TextWrangler")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.barebones.textwrangler.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.barebones.textwrangler")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.barebones.textwrangler")
+      appFiles+=("/usr/local/bin/edit")
+      appFiles+=("/usr/local/bin/twdiff")
+      appFiles+=("/usr/local/bin/twfind")
+      ;;
 visualstudiocode)
       appTitle="Visual Studio Code"
       # appProcesses+=("Code") # Electron app...
@@ -699,6 +756,56 @@ vlc)
       appFiles+=("/Users/$loggedInUser/Library/Caches/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.videolan.vlc.savedState")
+      ;;
+wacomdrivers)
+      appTitle="Wacom Center"
+      appFiles+=("/Applications/Wacom Tablet.localized/Wacom Center.app")
+      appFiles+=("/Applications/Wacom Tablet.localized")
+      appFiles+=("/Library/Application Support/Tablet/")
+      appFiles+=("/Library/Frameworks/WacomMultiTouch.framework")
+      appFiles+=("/Library/PreferencePanes/WacomCenter.prefpane")
+      appFiles+=("/Library/PreferencePanes/WacomTablet.prefpane")
+      appFiles+=("/Library/Preferences/Tablet")
+      appFiles+=("/Library/PrivilegedHelperTools/com.wacom.DataStoreMgr.app")
+      appFiles+=("/Library/PrivilegedHelperTools/com.wacom.IOManager")
+      appFiles+=("/Library/PrivilegedHelperTools/com.wacom.UpdateHelper")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.wacom.ProfessionalTablet.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.wacom.wacomtablet.prefs")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.wacom.wacomtouch.prefs")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/EG27766DY7.com.wacom.WacomTabletDriver")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/com.wacom.TabletDriver")
+      appLaunchAgents+=("/Library/LaunchAgents/com.wacom.DataStoreMgr.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.wacom.IOManager.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.wacom.wacomtablet.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.wacom.UpdateHelper.plist")
+     ;;
+whatsapp)
+      appTitle="WhatsApp"
+      appFiles+=("/Applications/WhatsApp.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/WhatsApp")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/net.whatsapp.WhatsApp")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/WhatsApp")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/WhatsApp.ShipIt")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/net.whatsapp.WhatsApp")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/WhatsApp.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.net.whatsapp.WhatsApp.private")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.com.facebook.family")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.net.whatsapp.WhatsAppSMB.shared")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.net.whatsapp.WhatsAppSMB.private")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/group.net.whatsapp.family")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/WhatsApp.plist")
+      ;;
+windscribe)
+      appTitle="Windscribe"
+      appFiles+=("/Applications/Windscribe.app")
+      appFiles+=("/Library/PrivilegedHelperTools/com.windscribe.helper.macos")
+      appFiles+=("/Library/Logs/com.windscribe.helper.macos")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.windscribe.launcher.macos")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Windscribe")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.windscribe.launcher.macos")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.windscribe.Windscribe2.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.windscribe.gui.macos.savedState")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.windscribe.helper.macos.plist")
       ;;
 xcreds)
       appTitle="XCreds"
