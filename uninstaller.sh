@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Wed Feb  1 08:13:42 CET 2023"
+BUILD_DATE="Thu Feb  2 13:27:11 CET 2023"
 
 # MARK: Functions
 
@@ -299,6 +299,10 @@ bbedit)
       appFiles+=("/Users/$loggedInUser/Library/Containers/com.barebones.bbedit")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.barebones.bbedit")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.barebones.bbedit.sfl2")
+      appFiles+=("/usr/local/bin/bbdiff")
+      appFiles+=("/usr/local/bin/bbedit")
+      appFiles+=("/usr/local/bin/bbfind")
+      appFiles+=("/usr/local/bin/bbresults")      
       postflightCommand+=("rm -r /Users/$loggedInUser/Library/Caches/com.apple.helpd/Generated/com.barebones.bbedit.help*")
       ;;
 citrixworkspace)
