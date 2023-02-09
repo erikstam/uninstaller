@@ -22,5 +22,3 @@ parallelsdesktop)
       appFiles+=("/Users/$loggedInUser/Library/WebKit/com.parallels.desktop.console")
       preflightCommand+=("kill $(ps aux | grep 'Parallels Desktop.app' | grep watchdog | awk '{print $2}')")
       ;;
-
-
