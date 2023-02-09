@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Thu Feb  9 20:16:26 CET 2023"
+BUILD_DATE="Thu Feb  9 22:03:20 CET 2023"
 
 # MARK: Functions
 
@@ -649,6 +649,13 @@ privileges)
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/corp.sap.privileges")
       appLaunchDaemons+=("/Library/LaunchDaemons/corp.sap.privileges.helper.plist")
       appLaunchAgents+=("/Library/LaunchAgents/corp.sap.privileges.plist")
+      ;;
+privilegesdemoter)
+      appTitle="Privileges Demoter"
+      appFiles+=("/private/etc/newsyslog.d/blog.mostlymac.PrivilegesDemoter.conf")
+      appFiles+=("/usr/local/mostlymac/")
+      appLaunchDaemons+=("/Library/LaunchDaemons/blog.mostlymac.privileges.check.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/blog.mostlymac.privileges.demote.plist")
       ;;
 proxyman)
       appTitle="Proxyman"
