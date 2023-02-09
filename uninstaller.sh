@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Thu Feb  2 13:27:11 CET 2023"
+BUILD_DATE="Thu Feb  9 20:16:26 CET 2023"
 
 # MARK: Functions
 
@@ -324,6 +324,17 @@ citrixworkspace)
       appFiles+=("/Users/$loggedInUser/Library/WebKit/com.citrix.receiver.nomas")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.citrix.receiver.nomas.savedState")
       ;;
+cyberduck)
+      appTitle="Cyberduck"
+      appProcesses+=("Cyberduck")
+      appFiles+=("/Applications/Cyberduck.app")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/ch.sudo.cyberduck.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Cyberduck")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/Cyberduck")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/ch.sudo.cyberduck")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/ch.sudo.cyberduck.savedState")
+      ;;
 depnotify)
       appTitle="DEPNotify"
       appProcesses+=("DEPNotify")
@@ -378,6 +389,13 @@ filemakerpro19)
       appFiles+=("/Users/$loggedInUser/Library/WebKit/com.filemaker.client.pro12")
       appFiles+=("/Users/Shared/FileMaker/FileMaker Pro/19.0")
       ;;      
+filezilla)
+      appTitle="FileZilla"
+      appProcesses+=("filezilla")
+      appFiles+=("/Applications/FileZilla.app")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/org.filezilla-project.filezilla.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.filezilla-project.filezilla.savedState")
+;;
 firefox)
       appTitle="FireFox"
       appProcesses+=("firefox")
@@ -591,6 +609,30 @@ nudge)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.github.macadmins.Nudge.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.github.macadmins.Nudge.plist")
       ;;
+parallelsdesktop)
+      appTitle="Parallels Desktop"
+      appProcesses+=("Parallels Desktop")
+      appProcesses+=("prl_client_app")
+      appProcesses+=("prl_naptd")
+      appProcesses+=("prl_disp_service")
+      appProcesses+=("watchdog")
+      appFiles+=("/Applications/Parallels Desktop.app")
+      appFiles+=("/Library/Parallels/Parallels Desktop")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.parallels.desktop.console.OpenInIE")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.parallels.desktop.console.ParallelsMail")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.apple.helpd/Generated/com.parallels.desktop.console.help*18.1.1")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.parallels.desktop.console")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.parallels.desktop.console.OpeninIE")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.parallels.desktop.console.ParallelsMail")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.parallels.Parallels Desktop Events.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.parallels.Parallels Desktop Statistics.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.parallels.Parallels Desktop.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.parallels.desktop.console.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.parallels.macvm.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.parallels.desktop.console.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.parallels.desktop.console")
+      preflightCommand+=("kill $(ps aux | grep 'Parallels Desktop.app' | grep watchdog | awk '{print $2}')")
+      ;;
 postman)
       appTitle="Postman"
       appProcesses+=("Postman")
@@ -756,6 +798,16 @@ vlc)
       appFiles+=("/Users/$loggedInUser/Library/Caches/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/org.videolan.vlc")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.videolan.vlc.savedState")
+      ;;
+vmwarehorizonclient)
+      appTitle="VMware Horizon Client"
+      appFiles+=("/Applications/VMware Horizon Client.app")
+      appFiles+=("/Library/Preferences/com.vmware.horizon.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.vmware.horizon")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.vmware.horizon.keyboard.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.vmware.horizon.plist")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.vmware.horizon")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/VMware Horizon View Client")
       ;;
 wacomdrivers)
       appTitle="Wacom Center"
