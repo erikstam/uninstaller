@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Thu Feb  9 22:03:20 CET 2023"
+BUILD_DATE="Thu Feb 16 07:32:50 CET 2023"
 
 # MARK: Functions
 
@@ -487,6 +487,17 @@ jamfprotect)
       appLaunchAgents+=("/Library/LaunchAgents/com.jamf.protect.agent.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.jamf.protect.daemon.plist")
       #preflightCommand+=("/Applications/JamfProtect.app/Contents/MacOS/JamfProtect uninstall")
+      ;;
+jamftrust)
+      appTitle="Jamf Trust"
+      appFiles+=("/Applications/Jamf Trust.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.jamf.trust")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.jamf.trust.launcher")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.jamf.trust.ne-access")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.jamf.trust")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.jamf.trust.launcher")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.jamf.trust.ne-access")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/483DWKW443.com.jamf.trust")
       ;;
 java8oracle)
       appTitle="Java 8"
