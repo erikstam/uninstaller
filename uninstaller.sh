@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Thu Feb 16 07:32:50 CET 2023"
+BUILD_DATE="Mon Apr  3 18:42:08 CEST 2023"
 
 # MARK: Functions
 
@@ -254,6 +254,16 @@ case $1 in
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.agilebits.onepassword.1PasswordSafariAppExtension")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.agilebits.onepasswordslsnativemessaginghost")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.apple.Safari/Extensions/")
+      ;;
+3cxdesktopapp)
+      appTitle="3CX Desktop App"
+      appProcesses+=("3CX Desktop App")
+      appFiles+=("/Applications/3CX Desktop App.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/3CX Desktop App")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.electron.3cx-desktop-app.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.electron.3cx-desktop-app.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/3CX Desktop App")
+      appReceipts+=("com.electron.3cx-desktop-app")
       ;;
 adobeareaderdc)
       appTitle="Adobe Acrobat Reader"
@@ -516,6 +526,16 @@ java8oracle)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.oracle.java.Helper-Tool.plist")
       appReceipts+=("com.oracle.jre")
       ;;
+logioptionsplus)
+      appTitle="Logi Options+"
+      appFiles+=("/Applications/Logioptionsplus.app")
+      appFiles+=("/Users/Shared/LogiOptionsPlus")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/LogiOptionsPlus")
+      appFiles+=("/Library/LaunchAgents/com.logi.optionsplus.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.logi.optionsplus.updater.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.logi.optionsplus.plist")
+      appReceipts+=("com.logi.optionsplus.installer")
+      ;;
 microsoftdefender)
       appTitle="Microsoft Defender"
       appProcesses+=("wdav")
@@ -548,6 +568,48 @@ microsoftedge)
       appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.microsoft.EdgeUpdater.update.plist")
       postflightCommand+=("rm /Users/$loggedInUser/Library/LaunchAgents/com.microsoft.EdgeUpdater.*")
       ;;
+microsoftonedrive)
+      appTitle="OneDrive"
+      appFiles+=("/Applications/OneDrive.app")
+      appFiles+=("/Library/Logs/Microsoft/OneDrive")
+      appFiles+=("/Users/$loggedInUser/Library Application Scripts com.microsoft.OneDrive.FileProvider")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.microsoft.OneDrive.FinderSync")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/OneDrive")
+      appFiles+=("/Users/$loggedInUser/Library Application Support/com.microsoft.OneDrive")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/OneDrive")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.microsoft.OneDrive.FileProvider")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.microsoft.OneDrive-mac.FileProvider")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.microsoft.OneDrive-mac.FinderSync")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/com.microsoft.OneDrive")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.OfficeOneDriveSyncIntegration")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.OneDriveStandaloneSuite")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.OneDriveSyncClientSuite")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.microsoft.OneDrive") 
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.microsoft.OneDrive") 
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.microsoft.OneDriveStandaloneUpdater")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.microsoft.OneDriveUpdater")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.microsoft.OneDrive.FileProvider") 
+      appFiles+=("/Users/$loggedInUser/Library/Containers/OneDrive Finder Integration")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.microsoft.OneDrive.binarycookies")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.microsoft.OneDriveStandaloneUpdater")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.microsoft.OneDriveStandaloneUpdater.binarycookies")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.microsoft.OneDriveUpdater")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.microsoft.OneDriveUpdater.binarycookies")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.microsoft.OneDrive")
+      appReceipts+=("com.microsoft.OneDrive-mac")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/OneDrive")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/UBF8T346G9.OfficeOneDriveSyncIntegration.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.OneDrive.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.OneDriveUpdater.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.SharePoint-mac.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.microsoft.OneDriveStandaloneUpdater.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.OfficeOneDriveSyncIntegration")
+      appLaunchAgents+=("/Library/LaunchAgents/com.microsoft.OneDriveStandaloneUpdater.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.microsoft.SyncReporter.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.OneDriveStandaloneUpdaterDaemon.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.OneDriveUpdaterDaemon.plist")
+      ;;
+
 microsoftremotedesktop)
       appTitle="Microsoft Remote Desktop"
       appProcesses+=("Microsoft Remote Desktop")
@@ -629,6 +691,7 @@ parallelsdesktop)
       appProcesses+=("watchdog")
       appFiles+=("/Applications/Parallels Desktop.app")
       appFiles+=("/Library/Parallels/Parallels Desktop")
+      appFiles+=("/Library/Preferences/Parallels")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.parallels.desktop.console.OpenInIE")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.parallels.desktop.console.ParallelsMail")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.apple.helpd/Generated/com.parallels.desktop.console.help*18.1.1")
@@ -795,6 +858,14 @@ textwrangler)
       appFiles+=("/usr/local/bin/edit")
       appFiles+=("/usr/local/bin/twdiff")
       appFiles+=("/usr/local/bin/twfind")
+      ;;
+ultimakercura)
+      appTitle="Ultimaker Cura"
+      appFiles+=("/Applications/Ultimaker Cura.app")
+      appFiles+=("/Applications/Ultimaker-Cura.app")
+      appFiles+=("/Applications/Ultimaker Cura.localized")
+      appFiles+=("/Applications/Ultimaker Cura-1.localized")
+      appReceipts+=("nl.ultimaker.cura")
       ;;
 visualstudiocode)
       appTitle="Visual Studio Code"
