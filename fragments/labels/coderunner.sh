@@ -6,5 +6,6 @@ coderunner)
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.krill.CodeRunner")
       appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.krill.CodeRunner")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.krill.CodeRunner.plist")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.krill.CodeRunner")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.krill.CodeRunner.savedState")
       ;;

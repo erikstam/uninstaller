@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Mon Apr  3 18:42:08 CEST 2023"
+BUILD_DATE="Tue Apr  4 21:15:30 CEST 2023"
 
 # MARK: Functions
 
@@ -334,7 +334,17 @@ citrixworkspace)
       appFiles+=("/Users/$loggedInUser/Library/WebKit/com.citrix.receiver.nomas")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.citrix.receiver.nomas.savedState")
       ;;
-cyberduck)
+coderunner)
+      appTitle="CodeRunner"
+      appProcesses+=("CodeRunner")
+      appFiles+=("/Applications/CodeRunner.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/CodeRunner")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.krill.CodeRunner")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.krill.CodeRunner")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.krill.CodeRunner.plist")
+      appFiles+=("/Users/$loggedInUser/Library/WebKit/com.krill.CodeRunner")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.krill.CodeRunner.savedState")
+      ;;cyberduck)
       appTitle="Cyberduck"
       appProcesses+=("Cyberduck")
       appFiles+=("/Applications/Cyberduck.app")
