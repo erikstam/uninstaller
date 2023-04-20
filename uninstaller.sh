@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Tue Apr  4 21:15:30 CEST 2023"
+BUILD_DATE="Thu Apr 20 09:35:49 CEST 2023"
 
 # MARK: Functions
 
@@ -275,7 +275,13 @@ adobeareaderdc)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.adobe.Reader.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.adobe.Reader.savedState")
       ;;
-androidstudio)
+androidfiletransfer)
+      appTitle="Android File Transfer"
+      appProcesses+=("Android File Transfer")
+      appProcesses+=("Android File Transfer Agent")
+      appFiles+=("/Applications/Android File Transfer.app")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.google.android.mtpviewer.plist")
+      ;;androidstudio)
       appTitle="Android Studio"
       appProcesses+=("Android Studio")
       appFiles+=("/Applications/Android Studio.app")
@@ -333,6 +339,13 @@ citrixworkspace)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.citrix.receiver.nomas.plist")
       appFiles+=("/Users/$loggedInUser/Library/WebKit/com.citrix.receiver.nomas")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.citrix.receiver.nomas.savedState")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.ctxusbd.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.ctxworkspaceupdater.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.ctxusbd.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.citrix.AuthManager_Mac.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.citrix.ReceiverHelper.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.citrix.safariadapter.plist")
+      appLaunchAgents+=("/Library/LaunchAgents/com.citrix.ServiceRecords.plist")
       ;;
 coderunner)
       appTitle="CodeRunner"
@@ -388,6 +401,24 @@ drawio)
       appFiles+=("/Users/$loggedInUser/Library/Logs/draw.io")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jgraph.drawio.desktop.savedState")
       ;;
+dropbox)
+      appTitle="Dropbox"
+      appProcesses+=("Dropbox")
+      appFiles+=("/Applications/Dropbox.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.getdropbox.dropbox.TransferExtension")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.getdropbox.dropbox.fileprovider")
+      appFiles+=("/Users/$loggedInUser/Library Application Scripts/com.getdropbox.dropbox.garcon")
+      appFiles+=("/Users/$loggedInUser/Library Application Support/Dropbox")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.getdropbox.dropbox.TransferExtension")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.getdropbox.dropbox.fileprovider")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.getdropbox.dropbox.garcon")
+      appFiles+=("/Users/$loggedInUser/Library/Dropbox")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/G7HH3F8CAK.com.getdropbox.dropbox.sync")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/com.dropbox.client.crashpad")
+      appFiles+=("/Users/$loggedInUser/Library/LaunchAgents/com.dropbox.DropboxMacUpdate.agent.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.dropbox.DropboxMacUpdate.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.getdropbox.dropbox.plist")
+      ;;
 figma)
       appTitle="Figma"
       appProcesses+=("Figma")
@@ -416,7 +447,13 @@ filezilla)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/org.filezilla-project.filezilla.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.filezilla-project.filezilla.savedState")
 ;;
-firefox)
+findanyfile)
+      appTitle="Find Any File"
+      appProcesses+=("Find Any File")
+      appFiles+=("/Applications/Find Any File.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Find Any File/FAF.log")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/org.tempel.findanyfile.plist")
+;;firefox)
       appTitle="FireFox"
       appProcesses+=("firefox")
       appFiles+=("/Applications/Firefox.app")
