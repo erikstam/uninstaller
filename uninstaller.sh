@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Thu Apr 20 09:35:49 CEST 2023"
+BUILD_DATE="Thu Jun  1 15:55:59 CEST 2023"
 
 # MARK: Functions
 
@@ -281,7 +281,8 @@ androidfiletransfer)
       appProcesses+=("Android File Transfer Agent")
       appFiles+=("/Applications/Android File Transfer.app")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.google.android.mtpviewer.plist")
-      ;;androidstudio)
+      ;;
+androidstudio)
       appTitle="Android Studio"
       appProcesses+=("Android Studio")
       appFiles+=("/Applications/Android Studio.app")
@@ -357,7 +358,8 @@ coderunner)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.krill.CodeRunner.plist")
       appFiles+=("/Users/$loggedInUser/Library/WebKit/com.krill.CodeRunner")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.krill.CodeRunner.savedState")
-      ;;cyberduck)
+      ;;
+cyberduck)
       appTitle="Cyberduck"
       appProcesses+=("Cyberduck")
       appFiles+=("/Applications/Cyberduck.app")
@@ -384,6 +386,16 @@ desktoppr)
       appTitle="Desktoppr"
       appFiles+=("/usr/local/bin/desktoppr")
       appReceipts+=("com.scriptingosx.desktoppr")
+      ;;
+displaylinkmanager)
+      appTitle="DisplayLinkUserAgent"
+      appFiles+=("/Applications/DisplayLink Manager.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.displaylink.DisplayLinkLoginHelper")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.displaylink.DisplayLinkUserAgent")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.displaylink.DisplayLinkLoginHelper")
+      appFiles+=("/Users/$loggedInUser/Library/Containers/com.displaylink.DisplayLinkUserAgent")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/73YQY62QM3.com.displaylink.DisplayLinkShared")
+      appReceipts+=("com.displaylink.displaylinkmanagerapp")
       ;;
 dockutil)
       appTitle="Dockutil"
@@ -428,6 +440,18 @@ figma)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.figma.Desktop.plist")
       appFiles+=("/Users/$loggedInUser/Library/Caches/com.figma.agent")
       ;;
+filemakerpro16)
+      appTitle="FileMaker Pro"
+      appProcesses+=("FileMaker Pro")
+      appFiles+=("/Applications/Filemaker Pro 16/FileMaker Pro.app")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/com.filemaker.client.pro12")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.filemaker.client.pro12")      
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.filemaker.client.pro12.binarycookies")         
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.filemaker.client.pro12.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.filemaker.client.pro12.savedState")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/FileMaker")
+      appFiles+=("/Users/Shared/FileMaker/") 
+      ;;      
 filemakerpro19)
       appTitle="FileMaker Pro"
       appProcesses+=("FileMaker Pro")
@@ -446,14 +470,15 @@ filezilla)
       appFiles+=("/Applications/FileZilla.app")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/org.filezilla-project.filezilla.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.filezilla-project.filezilla.savedState")
-;;
+      ;;
 findanyfile)
       appTitle="Find Any File"
       appProcesses+=("Find Any File")
       appFiles+=("/Applications/Find Any File.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Support/Find Any File/FAF.log")
       appFiles+=("/Users/$loggedInUser/Library/Preferences/org.tempel.findanyfile.plist")
-;;firefox)
+      ;;
+firefox)
       appTitle="FireFox"
       appProcesses+=("firefox")
       appFiles+=("/Applications/Firefox.app")
@@ -656,7 +681,6 @@ microsoftonedrive)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.OneDriveStandaloneUpdaterDaemon.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.OneDriveUpdaterDaemon.plist")
       ;;
-
 microsoftremotedesktop)
       appTitle="Microsoft Remote Desktop"
       appProcesses+=("Microsoft Remote Desktop")
@@ -667,6 +691,31 @@ microsoftremotedesktop)
       appFiles+=("/Users/$loggedInUser/Library/Group Containers/UBF8T346G9.com.microsoft.oneauth")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.microsoft.rdc.macos.qlx")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/com.microsoft.rdc.macos")
+      ;;
+microsoftword)
+# Needs more testing
+      appTitle="Microsoft Word"
+      appFiles+=("/Applications/Microsoft Word.app")
+      appFiles+=("/Library/Preferences/com.microsoft.Word.plist")
+      appFiles+=("/Library/Managed Preferences/com.microsoft.Word.plist")
+      appFiles+=("$loggedInUser/Library/Preferences/com.microsoft.Word.plist")
+      appFiles+=("$loggedInUser/Library/Containers/com.microsoft.Word")
+      appFiles+=("$loggedInUser/Library/Application Scripts/com.microsoft.Word")
+      appFiles+=("/Applications/.Microsoft Word.app.installBackup")
+      appFiles+=("/Library/Application Support/Microsoft/Office365/User Content.localized/Startup.localized/Word")
+      appFiles+=("/Library/Application Support/Microsoft/Office365/User Content.localized/Templates.localized/*.dot")
+      appFiles+=("/Library/Application Support/Microsoft/Office365/User Content.localized/Templates.localized/*.dotx")
+      appFiles+=("/Library/Application Support/Microsoft/Office365/User Content.localized/Templates.localized/*.dotm")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/User Content.localized/Startup.localized/Word")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/User Content.localized/Templates.localized/*.dot")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/User Content.localized/Templates.localized/*.dotx")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/User Content.localized/Templates.localized/*.dotm")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/mip_policy")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/FontCache")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/ComRPC32")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/TemporaryItems")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/Microsoft Office ACL*")
+      appFiles+=("$loggedInUser/Library/Group Containers/UBF8T346G9.Office/MicrosoftRegistrationDB.reg")
       ;;
 mindmanager)
       appTitle="MindManager"
@@ -801,6 +850,23 @@ pycharmce)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jetbrains.pycharm.ce.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jetbrains.pycharm.ce.savedState")
       ;;     
+remarkable)
+      appTitle="reMarkable"
+      appProcesses+=("reMarkable")
+      appFiles+=("/Applications/reMarkable.app")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.remarkable.desktop.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/remarkable")
+      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.remarkable.desktop")
+      appFiles+=("/Users/$loggedInUser/Library/Caches/remarkable")
+      ;;
+rstudio)
+      appTitle="RStudio"
+      appProcesses+=("RStudio")
+      appFiles+=("/Applications/RStudio.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/RStudio")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.rstudio.desktop.plist")
+      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.rstudio.desktop.savedState")
+      ;;
 silverlight)
       appTitle="Silverlight"
       appProcesses+=("SLLauncher")
