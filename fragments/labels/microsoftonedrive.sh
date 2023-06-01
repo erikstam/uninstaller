@@ -39,4 +39,3 @@ microsoftonedrive)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.OneDriveStandaloneUpdaterDaemon.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.OneDriveUpdaterDaemon.plist")
       ;;
-
