@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2022-12-27"
-BUILD_DATE="Thu Jun  1 15:55:59 CEST 2023"
+BUILD_DATE="Thu Jun  1 19:20:19 CEST 2023"
 
 # MARK: Functions
 
@@ -850,6 +850,14 @@ pycharmce)
       appFiles+=("/Users/$loggedInUser/Library/Preferences/com.jetbrains.pycharm.ce.plist")
       appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.jetbrains.pycharm.ce.savedState")
       ;;     
+r)
+      appTitle="R"
+      appProcesses+=("R")
+      appFiles+=("/Applications/R.app")
+      appFiles+=("/Library/Frameworks/R.framework")
+      appFiles+=("/opt/R")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/org.R-project.R.plist")
+      ;;
 remarkable)
       appTitle="reMarkable"
       appProcesses+=("reMarkable")
