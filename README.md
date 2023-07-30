@@ -39,17 +39,25 @@ You can use these variables in your own label script.
 
 There are 2 substitutions you can use in the label:
 
+```
 $loggedInUser
+```
+
 This will be replaced by the username of only the current logged in user:
+
 For example: appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")
 
+```
 <<Users>>
+```
 This will be replaced by the path of EVERY user homefolder:
+
 For example: appFiles+=("<<Users>>/Library/Application Support/JamfConnect")
-Sometimes you want the remove files for every user on the Mac
+
+Because sometimes you want the remove files for every user on the Mac
 
 
-Example label
+## Example label
 ```
 jamfconnect)
       appTitle="Jamf Connect"
