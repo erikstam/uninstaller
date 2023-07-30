@@ -1,9 +1,9 @@
 spotify)
       appTitle="Spotify"
       appFiles+=("/Applications/Spotify.app")
-      appFiles+=("/Users/$loggedInUser/Library/Application Support/Spotify/")
-      appFiles+=("/Users/$loggedInUser/Library/HTTPStorages/com.spotify.client")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.spotify.client.plist")
-      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/com.spotify.client.savedState")
-      appFiles+=("/Users/$loggedInUser/Library/Caches/com.spotify.client")
+      appFiles+=("<<Users>>/Library/Application Support/Spotify/")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.spotify.client")
+      appFiles+=("<<Users>>/Library/Preferences/com.spotify.client.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.spotify.client.savedState")
+      appFiles+=("<<Users>>/Library/Caches/com.spotify.client")
       ;;

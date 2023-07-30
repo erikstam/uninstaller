@@ -35,28 +35,32 @@ quitApp() {
   fi
 }
 
-removeFileDirectory() {
-  if [ -f "$file" ]; then
+removeFileDirectory() { # $1: object $2: logmode
+    object=${1:-"Object"}
+    logmode=${2:-"Log Mode"}
+  if [ -f "$object" ]; then
     # file exists and can be removed
-    printlog "Removing file $file"
+    printlog "Removing file $object"
     if [ "$DEBUG" -eq 0 ]; then
-      /bin/rm -f "$file"
+      /bin/rm -f "$object"
     fi
-  elif [ -d "$file" ]; then
+  elif [ -d "$object" ]; then
     # it is not a file, it is a directory and can be removed
-    printlog "Removing directory $file..."
+    printlog "Removing directory $object..."
     if [ "$DEBUG" -eq 0 ]; then
-      /bin/rm -Rf "$file"
+      /bin/rm -Rf "$object"
     fi
-  elif [ -L "$file" ]; then
+  elif [ -L "$object" ]; then
     # it is an alias
-    printlog "Removing alias $file..."
+    printlog "Removing alias $object..."
     if [ "$DEBUG" -eq 0 ]; then
-      /bin/rm -f "$file"
+      /bin/rm -f "$object"
     fi
   else
     # it is not a file, alias or a directory. Don't remove.
-    printlog "INFO: $file is not an existing file or folder"
+    if [ "$logmode" != "silent" ]; then
+    	printlog "INFO: $object is not an existing file or folder"
+    fi
   fi
 }
 
@@ -72,14 +76,31 @@ removeLaunchDaemons() {
   fi
 }
 
-removeLaunchAgents() {
+removeLaunchAgents() { # $1: object
+    object=${1:-"Object"}
   # remove launchAgent
-  if [ -f "$launchAgent" ]; then
+  if [ -f "$object" ]; then
     # launchAgent exists and can be removed
-    printlog "Removing launchAgent $launchAgent..."
+    
     if [ "$DEBUG" -eq 0 ]; then
-      /bin/launchctl asuser "$loggedInUserID" launchctl unload -F "$launchAgent"
-      /bin/rm -Rf "$launchAgent"
+   		service_name=$(defaults read $object Label)
+		rootfolder=$(echo $object | awk -F/ '{print $2}')
+		if [[ "$rootfolder" == "Users" ]]; then
+			user_name=$(echo $object | awk -F/ '{print $3}')
+		else
+			user_name=$loggedInUser
+		fi
+		
+		user_uid=$( /usr/bin/id -u "$user_name" )	
+		# unload
+    	if launchctl print "gui/${user_uid}/${service_name}" &> /dev/null ; then
+    		printlog "unloading $object for $user_name"
+    		launchctl bootout gui/${user_uid} "$object" &> /dev/null
+    		# or the old fashioned way
+      		#/bin/launchctl asuser "$user_uid" launchctl unload -F "$object"
+		fi
+		printlog "Removing launchAgent $object..."
+    	/bin/rm -Rf "$object"
     fi
   fi
 }
