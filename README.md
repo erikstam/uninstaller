@@ -45,14 +45,14 @@ $loggedInUser
 
 This will be replaced by the username of only the current logged in user:
 
-For example: appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")
+For example: ```appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")```
 
 ```
 <<Users>>
 ```
 This will be replaced by the path of EVERY user homefolder:
 
-For example: appFiles+=("<<Users>>/Library/Application Support/JamfConnect")
+For example: ```appFiles+=("<<Users>>/Library/Application Support/JamfConnect")```
 
 Because sometimes you want the remove files for every user on the Mac
 
