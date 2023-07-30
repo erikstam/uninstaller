@@ -76,5 +76,11 @@ jamfconnect)
 ```
 
 
+## Further info
+On the 19th of june 2023, Erik Stam and Sander Schram presented about this uninstaller script during the Dutch Macadmin meeting. The PDF of the presentation is included in this repo.
+
+https://github.com/erikstam/uninstaller/blob/main/Uninstaller%20Presentation.pdf
+
+
 ## Can i help by adding new software labels?
 YES! We encourage everyone to contribute to this project. You can add new labels in a github fork and create a pull request. Or you create an issue and put your code in there so we can add it later. Do not edit the main script (uninstaller.sh) because this is generates by the assemble.sh script.
