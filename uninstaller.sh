@@ -1340,7 +1340,7 @@ fi
 
 
 # restart prefsd to ensure caches are cleared
-/usr/bin/killall -q cfprefs
+/usr/bin/killall -q cfprefsd
 
 if [[ $loggedInUser != "loginwindow" && ( $NOTIFY == "success" || $NOTIFY == "all" ) ]]; then
 	displayNotification "$appTitle is uninstalled." "Uninstalling completed!"
