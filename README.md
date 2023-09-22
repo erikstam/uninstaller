@@ -37,7 +37,27 @@ You can use these variables in your own label script.
 | postflightCommand | command to run AFTER uninstalling |  | postflightCommand+=("touch /tmp/.uninstall-done")|
 
 
-Example label
+There are 2 substitutions you can use in the label:
+
+```
+$loggedInUser
+```
+
+This will be replaced by the username of only the current logged in user:
+
+For example: ```appFiles+=("/Users/$loggedInUser/Library/Application Support/JamfConnect")```
+
+```
+<<Users>>
+```
+This will be replaced by the path of EVERY user homefolder:
+
+For example: ```appFiles+=("<<Users>>/Library/Application Support/JamfConnect")```
+
+Because sometimes you want the remove files for every user on the Mac
+
+
+## Example label
 ```
 jamfconnect)
       appTitle="Jamf Connect"
@@ -54,6 +74,12 @@ jamfconnect)
       preflightCommand+=("/usr/local/bin/authchanger -reset")
       ;;
 ```
+
+
+## Further info
+On the 19th of june 2023, Erik Stam and Sander Schram presented about this uninstaller script during the Dutch Macadmin meeting. The PDF of the presentation is included in this repo.
+
+https://github.com/erikstam/uninstaller/blob/main/Uninstaller%20Presentation.pdf
 
 
 ## Can i help by adding new software labels?

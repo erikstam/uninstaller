@@ -2,8 +2,8 @@ firefox)
       appTitle="FireFox"
       appProcesses+=("firefox")
       appFiles+=("/Applications/Firefox.app")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/org.mozilla.firefox.plist")
-      appFiles+=("/Users/$loggedInUser/Library/Caches/Mozilla/updates/Applications/Firefox/macAttributionData")
-      appFiles+=("/Users/$loggedInUser/Library/Caches/Firefox")
-      appFiles+=("/Users/$loggedInUser/Library/Saved Application State/org.mozilla.firefox.savedState")
+      appFiles+=("<<Users>>/Library/Preferences/org.mozilla.firefox.plist")
+      appFiles+=("<<Users>>/Library/Caches/Mozilla/updates/Applications/Firefox/macAttributionData")
+      appFiles+=("<<Users>>/Library/Caches/Firefox")
+      appFiles+=("<<Users>>/Library/Saved Application State/org.mozilla.firefox.savedState")
       ;;

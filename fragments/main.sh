@@ -43,10 +43,19 @@ printlog "Uninstalling $appTitle - LaunchAgents"
 if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
   displayNotification "Removing LaunchAgents..." "Uninstalling in progress"
 fi
-
 for launchAgent in "${appLaunchAgents[@]}"
 do
-	removeLaunchAgents
+	if [[ "$launchAgent" == *"<<Users>>"* ]]; then
+		# remove launchAgent with expanded path
+		for userfolder in $(ls /Users)
+		do
+			expandedPath=$(echo $launchAgent | sed "s|<<Users>>|/Users/$userfolder|g")
+			removeLaunchAgents "$expandedPath"
+		done
+	else
+		# remove path without 
+		removeLaunchAgents "$launchAgent"
+	fi
 done
 
 
@@ -55,7 +64,6 @@ printlog "Checking for blocking processes..."
 if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
 	displayNotification "Quitting $appTitle..." "Uninstalling in progress"
 fi
-
 if [ -n "${appProcesses[1]}" ]; then
 	for process in "${appProcesses[@]}"
 	do
@@ -75,7 +83,17 @@ if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
 fi
 for file in "${appFiles[@]}"
 do
-  removeFileDirectory
+	if [[ "$file" == *"<<Users>>"* ]]; then
+		# remove path with expanded path for all available userfolders
+		for userfolder in $(ls /Users)
+		do
+			expandedPath=$(echo $file | sed "s|<<Users>>|/Users/$userfolder|g")
+			removeFileDirectory "$expandedPath" silent
+		done
+	else
+		# remove real path 
+		removeFileDirectory "$file"
+	fi
 done
 
 

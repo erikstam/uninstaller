@@ -4,5 +4,5 @@ r)
       appFiles+=("/Applications/R.app")
       appFiles+=("/Library/Frameworks/R.framework")
       appFiles+=("/opt/R")
-      appFiles+=("/Users/$loggedInUser/Library/Preferences/org.R-project.R.plist")
+      appFiles+=("<<Users>>/Library/Preferences/org.R-project.R.plist")
       ;;
