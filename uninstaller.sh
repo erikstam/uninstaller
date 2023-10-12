@@ -40,7 +40,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 
 # Last modification date
 LAST_MOD_DATE="2023-07-30"
-BUILD_DATE="Sun Jul 30 22:00:34 CEST 2023"
+BUILD_DATE="Thu Oct 12 21:12:20 CEST 2023"
 
 # MARK: Functions
 
@@ -467,8 +467,8 @@ easyfind)
       appFiles+=("/Applications/EasyFind.app")
       appFiles+=("<<Users>>/Library/Application Support/EasyFind")
       appFiles+=("<<Users>>/Library/Preferences/org.grunenberg.EasyFind.plist")
-      appLaunchAgents+=("/Library/LaunchAgents/com.docker.vmnetd.plist")
-      ;;figma)
+      ;;
+figma)
       appTitle="Figma"
       appProcesses+=("Figma")
       appFiles+=("/Applications/Figma.app")
@@ -556,7 +556,8 @@ googlechrome)
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.agent.plist")
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.system.agent.plist")
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.xpcservice.plist")
-      ;;icons)
+      ;;
+icons)
       appTitle="Icons"
       appProcesses+=("Icons")
       appFiles+=("/Applications/Icons.app")
@@ -843,6 +844,13 @@ nudge)
       appFiles+=("<<Users>>/Library/Preferences/com.github.macadmins.Nudge.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.github.macadmins.Nudge.plist")
       ;;
+oktaverify)
+      appTitle="Okta Verify"
+      appProcesses+=("Okta Verify")
+      appFiles+=("/Applications/Okta Verify.app")
+      appFiles+=("/Users/$loggedInUser/Library/Application Scripts/B7F62B65BN.group.okta.macverify.shared")
+      appFiles+=("/Users/$loggedInUser/Library/Group Containers/B7F62B65BN.group.okta.macverify.shared")
+      ;;
 parallelsdesktop)
       appTitle="Parallels Desktop"
       appProcesses+=("Parallels Desktop")
@@ -939,6 +947,12 @@ rstudio)
       appFiles+=("<<Users>>/Library/Application Support/RStudio")
       appFiles+=("<<Users>>/Library/Preferences/com.rstudio.desktop.plist")
       appFiles+=("<<Users>>/Library/Saved Application State/com.rstudio.desktop.savedState")
+      ;;
+shottr)
+      appTitle="Shottr"
+      appFiles+=("/Applications/Shottr.app")
+      appFiles+=("<<Users>>/Library/Application Scripts/cc.ffitch.shottr")
+      appFiles+=("<<Users>>/Library/Containers/cc.ffitch.shottr")
       ;;
 silverlight)
       appTitle="Silverlight"
