@@ -1,6 +1,6 @@
 rodeconnect)
       appTitle="RODEConnect"
-      appProcesses+=("RODE Connect ")
+      appProcesses+=("RODE Connect")
       appProcesses+=("Core Audio Driver (RodeConnect.driver)")
       appFiles+=("/Applications/RODE Connect.app")
       appFiles+=("/Library/Audio/Plug-Ins/HAL/RodeConnect.driver")
