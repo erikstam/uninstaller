@@ -27,6 +27,8 @@ microsoftonedrive)
       appFiles+=("<<Users>>/Library/HTTPStorages/com.microsoft.OneDriveUpdater.binarycookies")
       appFiles+=("<<Users>>/Library/WebKit/com.microsoft.OneDrive")
       appReceipts+=("com.microsoft.OneDrive-mac")
+          # folder for Organisation files: * is typically Organisation name
+      appFiles+=("<<Users>>/Library/CloudStorage/OneDrive-*")
       appFiles+=("<<Users>>/Library/Logs/OneDrive")
       appFiles+=("<<Users>>/Library/Preferences/UBF8T346G9.OfficeOneDriveSyncIntegration.plist")
       appFiles+=("<<Users>>/Library/Preferences/com.microsoft.OneDrive.plist")
