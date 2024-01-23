@@ -1,4 +1,4 @@
-adobereaderdc)
+adobeareaderdc)
       appTitle="Adobe Acrobat Reader"
       appProcesses+=("AdobeReader")
       appFiles+=("/Applications/Adobe Acrobat Reader.app")
