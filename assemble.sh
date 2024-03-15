@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/zsh --no-rcs
 
 #
 # Assemble script is highly inspired by / mostlty copied from Installomator
@@ -7,7 +7,7 @@
 # 
 
 # Last modification date
-LAST_MOD_DATE="2022-12-22"
+LAST_MOD_DATE="2024-03-15"
 
 #setup some folders
 repo_dir=$(dirname ${0:A})

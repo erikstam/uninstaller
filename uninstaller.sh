@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/zsh --no-rcs
 
 # uninstaller
 # Removes software and related files
@@ -39,7 +39,7 @@ appBundleIdentifierKey="CFBundleIdentifier"
 # MARK: Last Modification Date
 
 # Last modification date
-LAST_MOD_DATE="2023-07-30"
+LAST_MOD_DATE="2024-03-15"
 BUILD_DATE="Tue Nov 14 15:40:10 CET 2023"
 
 # MARK: Functions
