@@ -81,6 +81,10 @@ printlog "Uninstalling $appTitle - Files and Directories"
 if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
 	displayNotification "Removing $appTitle files..." "Uninstalling in progress"
 fi
+# Change the first object of $appFiles, if $ALTERNATE_PATH is added as an argumet
+if [[ $ALTERNATE_PATH ]]; then
+	appFiles[1]="$ALTERNATE_PATH"
+fi
 for file in "${appFiles[@]}"
 do
 	if [[ "$file" == *"<<Users>>"* ]]; then
