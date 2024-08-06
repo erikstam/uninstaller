@@ -1,0 +1,9 @@
+gotomeeting)
+      appTitle="GoToMeeting"
+      appProcesses+=("GoToMeeting")
+      appFiles+=("/Applications/GoToMeeting.app")
+      appFiles+=("<<Users>>/Library/Logs/com.logmein.GoToMeeting")
+      appFiles+=("<<Users>>/Library/Preferences/com.logmein.GoToMeeting.plist") 
+      appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.logmein.GoToMeeting.G2MAIRUploader.plist")
+      appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.logmein.GoToMeeting.G2MUpdate.plist")
+      ;;
