@@ -1,5 +1,5 @@
 dymoconnect)
-      appTitle="Citrix Workspace"
+      appTitle="DYMO Connect"
       appFiles+=("/Applications/DYMO Connect.app")
       appFiles+=("<<Users>>/Library/DYMOConnect")
       appFiles+=("/Library/PrivilegedHelperTools/com.dymo.dymo-connect.helper")
