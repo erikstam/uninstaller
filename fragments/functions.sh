@@ -35,33 +35,39 @@ quitApp() {
   fi
 }
 
-removeFileDirectory() { # $1: object $2: logmode
-    object=${1:-"Object"}
-    logmode=${2:-"Log Mode"}
-  if [ -f "$object" ]; then
-    # file exists and can be removed
-    printlog "Removing file $object"
-    if [ "$DEBUG" -eq 0 ]; then
-      /bin/rm -f "$object"
+removeFileDirectory() { # $1: objects $2: logmode
+  objects=${1:-"Object"}
+  logmode=${2:-"Log Mode"}
+  objects=${objects// /\\ } # objects are one or more because of wildcard(s)
+  objects=$(eval find $objects  -depth 0)
+  for object in ${(f)objects}
+  do
+    object=${object//\"//}
+    if [ -f "$object" ]; then
+      # file exists and can be removed
+      printlog "Removing file $object"
+      if [ "$DEBUG" -eq 0 ]; then
+        /bin/rm -f "$object"
+      fi
+    elif [ -d "$object" ]; then
+      # it is not a file, it is a directory and can be removed
+      printlog "Removing directory $object..."
+      if [ "$DEBUG" -eq 0 ]; then
+        /bin/rm -Rf "$object"
+      fi
+    elif [ -L "$object" ]; then
+      # it is an alias
+      printlog "Removing alias $object..."
+      if [ "$DEBUG" -eq 0 ]; then
+        /bin/rm -f "$object"
+      fi
+    else
+      # it is not a file, alias or a directory. Don't remove.
+      if [ "$logmode" != "silent" ]; then
+        printlog "INFO: $object is not an existing file or folder"
+      fi
     fi
-  elif [ -d "$object" ]; then
-    # it is not a file, it is a directory and can be removed
-    printlog "Removing directory $object..."
-    if [ "$DEBUG" -eq 0 ]; then
-      /bin/rm -Rf "$object"
-    fi
-  elif [ -L "$object" ]; then
-    # it is an alias
-    printlog "Removing alias $object..."
-    if [ "$DEBUG" -eq 0 ]; then
-      /bin/rm -f "$object"
-    fi
-  else
-    # it is not a file, alias or a directory. Don't remove.
-    if [ "$logmode" != "silent" ]; then
-    	printlog "INFO: $object is not an existing file or folder"
-    fi
-  fi
+  done
 }
 
 removeLaunchDaemons() {
