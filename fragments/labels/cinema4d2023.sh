@@ -1,4 +1,5 @@
 cinema4d2023)
+      # credit: pmex
       appTitle="Cinema 4D 2023"
       appProcesses+=("Cinema 4D")
       appFiles+=("/Applications/Maxon Cinema 4D 2023")
