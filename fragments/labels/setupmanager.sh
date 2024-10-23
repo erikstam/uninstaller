@@ -15,5 +15,5 @@ setupmanager)
       appFiles+=("/private/var/root/Library/HTTPStorages/com.jamf.setupmanager")
       appFiles+=("/private/var/root/Library/HTTPStorages/com.jamf.setupmanager.binarycookies")
       appFiles+=("/private/var/root/Library/Caches/com.jamf.setupmanager")
-      appReceipts+=("com.jamf.setupmanager)
+      appReceipts+=("com.jamf.setupmanager")
       ;;
