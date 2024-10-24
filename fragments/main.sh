@@ -84,12 +84,16 @@ fi
 for file in "${appFiles[@]}"
 do
 	if [[ "$file" == *"<<Users>>"* ]]; then
-		# remove path with expanded path for all available userfolders
-		for userfolder in $(ls /Users)
-		do
-			expandedPath=$(echo $file | sed "s|<<Users>>|/Users/$userfolder|g")
-			removeFileDirectory "$expandedPath" silent
-		done
+		if [[ $IGNORE_USER_DIRS == 0 ]]; then
+			# remove path with expanded path for all available userfolders
+			for userfolder in $(ls /Users)
+				do
+					expandedPath=$(echo $file | sed "s|<<Users>>|/Users/$userfolder|g")
+					removeFileDirectory "$expandedPath" silent
+			done
+		else
+			printlog "Ignoring deletion of user files: $file" 
+		fi
 	else
 		# remove real path 
 		removeFileDirectory "$file"
