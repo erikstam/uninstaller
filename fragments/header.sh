@@ -26,7 +26,7 @@ NOTIFICATIONTYPE=jamf
 # Notification Sources
 jamfManagementAction="/Library/Application Support/JAMF/bin/Management Action.app/Contents/MacOS/Management Action"
 swiftDialog="/usr/local/bin/dialog"
-
+swiftDialogNotification=mini
 
 # - appVersionKey: (optional)
 #   How we get version number from app. Default value
