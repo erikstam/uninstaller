@@ -6,6 +6,17 @@ esac
 
 printlog "Uninstaller started - version $LAST_MOD_DATE (build: $BUILD_DATE)"
 
+# Parse arguments for changed variables
+while [[ -n $1 ]]; do
+    if [[ $1 =~ ".*\=.*" ]]; then
+        # if an argument contains an = character, send it to eval
+        printlog "setting variable from argument $1"
+        eval $1
+    fi
+    # shift to next argument
+    shift 1
+done
+
 # Get app version
 if [ -f "${appFiles[1]}/Contents/Info.plist" ]; then
 	appVersion=$(defaults read "${appFiles[1]}/Contents/Info.plist" $appVersionKey)
