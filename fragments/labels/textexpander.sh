@@ -1,0 +1,10 @@
+textexpander)
+      appTitle="TextExpander"
+      appProcesses+=("TextExpander")
+      appFiles+=("/Applications/TextExpander.app")    
+      appFiles+=("<<Users>>/Library/Caches/com.smileonmymac.textexpander")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.smileonmymac.textexpander")
+      appFiles+=("<<Users>>/Library/Preferences/com.smileonmymac.textexpander.plist")
+      appFiles+=("<<Users>>/Library/WebKit/com.smileonmymac.textexpander")
+      appReceipts+=("com.smileonmymac.textexpander")      
+      ;;
