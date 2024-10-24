@@ -39,8 +39,8 @@ appBundleIdentifierKey="CFBundleIdentifier"
 # MARK: Last Modification Date
 
 # Last modification date
-LAST_MOD_DATE="2024-03-15"
-BUILD_DATE="Tue Nov 14 15:40:10 CET 2023"
+LAST_MOD_DATE="2023-07-30"
+BUILD_DATE="Wed Jun 26 09:17:15 CEST 2024"
 
 # MARK: Functions
 
@@ -285,7 +285,7 @@ case $1 in
       appFiles+=("<<Users>>/Library/Logs/3CX Desktop App")
       appReceipts+=("com.electron.3cx-desktop-app")
       ;;
-adobeareaderdc)
+adobereaderdc)
       appTitle="Adobe Acrobat Reader"
       appProcesses+=("AdobeReader")
       appFiles+=("/Applications/Adobe Acrobat Reader.app")
@@ -327,6 +327,18 @@ atom)
       appFiles+=("<<Users>>/Library/Saved Application State/com.github.atom.savedState")
       appFiles+=("<<Users>>/Library/HTTPStorages/com.github.atom")
       ;;
+autopkgr)
+      appTitle="AutoPkgr"
+      appProcesses+=("AutoPkgr")
+      appFiles+=("/Applications/AutoPkgr.app")   
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.lindegroup.AutoPkgr.helper.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.lindegroup.AutoPkgr.schedule.plist")
+      appFiles+=("/Library/PrivilegedHelperTools/com.lindegroup.AutoPkgr.helper")
+      appFiles+=("<<Users>>/Library/Preferences/com.lindegroup.AutoPkgr.plist")
+      appFiles+=("<<Users>>/Library/Application Support/AutoPkgr")
+      appFiles+=("<<Users>>/Library/Caches/com.lindegroup.AutoPkgr")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.lindegroup.AutoPkgr")
+      ;;
 bbedit)
       appTitle="BBEdit"
       appProcesses+=("BBEdit")
@@ -363,6 +375,7 @@ citrixworkspace)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.ctxusbd.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.ctxworkspaceupdater.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.ctxusbd.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.CtxWorkspaceHelperDaemon.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.citrix.AuthManager_Mac.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.citrix.ReceiverHelper.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.citrix.safariadapter.plist")
@@ -460,6 +473,15 @@ dropbox)
       appFiles+=("<<Users>>/Library/Preferences/com.dropbox.DropboxMacUpdate.plist")
       appFiles+=("<<Users>>/Library/Preferences/com.getdropbox.dropbox.plist")
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.dropbox.DropboxMacUpdate.agent.plist")
+      ;;
+dymoconnect)
+      appTitle="Citrix Workspace"
+      appFiles+=("/Applications/DYMO Connect.app")
+      appFiles+=("<<Users>>/Library/DYMOConnect")
+      appFiles+=("/Library/PrivilegedHelperTools/com.dymo.dymo-connect.helper")
+      appFiles+=("<<Users>>/Library/Preferences/com.dymo.dymo-connect.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.dymo.dymo-connect.helper.plist")
+      appReceipts+=("com.dymo.dymo-connect")
       ;;
 easyfind)
       appTitle="EasyFind"
@@ -866,6 +888,14 @@ oktaverify)
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/B7F62B65BN.group.okta.macverify.shared")
       appFiles+=("/Users/$loggedInUser/Library/Group Containers/B7F62B65BN.group.okta.macverify.shared")
       ;;
+opera)
+      appTitle="Opera"
+      appProcesses+=("Opera")
+      appFiles+=("/Applications/Opera.app")
+      appFiles+=("<<Users>>/Library/Caches/com.operasoftware.Opera")
+      appFiles+=("<<Users>>/Library/Preferences/com.operasoftware.Opera.plist")
+      appFiles+=("<<Users>>/Library/Application Support/com.operasoftware.Opera")
+      ;;
 parallelsdesktop)
       appTitle="Parallels Desktop"
       appProcesses+=("Parallels Desktop")
@@ -955,6 +985,20 @@ remarkable)
       appFiles+=("<<Users>>/Library/HTTPStorages/com.remarkable.desktop")
       appFiles+=("<<Users>>/Library/Caches/remarkable")
       ;;
+rodeconnect)
+      appTitle="RODEConnect"
+      appProcesses+=("RODE Connect")
+      appProcesses+=("Core Audio Driver (RodeConnect.driver)")
+      appFiles+=("/Applications/RODE Connect.app")
+      appFiles+=("/Library/Audio/Plug-Ins/HAL/RodeConnect.driver")
+      appFiles+=("/Library/Fonts/RODE Noto Sans CJK SC B.otf")
+      appFiles+=("/Library/Fonts/RODE Noto Sans CJK SC R.otf")
+      appFiles+=("/Library/Fonts/RODE Noto Sans Hindi B.ttf")
+      appFiles+=("/Library/Fonts/RODE Noto Sans Hindi R.ttf")
+      appFiles+=("<<Users>>/Library/Application Support/RØDE")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.rode.rodeconnect")
+      appFiles+=("<<Users>>/Library/Caches/com.rode.rodeconnect")
+      ;;
 rstudio)
       appTitle="RStudio"
       appProcesses+=("RStudio")
@@ -1021,6 +1065,12 @@ spotify)
       appFiles+=("<<Users>>/Library/Saved Application State/com.spotify.client.savedState")
       appFiles+=("<<Users>>/Library/Caches/com.spotify.client")
       ;;
+steam)
+      appTitle="Steam"
+      appFiles+=("/Applications/Steam.app")
+      appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.valvesoftware.steamclean.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.valvesoftware.steam.savedState")      
+      ;;
 superman)
       appTitle="superman"
       appProcesses+=("support")
@@ -1075,15 +1125,15 @@ textwrangler)
       appFiles+=("/usr/local/bin/twfind")
       ;;
 theunarchiver)
-	appTitle="The Unarchiver"
-	appProcesses+=("The Unarchiver")
-	appFiles+=("/Applications/The Unarchiver.app")
-	appFiles+=("<<Users>>/Library/HTTPStorages/com.macpaw.site.theunarchiver")
-	appFiles+=("<<Users>>/Library/HTTPStorages/com.macpaw.site.theunarchiver.binarycookies")
-	appFiles+=("<<Users>>/Library/Preferences/com.macpaw.site.theunarchiver.plist")
-	appFiles+=("<<Users>>/Library/Saved Application State/com.macpaw.site.theunarchiver.savedState")
-	appReceipts+=("cx.c3.theunarchiver")
-	;;
+      appTitle="The Unarchiver"
+      appProcesses+=("The Unarchiver")
+      appFiles+=("/Applications/The Unarchiver.app")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.macpaw.site.theunarchiver")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.macpaw.site.theunarchiver.binarycookies")
+      appFiles+=("<<Users>>/Library/Preferences/com.macpaw.site.theunarchiver.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.macpaw.site.theunarchiver.savedState")
+      appReceipts+=("cx.c3.theunarchiver")
+      ;;
 tinkertoolsystem8)
       appTitle="tinkertoolsystem8"
       appProcesses+=("TinkerTool System")
@@ -1161,6 +1211,16 @@ wacomdrivers)
       appLaunchAgents+=("/Library/LaunchAgents/com.wacom.wacomtablet.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.wacom.UpdateHelper.plist")
      ;;
+webex)
+      appTitle="Webex"
+      appProcesses+=("Webex")
+      appFiles+=("/Applications/Webex.app")
+      appFiles+=("<<Users>>/Library/Application Support/Cisco Spark/Webexteams_upgrades/Webex")
+      appFiles+=("<<Users>>/Library/Application Support/Cisco Spark/Webexteams_upgrades_arm/Webex")
+      appFiles+=("<<Users>>/Library/Caches/Cisco-Systems.Spark")
+      appFiles+=("<<Users>>/Library/Preferences/Cisco-Systems.Spark.plist")
+      appFiles+=("<<Users>>/Library/WebKit/Cisco-Systems.Spark")
+      ;;
 whatsapp)
       appTitle="WhatsApp"
       appFiles+=("/Applications/WhatsApp.app")
@@ -1188,6 +1248,15 @@ windscribe)
       appFiles+=("<<Users>>/Library/Preferences/com.windscribe.Windscribe2.plist")
       appFiles+=("<<Users>>/Library/Saved Application State/com.windscribe.gui.macos.savedState")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.windscribe.helper.macos.plist")
+      ;;
+wireguard)
+      appTitle="WireGuard"
+      appProcesses+=("WireGuard")
+      appFiles+=("/Applications/WireGuard.app")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.wireguard.macos")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.wireguard.macos.network-extension")
+      appFiles+=("<<Users>>/Library/Containers/com.wireguard.macos")
+      appFiles+=("<<Users>>/Library/Group Containers/L82V4Y2P3C.group.com.wireguard.macos")
       ;;
 xcreds)
       appTitle="XCreds"
