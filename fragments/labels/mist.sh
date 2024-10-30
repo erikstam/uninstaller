@@ -9,4 +9,5 @@ mist)
       appFiles+=("<<Users>>/Library/HTTPStorages/com.ninxsoft.mist")
       appFiles+=("<<Users>>/Library/Preferences/com.ninxsoft.mist.plist")
       appFiles+=("<<Users>>/Library/WebKit/com.ninxsoft.mist")
+      appReceipts+=("com.ninxsoft.pkg.mist")
       ;;
