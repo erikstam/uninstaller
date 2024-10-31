@@ -9,6 +9,6 @@ dymoconnect)
       appFiles+=("<<Users>>/Library/Preferences/com.dymo.dymo-connect.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.dymo.dcd.webservice.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.dymo.dymo-connect.helper.plist")
-      appLaunchDaemons+=("/Library/LaunchDaemons//com.dymo.pnpd.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.dymo.pnpd.plist")
       appReceipts+=("com.dymo.dymo-connect")
       ;;
