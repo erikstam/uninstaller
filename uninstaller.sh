@@ -39,8 +39,8 @@ appBundleIdentifierKey="CFBundleIdentifier"
 # MARK: Last Modification Date
 
 # Last modification date
-LAST_MOD_DATE="2023-07-30"
-BUILD_DATE="Wed Jun 26 09:17:15 CEST 2024"
+LAST_MOD_DATE="2024-10-31"
+BUILD_DATE="Thu Oct 31 20:30:20 CET 2024"
 
 # MARK: Functions
 
@@ -285,6 +285,16 @@ case $1 in
       appFiles+=("<<Users>>/Library/Logs/3CX Desktop App")
       appReceipts+=("com.electron.3cx-desktop-app")
       ;;
+abstract)
+      appTitle="Abstract"
+      appProcesses+=("Abstract")
+      appFiles+=("/Applications/Abstract.app")
+      appFiles+=("<<Users>>/Library/Preferences/com.elasticprojects.abstract-desktop.plist")
+      appFiles+=("<<Users>>/Library/Application Support/Abstract")
+      appFiles+=("<<Users>>/Library/Caches/com.elasticprojects.abstract-desktop")
+      appFiles+=("<<Users>>/Library/Caches/com.elasticprojects.abstract-desktop.ShipIt")
+      appFiles+=("<<Users>>/Library/Saved Application State/Abstract")
+      ;;
 adobereaderdc)
       appTitle="Adobe Acrobat Reader"
       appProcesses+=("AdobeReader")
@@ -315,6 +325,44 @@ androidstudiosdk)
       appTitle="Android Studio SDK"
       appFiles+=("<<Users>>/Library/Android/sdk")
       ;;
+apparency)
+      # credit: pmex
+      appTitle="Apparency"
+      appProcesses+=( "Apparency" "com.mothersruin.MRSFoundation.UpdateCheckingService" )
+      appFiles+=("/Applications/Apparency.app")
+      appFiles+=("<<Users>>/Library/Containers/com.mothersruin.Apparency")
+      appFiles+=("<<Users>>/Library/Containers/com.mothersruin.Apparency.QLPreviewExtension")
+      appFiles+=("<<Users>>/Library/Containers/com.mothersruin.MRSFoundation.UpdateCheckingService")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.mothersruin.Apparency")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.mothersruin.Apparency.QLPreviewExtension")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.mothersruin.MRSFoundation.UpdateCheckingService")
+      ;;
+arc)
+      appTitle="Arc"      
+      appProcesses+=("Arc" "Arc Helper" "Arc Helper (GPU)")
+      appFiles+=("/Applications/Arc.app")
+      appFiles+=("<<Users>>/Library/Application Support/Arc")
+      appFiles+=("<<Users>>/Library/Caches/Arc")
+      appFiles+=("<<Users>>/Library/Caches/company.thebrowser.Browser")
+      appFiles+=("<<Users>>/Library/HTTPStorages/company.thebrowser.Browser")
+      appFiles+=("<<Users>>/Library/Preferences/company.thebrowser.Browser.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/company.thebrowser.Browser.savedState")
+      appFiles+=("<<Users>>/Library/WebKit/company.thebrowser.Browser")
+      appReceipts+=("company.thebrowser.Browser")
+      ;;
+asana)
+      appTitle="Asana"
+      appProcesses+=("Asana")
+      appFiles+=("/Applications/Asana.app")
+      appFiles+=("<<Users>>/Library/Application Support/Asana")
+      appFiles+=("<<Users>>/Library/Caches/com.electron.asana")
+      appFiles+=("<<Users>>/Library/Caches/com.electron.asana.ShipIt")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.electron.asana")
+      appFiles+=("<<Users>>/Library/Logs/Asana")
+      appFiles+=("<<Users>>/Library/Preferences/com.electron.asana.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.electron.asana.savedState")
+      appReceipts+=("com.electron.asana")
+      ;;
 atom)
       appTitle="Atom"
       appProcesses+=("Atom")
@@ -339,6 +387,17 @@ autopkgr)
       appFiles+=("<<Users>>/Library/Caches/com.lindegroup.AutoPkgr")
       appFiles+=("<<Users>>/Library/HTTPStorages/com.lindegroup.AutoPkgr")
       ;;
+azuredatastudio)
+      appTitle="Azure Data Studio"      
+      appProcesses+=("Azure Data Studio")
+      appFiles+=("/Applications/Azure Data Studio.app")
+      appFiles+=("<<Users>>/Library/Application Support/azuredatastudio")
+      appFiles+=("<<Users>>/Library/Caches/com.azuredatastudio.oss")
+      appFiles+=("<<Users>>/Library/Caches/com.azuredatastudio.oss.ShipIt")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.azuredatastudio.oss")
+      appFiles+=("<<Users>>/Library/Preferences/com.azuredatastudio.oss.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.azuredatastudio.oss.savedState")
+      ;;
 bbedit)
       appTitle="BBEdit"
       appProcesses+=("BBEdit")
@@ -353,6 +412,60 @@ bbedit)
       appFiles+=("/usr/local/bin/bbfind")
       appFiles+=("/usr/local/bin/bbresults")      
       postflightCommand+=("rm -r /Users/$loggedInUser/Library/Caches/com.apple.helpd/Generated/com.barebones.bbedit.help*")
+      ;;
+blender)
+      appTitle="Blender"
+      appProcesses+=("Blender")
+      appFiles+=("/Applications/Blender.app")
+      appFiles+=("<<Users>>/Library/Application Support/Blender")
+      ;;
+chatgpt)
+      appTitle="ChatGPT"      
+      appProcesses+=("ChatGPT")
+      appFiles+=("/Applications/ChatGPT.app")
+      appFiles+=("<<Users>>/Library/Application Support/ChatGPT")
+      appFiles+=("<<Users>>/Library/Application Support/com.openai.chat")
+      appFiles+=("<<Users>>/Library/Caches/com.openai.chat")
+      appFiles+=("<<Users>>/Library/Group Containers/group.com.openai.chat")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.openai.chat")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.openai.chat.binarycookies")
+      appFiles+=("<<Users>>/Library/Preferences/com.openai.chat.RemoteFeatureFlags.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.openai.chat.StatsigService.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.openai.chat.plist")
+      appFiles+=("<<Users>>/Library/WebKit/com.openai.chat")
+      ;;
+cinema4d2023)
+      # credit: pmex
+      appTitle="Cinema 4D 2023"
+      appProcesses+=("Cinema 4D")
+      appFiles+=("/Applications/Maxon Cinema 4D 2023")
+      appFiles+=("<<Users>>//Library/Caches/net.maxon.cinema4d")
+      appFiles+=("<<Users>>/Library/HTTPStorages/net.maxon.cinema4d")
+      appFiles+=("<<Users>>/Library/Preferences/Maxon/Maxon Cinema 4D 2023_3BE69839")
+      appFiles+=("<<Users>>/Library/Preferences/net.maxon.cinema4d.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/net.maxon.cinema4d.savedState")
+      ;;
+cinema4d2024)
+      # credit: pmex
+      appTitle="Cinema 4D 2024"
+      appProcesses+=("Cinema 4D")
+      appFiles+=("/Applications/Maxon Cinema 4D 2024")
+      appFiles+=("<<Users>>//Library/Caches/net.maxon.cinema4d")
+      appFiles+=("<<Users>>/Library/HTTPStorages/net.maxon.cinema4d")
+      appFiles+=("<<Users>>/Library/Preferences/Maxon/Maxon Cinema 4D 2024_22E620F3")
+      appFiles+=("<<Users>>/Library/Preferences/net.maxon.cinema4d.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/net.maxon.cinema4d.savedState")
+      ;;
+cinema4d2025)
+      # credit: copy from cinema4d2024 from pmex
+      appTitle="Cinema 4D 2025"
+      appProcesses+=("Cinema 4D")
+      appFiles+=("/Applications/Maxon Cinema 4D 2025")
+      appFiles+=("<<Users>>//Library/Caches/net.maxon.cinema4d")
+      appFiles+=("<<Users>>/Library/HTTPStorages/net.maxon.cinema4d")
+      appFiles+=("<<Users>>/Library/Preferences/Maxon/Maxon Cinema 4D 2024_22E620F3")
+      appFiles+=("<<Users>>/Library/Preferences/net.maxon.cinema4d.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/net.maxon.cinema4d.savedState")
       ;;
 citrixworkspace)
       appTitle="Citrix Workspace"
@@ -372,6 +485,10 @@ citrixworkspace)
       appFiles+=("<<Users>>/Library/Preferences/com.citrix.receiver.nomas.plist")
       appFiles+=("<<Users>>/Library/WebKit/com.citrix.receiver.nomas")
       appFiles+=("<<Users>>/Library/Saved Application State/com.citrix.receiver.nomas.savedState")
+      appFiles+=("/Library//Library/Preferences/com.citrix.apps.configuration.plist")
+      appFiles+=("/usr/local/libexec/AuthManager_Mac.app")
+      appFiles+=("/usr/local/libexec/Citrix Workspace Helper.app")
+      appFiles+=("/usr/local/libexec/ServiceRecords.app")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.ctxusbd.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.ctxworkspaceupdater.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.citrix.ctxusbd.plist")
@@ -382,6 +499,10 @@ citrixworkspace)
       appLaunchAgents+=("/Library/LaunchAgents/com.citrix.ServiceRecords.plist")
       appReceipts+=("com.citrix.workspace.app.pkg")
       appReceipts+=("com.citrix.ICAClient")
+      appReceipts+=("com.citrix.common")
+      appReceipts+=("com.citrix.ICAClientcwa")
+      appReceipts+=("com.citrix.enterprisebrowserinstaller")
+      appReceipts+=("com.citrix.ICAClienthdx")
       ;;
 coderunner)
       appTitle="CodeRunner"
@@ -404,6 +525,16 @@ cyberduck)
       appFiles+=("<<Users>>/Library/Logs/Cyberduck")
       appFiles+=("<<Users>>/Library/HTTPStorages/ch.sudo.cyberduck")
       appFiles+=("<<Users>>/Library/Saved Application State/ch.sudo.cyberduck.savedState")
+      ;;
+deezer)
+      appTitle="Deezer"      
+      appProcesses+=("Deezer")
+      appFiles+=("/Applications/Deezer.app")
+      appFiles+=("<<Users>>/Library/Application Support/deezer-desktop")
+      appFiles+=("<<Users>>/Library/Logs/Deezer")
+      appFiles+=("<<Users>>/Library/Preferences/com.deezer.deezer-desktop.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.deezer.deezer-desktop.savedState")
+      appReceipts+=("com.deezer.deezer-desktop.bom")
       ;;
 depnotify)
       appTitle="DEPNotify"
@@ -475,7 +606,7 @@ dropbox)
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.dropbox.DropboxMacUpdate.agent.plist")
       ;;
 dymoconnect)
-      appTitle="Citrix Workspace"
+      appTitle="DYMO Connect"
       appFiles+=("/Applications/DYMO Connect.app")
       appFiles+=("<<Users>>/Library/DYMOConnect")
       appFiles+=("/Library/PrivilegedHelperTools/com.dymo.dymo-connect.helper")
@@ -546,6 +677,18 @@ firefox)
       appFiles+=("<<Users>>/Library/Caches/Firefox")
       appFiles+=("<<Users>>/Library/Saved Application State/org.mozilla.firefox.savedState")
       ;;
+gimp)
+      # credit: pijpe00
+      appTitle="GIMP"
+      appReceipts+=("org.gimp.gimp-2.10")
+      appProcesses+=("gimp")
+      appFiles+=("/Applications/GIMP.app")
+      appFiles+=("<<Users>>/Library/Application Support/GIMP")
+      appFiles+=("<<Users>>/Library/Caches/org.gimp.gimp-2.10")
+      appFiles+=("<<Users>>/Library/HTTPStorages/org.gimp.gimp-2.10")
+      appFiles+=("<<Users>>/Library/Preferences/org.gimp.gimp-2.10.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/org.gimp.gimp-2.10.savedState")
+      ;;
 githubdesktop)
       appTitle="GitHub Desktop"
       appFiles+=("/Applications/GitHub Desktop.app")
@@ -557,6 +700,18 @@ githubdesktop)
       appFiles+=("<<Users>>/Library/Logs/GitHub Desktop")
       appFiles+=("<<Users>>/Library/Saved Application State/com.github.GitHubClient.savedState") 
       appReceipts+=("com.github.GitHubClient")
+      ;;
+gitkraken)
+      appTitle="GitKraken"      
+      appProcesses+=("GitKraken")
+      appFiles+=("/Applications/GitKraken.app")
+      appFiles+=("<<Users>>/Library/Application Support/GitKraken")
+      appFiles+=("<<Users>>/Library/Caches/com.axosoft.gitkraken")
+      appFiles+=("<<Users>>/Library/Caches/com.axosoft.gitkraken.ShipIt")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.axosoft.gitkraken")
+      appFiles+=("<<Users>>/Library/Preferences/com.axosoft.gitkraken.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.axosoft.gitkraken.savedState")
+      appReceipts+=("com.axosoft.gitkraken")
       ;;
 googlechrome)
       appTitle="Google Chrome"
@@ -578,6 +733,15 @@ googlechrome)
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.agent.plist")
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.system.agent.plist")
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.xpcservice.plist")
+      ;;
+gotomeeting)
+      appTitle="GoToMeeting"
+      appProcesses+=("GoToMeeting")
+      appFiles+=("/Applications/GoToMeeting.app")
+      appFiles+=("<<Users>>/Library/Logs/com.logmein.GoToMeeting")
+      appFiles+=("<<Users>>/Library/Preferences/com.logmein.GoToMeeting.plist") 
+      appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.logmein.GoToMeeting.G2MAIRUploader.plist")
+      appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.logmein.GoToMeeting.G2MUpdate.plist")
       ;;
 icons)
       appTitle="Icons"
@@ -661,6 +825,52 @@ java8oracle)
       appLaunchDaemons+=("/Library/LaunchDaemons/com.oracle.java.Helper-Tool.plist")
       appReceipts+=("com.oracle.jre")
       ;;
+jetbrainsintellijidea)
+      appTitle="IntelliJ IDEA"
+      appReceipts+=("com.jetbrains.intellij")
+      appProcesses+=("idea")
+      appFiles+=("/Applications/IntelliJ IDEA.app")
+      appFiles+=("<<Users>>/Library/Preferences/com.jetbrains.intellij.plist")
+      ;;
+jetbrainspycharm)
+      # credit: pijpe00
+      appTitle="PyCharm"
+      appReceipts+=("com.jetbrains.pycharm")
+      appProcesses+=("pycharm")
+      appFiles+=("/Applications/PyCharm.app")
+      appFiles+=("<<Users>>/Library/Application Support/JetBrains/PyCharm2024.2")
+      appFiles+=("<<Users>>/Library/Caches/JetBrains/PyCharm2024.2")
+      appFiles+=("<<Users>>/Library/Logs/JetBrains/PyCharm2024.2")
+      appFiles+=("<<Users>>/Library/Preferences/com.jetbrains.pycharm.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.jetbrains.pycharm.savedState")
+      ;;
+keyshot11)
+      appTitle="KeyShot11"      
+      appProcesses+=("KeyShot" "KeyShot11" "keyshot_daemon" "keyshot")
+      appFiles+=("/Applications/KeyShot11.app")
+      appFiles+=("/Applications/KeyShot11AuthHandler.app")
+      appFiles+=("/Applications/KeyShotCloudHandler.app")
+      appFiles+=("/Library/Application Support/KeyShot11")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.Analytics.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.Crash Reporter.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.luxion.keyshot.savedState")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.KeyShot 11.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.Keyshot Updater.plist")
+      ;;
+keyshot12)
+      appTitle="KeyShot12"      
+      appProcesses+=("KeyShot" "KeyShot12" "keyshot_daemon" "keyshot")
+      appFiles+=("/Applications/KeyShot12.app")
+      appFiles+=("/Applications/KeyShot12AuthHandler.app")
+      appFiles+=("/Applications/KeyShotCloudHandler.app")
+      appFiles+=("/Library/Application Support/KeyShot12")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.Analytics.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.Crash Reporter.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.KeyShot 12.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.luxion.Keyshot Updater.plist")
+      ;;
 lanschoolstudent)
       appTitle="LanSchool Student"
       appProcesses+=("student")
@@ -676,16 +886,37 @@ lanschoolstudent)
       appFiles+=("<<Users>>/Library/Preferences/com.lanschool.student.plist")
       appReceipts+=("com.lanschool.student.setup.pkg")
       ;;
+linearmouse)
+      # credit: pmex
+      appTitle="LinearMouse"
+      appProcesses+=("LinearMouse")
+      appFiles+=("/Applications/LinearMouse.app")
+      appFiles+=("<<Users>>/Library/Preferences/com.lujjjh.LinearMouse.plist")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.lujjjh.LinearMouse")
+      ;;
 logioptionsplus)
       appTitle="Logi Options+"
-      appFiles+=("/Applications/Logioptionsplus.app")
+      appFiles+=("/Applications/logioptionsplus.app")
+      appFiles+=("/Users/Shared/logi")
       appFiles+=("/Users/Shared/LogiOptionsPlus")
+      appFiles+=("<<Users>>/Library/Application Support/Logitech/LogiOptionsPlus")
+      appFiles+=("<<Users>>/Library/Application Support/com.logitech.logiaipromptbuilder")
       appFiles+=("<<Users>>/Library/Application Support/LogiOptionsPlus")
+      appFiles+=("<<Users>>/Library/Application Support/Logi")
+      appFiles+=("/Library/Application Support/Logitech.localized/LogiOptionsPlus")
       appFiles+=("/Library/LaunchAgents/com.logi.optionsplus.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/com.logi.optionsplus.updater.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.logi.optionsplus.plist")
       appReceipts+=("com.logi.optionsplus.installer")
       ;;
+mdmwatchdog)
+      # credit: pmex
+      appTitle="Addigy MDM Watchdog"
+      appFiles+=("/usr/local/bin/mdm-watchdog")
+      appFiles+=("/Library/Application Support/mdm-watchdog")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.addigy.mdm-watchdog.plist")
+      appReceipts+=("com.addigy.mdm-watchdog")      
+     ;;
 microsoftdefender)
       appTitle="Microsoft Defender"
       appProcesses+=("wdav")
@@ -832,6 +1063,19 @@ miro)
       appFiles+=("<<Users>>/Library/Preferences/com.electron.realtimeboard.plist")
       appFiles+=("<<Users>>/Library/Saved Application State/com.electron.realtimeboard.savedState")
       ;;
+mist)
+      appTitle="Mist"      
+      appProcesses+=("Mist")
+      appFiles+=("/Applications/Mist.app")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.ninxsoft.mist.helper.plist")
+      appFiles+=("/Library/PrivilegedHelperTools/com.ninxsoft.mist.helper")
+      appFiles+=("<<Users>>/Library/Caches/com.ninxsoft.mist")
+      appFiles+=("<<Users>>/Library/Caches/mist")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.ninxsoft.mist")
+      appFiles+=("<<Users>>/Library/Preferences/com.ninxsoft.mist.plist")
+      appFiles+=("<<Users>>/Library/WebKit/com.ninxsoft.mist")
+      appReceipts+=("com.ninxsoft.pkg.mist")
+      ;;
 munki)
       appTitle="Managed Software Center"
       appProcesses+=("Managed Software Center")
@@ -873,6 +1117,22 @@ nomad)
       appFiles+=("/Applications/NoMAD.app")
       appLaunchAgents+=("/Library/LaunchAgents/com.trusourcelabs.NoMAD.plist")
       appFiles+=("<<Users>>/Library/Preferences/com.trusourcelabs.NoMAD.plist")
+      ;;
+notion)
+      appTitle="Notion"      
+      appProcesses+=("Notion")
+      appFiles+=("/Applications/Notion.app")
+      appFiles+=("<<Users>>/Library/Application Support/Notion")
+      appFiles+=("<<Users>>/Library/Application Support/Notion Calendar")
+      appFiles+=("<<Users>>/Library/Caches/notion.id")
+      appFiles+=("<<Users>>/Library/Caches/notion.id.ShipIt")
+      appFiles+=("<<Users>>/Library/HTTPStorages/notion.id")
+      appFiles+=("<<Users>>/Library/Logs/Notion")
+      appFiles+=("<<Users>>/Library/Preferences/notion.id.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/notion.id.savedState")
+      appReceipts+=("notion.id.arm64")
+      appReceipts+=("notion.id")
+      appReceipts+=("notion.id.x64")
       ;;
 nudge)
       appTitle="Nudge"
@@ -929,6 +1189,17 @@ postman)
       appFiles+=("<<Users>>/Library/Preferences/com.postmanlabs.mac.plist")
       appFiles+=("<<Users>>/Library/Saved Application State/com.postmanlabs.mac.savedState")
       ;;
+preform)
+      appTitle="PreForm"      
+      appProcesses+=("PreForm")
+      appFiles+=("/Applications/PreForm.app")
+      appFiles+=("<<Users>>/Library/Caches/com.formlabs.PreForm")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.formlabs.PreForm")
+      appFiles+=("<<Users>>/Library/Preferences/com.formlabs.PreForm.plist")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.formlabs.PreForm.savedState")
+      appFiles+=("<<Users>>/Library/WebKit/com.formlabs.PreForm")
+      appReceipts+=("com.formlabs.PreForm")
+      ;;
 privileges)
       appTitle="Privileges"
       appFiles+=("/Applications/Privileges.app")
@@ -976,6 +1247,26 @@ r)
       appFiles+=("/opt/R")
       appFiles+=("<<Users>>/Library/Preferences/org.R-project.R.plist")
       ;;
+redshift)
+      appTitle="Redshift"
+      appProcesses+=( "Maya" "Cinema 4D" )
+      appFiles+=("/Applications/redshift")
+      appFiles+=("/Applications/Cinema 4D R21/plugins/Redshift")
+      appFiles+=("/Applications/Cinema 4D R22/plugins/Redshift")
+      appFiles+=("/Applications/Cinema 4D R23/plugins/Redshift")
+      appFiles+=("/Applications/Cinema 4D R24/plugins/Redshift")
+      appFiles+=("/Applications/Cinema 4D R25/plugins/Redshift")
+      appFiles+=("/Applications/Cinema 4D R26/plugins/Redshift")
+      appFiles+=("/Applications/Cinema 4D 2023/plugins/Redshift")
+      appFiles+=("/Applications/Cinema 4D 2024/plugins/Redshift")
+      appFiles+=("/Applications/Autodesk/maya2018/Maya.app/Contents/modules/redshift4maya.mod")
+      appFiles+=("/Applications/Autodesk/maya2019/Maya.app/Contents/modules/redshift4maya.mod")
+      appFiles+=("/Applications/Autodesk/maya2020/Maya.app/Contents/modules/redshift4maya.mod")
+      appFiles+=("/Applications/Autodesk/maya2022/Maya.app/Contents/modules/redshift4maya.mod")
+      appFiles+=("/Applications/Autodesk/maya2023/Maya.app/Contents/modules/redshift4maya.mod")
+      appFiles+=("/Applications/Autodesk/maya2024/Maya.app/Contents/modules/redshift4maya.mod")
+      appFiles+=("<<Users>>/redshift")
+      ;;
 remarkable)
       appTitle="reMarkable"
       appProcesses+=("reMarkable")
@@ -1007,11 +1298,36 @@ rstudio)
       appFiles+=("<<Users>>/Library/Preferences/com.rstudio.desktop.plist")
       appFiles+=("<<Users>>/Library/Saved Application State/com.rstudio.desktop.savedState")
       ;;
+setupmanager)
+      appTitle="Setup Manager"
+      appProcesses+=("Setup Manager")
+      appFiles+=("/Applications/Utilities/Setup Manager.app")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.jamf.setupmanager.plist")
+      appLaunchAgents+=("/Library/LaunchDaemons/com.jamf.setupmanager.loginwindow.plist")
+      appFiles+=("/Library/Logs/Setup Manager.log")
+      appFiles+=("<<Users>>/Library/Caches/com.jamf.setupmanager")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.jamf.setupmanager")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.jamf.setupmanager.binarycookies")
+      appFiles+=("<<Users>>/Library/Caches/com.jamf.setupmanager")
+      # as Setup Manager runs at enrollment or at the login window it will store its files
+      # in the root directory
+      appFiles+=("/private/var/root/Library/Caches/com.jamf.setupmanager")
+      appFiles+=("/private/var/root/Library/HTTPStorages/com.jamf.setupmanager")
+      appFiles+=("/private/var/root/Library/HTTPStorages/com.jamf.setupmanager.binarycookies")
+      appFiles+=("/private/var/root/Library/Caches/com.jamf.setupmanager")
+      appReceipts+=("com.jamf.setupmanager")
+      ;;
 shottr)
       appTitle="Shottr"
       appFiles+=("/Applications/Shottr.app")
       appFiles+=("<<Users>>/Library/Application Scripts/cc.ffitch.shottr")
       appFiles+=("<<Users>>/Library/Containers/cc.ffitch.shottr")
+      ;;
+shutterencoder)
+      appTitle="Shutter Encoder"
+      # the app process is a jre binary launched by sh, so it won'¨t be found :-/
+      appProcesses+=("Shutter Encoder")
+      appFiles+=("/Applications/Shutter Encoder.app")
       ;;
 silverlight)
       appTitle="Silverlight"
@@ -1036,6 +1352,26 @@ sketch)
       appFiles+=("<<Users>>/Library/Application Scripts/com.bohemiancoding.sketch3.QuickLook-Thumbnail")
       appFiles+=("<<Users>>/Library/Application Scripts/com.bohemiancoding.sketch3.QuickLook-Preview")
       ;;
+sketchup2024)
+      appTitle="SketchUp"      
+      appProcesses+=("SketchUp" "LayOut" "Style Builder" "SketchUp Helper")
+      appFiles+=("/Applications/SketchUp 2024/SketchUp.app")
+      appFiles+=("/Applications/SketchUp 2024")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.sketchup.LayOut.2024.LayOutThumbnailExtension")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.sketchup.SketchUp.2024.SketchUpThumbnailExtension")
+      appFiles+=("<<Users>>/Library/Application Support/SketchUp 2024")
+      appFiles+=("<<Users>>/Library/Caches/com.sketchup.LayOut.2024")
+      appFiles+=("<<Users>>/Library/Caches/com.sketchup.SketchUp.2024")
+      appFiles+=("<<Users>>/Library/Caches/com.sketchup.StyleBuilder.2024")
+      appFiles+=("<<Users>>/Library/Containers/com.sketchup.LayOut.2024.LayOutThumbnailExtension")
+      appFiles+=("<<Users>>/Library/Containers/com.sketchup.SketchUp.2024.SketchUpThumbnailExtension")
+      appFiles+=("<<Users>>/Library/Preferences/com.sketchup.LayOut.2024.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.sketchup.SketchUp.2024.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.sketchup.StyleBuilder.2024.plist")
+      appFiles+=("<<Users>>/Library/Preferences/Trimble.SketchUp-Helper.(Renderer).plist")
+      appFiles+=("<<Users>>/LLibrary/Preferences/com.sketchup.StyleBuilder.2024.plist")
+      postflightCommand+=("pkill 'SketchUp'")
+      ;;
 skype)
       appTitle="Skype"
       appFiles+=("/Applications/Skype.app")
@@ -1046,6 +1382,18 @@ skype)
       appFiles+=("<<Users>>/Library/Preferences/com.skype.skype.plist")
       appFiles+=("<<Users>>/Library/Saved Application State/com.skype.skype.savedState")
       appFiles+=("<<Users>>/Library/Application Support/Microsoft/Skype for Desktop")
+      ;;
+sonoss2)
+      # Keep label the same as the Installomator label	
+      appTitle="Sonos"      
+      appProcesses+=("Sonos")
+      appFiles+=("/Applications/Sonos.app")
+      appFiles+=("<<Users>>/Library/Caches/com.sonos.macController2")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.sonos.macController2")
+      appFiles+=("<<Users>>/Library/Logs/Sonos")
+      appFiles+=("<<Users>>/Library/Logs/Sonos Installer")
+      appFiles+=("<<Users>>/Library/Preferences/com.sonos.macController2.plist")
+      preflightCommand+=("kill -9 $(pgrep -f 'Sonos')")
       ;;
 sourcetree)
       appTitle="Sourcetree"
@@ -1070,6 +1418,16 @@ steam)
       appFiles+=("/Applications/Steam.app")
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.valvesoftware.steamclean.plist")
       appFiles+=("<<Users>>/Library/Saved Application State/com.valvesoftware.steam.savedState")      
+      ;;
+sublimetext)
+      appTitle="Sublime Text"      
+      appProcesses+=("Sublime Text" "sublime_text")
+      appFiles+=("/Applications/Sublime Text.app")
+      appFiles+=("<<Users>>/Library/Application Support/Sublime Text")
+      appFiles+=("<<Users>>/Library/Caches/Sublime Text")
+      appFiles+=("<<Users>>/Library/Caches/com.sublimetext.4")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.sublimetext.4")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.sublimetext.4.savedState")
       ;;
 superman)
       appTitle="superman"
@@ -1110,6 +1468,16 @@ teamviewer)
       appReceipts+=("com.teamviewer.teamviewerPriviledgedHelper")
       appReceipts+=("com.teamviewer.remoteaudiodriver")     
       appReceipts+=("com.teamviewer.AuthorizationPlugin")
+      ;;
+textexpander)
+      appTitle="TextExpander"
+      appProcesses+=("TextExpander")
+      appFiles+=("/Applications/TextExpander.app")    
+      appFiles+=("<<Users>>/Library/Caches/com.smileonmymac.textexpander")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.smileonmymac.textexpander")
+      appFiles+=("<<Users>>/Library/Preferences/com.smileonmymac.textexpander.plist")
+      appFiles+=("<<Users>>/Library/WebKit/com.smileonmymac.textexpander")
+      appReceipts+=("com.smileonmymac.textexpander")      
       ;;
 textwrangler)
       appTitle="TextWrangler"
@@ -1157,6 +1525,16 @@ ultimakercura)
       appFiles+=("/Applications/Ultimaker Cura.localized")
       appFiles+=("/Applications/Ultimaker Cura-1.localized")
       appReceipts+=("nl.ultimaker.cura")
+      ;;
+virtualbuddy)
+      appTitle="VirtualBuddy"      
+      appProcesses+=("VirtualBuddy")
+      appFiles+=("/Applications/VirtualBuddy.app")
+      appFiles+=("<<Users>>/Library/Application Support/VirtualBuddy")
+      appFiles+=("<<Users>>/Library/Caches/codes.rambo.VirtualBuddy")
+      appFiles+=("<<Users>>/Library/HTTPStorages/codes.rambo.VirtualBuddy")
+      appFiles+=("<<Users>>/Library/Preferences/codes.rambo.VirtualBuddy.plist")
+      appFiles+=("<<Users>>/Library/WebKit/codes.rambo.VirtualBuddy")
       ;;
 visualstudiocode)
       appTitle="Visual Studio Code"
