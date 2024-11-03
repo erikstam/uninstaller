@@ -122,9 +122,10 @@ displayNotification() { # $1: message $2: title
     ;;
     swiftdialog)
       if [ -x "$swiftDialog" ]; then
-        "$swiftDialog" --message "$message" --title "$title" --mini
+        "$swiftDialog" --message "$message" --title "$title" --$swiftDialogNotification
       else
         printlog "ERROR: $swiftDialog not installed for showing notifications.  Falling back to AppleScript"
+        FallBacktoAS=true
       fi
     ;;
     applescript)
