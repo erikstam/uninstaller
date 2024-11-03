@@ -36,3 +36,8 @@ swiftDialogNotification=mini
 appVersionKey="CFBundleShortVersionString"
 appBundleIdentifierKey="CFBundleIdentifier"
 
+# ignore deletion of files in user directories
+IGNORE_USER_DIRS=0
+# options:
+# 0            delete files/directories in user directories
+# 1            ignore deletion of files in user directories, with exception of LaunchAgents
