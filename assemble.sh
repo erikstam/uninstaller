@@ -79,6 +79,8 @@ if [[ $buildScript -eq 1 ]]; then
     echo "# copying script to $repo_dir/uninstaller.sh"
     cp $destination_file $repo_dir/uninstaller.sh
     chmod 755 $repo_dir/uninstaller.sh
+    # also update Labels.txt
+    $repo_dir/uninstaller.sh | tail -n +2 > $repo_dir/Labels.txt
 fi
 
 exit $exit_code
