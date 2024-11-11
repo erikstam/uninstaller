@@ -20,7 +20,7 @@ loggedInUser=$( /usr/sbin/scutil <<< "show State:/Users/ConsoleUser" | /usr/bin/
 loggedInUserID=$( /usr/bin/id -u "$loggedInUser" )
 
 # Logging
-logLocation="/private/var/log/appAssassin.log"
+logLocation="/private/var/log/uninstaller.log"
 
 
 
