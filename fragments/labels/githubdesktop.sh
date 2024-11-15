@@ -1,5 +1,6 @@
 githubdesktop)
       appTitle="GitHub Desktop"
+      appProcesses+=("GitHub Desktop")
       appFiles+=("/Applications/GitHub Desktop.app")
       appFiles+=("<<Users>>/Library/Application Support/GitHub Desktop")
       appFiles+=("<<Users>>/Library/Caches/com.github.GitHubClient")
