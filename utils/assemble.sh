@@ -7,10 +7,11 @@
 # 
 
 # Last modification date
-LAST_MOD_DATE="2024-03-15"
+LAST_MOD_DATE="2024-11-15"
 
 #setup some folders
-repo_dir=$(dirname ${0:A})
+util_dir=$(dirname ${0:A})
+repo_dir="$util_dir/.."
 build_dir="$repo_dir/build"
 destination_file="$build_dir/uninstaller.sh"
 fragments_dir="$repo_dir/fragments"
