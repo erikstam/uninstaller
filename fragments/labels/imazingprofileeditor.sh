@@ -1,5 +1,6 @@
 imazingprofileeditor)
       appTitle="iMazing Profile Editor"
+      appProcesses+=("iMazing Profile Editor")
       appFiles+=("/Applications/iMazing Profile Editor.app")
       appFiles+=("<<Users>>/Library/Containers/com.DigiDNA.iMazingProfileEditorMac")
       appFiles+=("<<Users>>/Library/Preferences/com.DigiDNA.iMazing2Mac.plist")
