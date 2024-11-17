@@ -10,4 +10,3 @@ utm)
 	# /Users/homefolder/Library/Containers/com.utmapp.UTM
 	# /Users/homefolder/Library/Group Containers/WDNLXAD4W8.com.utmapp.UTM
 	;;
-	
