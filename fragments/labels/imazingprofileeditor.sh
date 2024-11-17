@@ -12,4 +12,3 @@ imazingprofileeditor)
       appFiles+=("<<Users>>/Library/HTTPStorages/com.DigiDNA.iMazingProfileEditorMac")
       appFiles+=("<<Users>>/Library/Application Support/iMazing")
       ;;
-      
