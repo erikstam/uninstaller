@@ -9,4 +9,4 @@ filemakerpro16)
       appFiles+=("<<Users>>/Library/Saved Application State/com.filemaker.client.pro12.savedState")
       appFiles+=("<<Users>>/Library/Application Support/FileMaker")
       appFiles+=("/Users/Shared/FileMaker/") 
-      ;;      
+      ;;
