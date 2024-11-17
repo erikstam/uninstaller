@@ -38,6 +38,7 @@ for file in "$dir"/*.sh; do
   [[ ! -e $file ]] && continue
   
   filename=$(basename "$file")
+  tempstatus=0
 
   # Check if the file ends with an exact ;; and newline
   # Last chars of label as ASCI
@@ -45,18 +46,22 @@ for file in "$dir"/*.sh; do
   if [[ $last_char != "595910" ]] ; then
     echo "${RED}label $filename does not correctly end with only ;; and newline${NC}"
     ((countError++))
-  else
-    echo "${GREEN}label $filename looks OK${NC}"
+    ((tempstatus++))
   fi
   
   # Check for duplicate lines in label 
   duplicateLines=$(sort "$file" | uniq -d | wc -l | sed 's/ //g')
+
   if [[ $duplicateLines != "0" ]] ; then
     echo "${YELLOW}label $filename contains duplicate lines${NC}"
+    sort "$file" | uniq -d
     ((countWarnings++))
-  else
-    echo "${GREEN}label $filename looks OK${NC}"
+    ((tempstatus++))
   fi
+  
+if [[ $tempstatus == "0" ]] ; then
+    echo "${GREEN}label $filename looks OK${NC}"
+fi
   
   
   
