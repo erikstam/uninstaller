@@ -6,4 +6,5 @@ supportapp)
       appFiles+=("<<Users>>/Library/Containers/nl.root3.support")
       appFiles+=("<<Users>>/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/nl.root3.support.sfl2")
       appLaunchAgents+=("/Library/LaunchAgents/nl.root3.support.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/nl.root3.support.helper.plist")
       ;;
