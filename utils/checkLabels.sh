@@ -6,7 +6,7 @@
 # checks:
 # 1) label must exactly end with ;; followed by a newline (ERROR)
 # 2) every line in label is unique (WARNING)
-#
+# 3) Launchagent and Daemons in correct folders (todo)
 
 countError=0
 countWarnings=0
