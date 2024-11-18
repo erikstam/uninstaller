@@ -1,5 +1,6 @@
 microsoftteamsclassic)
       appTitle="Microsoft Teams classic"
+      appProcesses+=("MSTeams")
       appFiles+=("/Applications/Microsoft Teams classic.app")
       appFiles+=("/Applications/Microsoft Teams.app")
       appFiles+=("<<Users>>/Library/WebKit/com.microsoft.teams")
