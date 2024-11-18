@@ -4,7 +4,7 @@
       appProcesses+=("1Password 7")
       appProcesses+=("1Password Extension Helper")
       appProcesses+=("1password")
-      appFiles+=("/Applications/1Password.app")
+      appFiles+=("/Applications/1Password 7.app")
       appFiles+=("<<Users>>/Library/Application Support/1Password")
       appFiles+=("<<Users>>/Library/Preferences/com.agilebits.onepassword.plist")
       appFiles+=("<<Users>>/Library/Containers/1Password")
