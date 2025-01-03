@@ -4,7 +4,7 @@
       ;;
 esac
 
-printlog "Uninstaller started - version $LAST_MOD_DATE (build: $BUILD_DATE)"
+printlog "Uninstaller started - build $BUILD_DATE"
 
 # Parse arguments for changed variables
 while [[ -n $1 ]]; do

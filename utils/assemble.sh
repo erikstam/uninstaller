@@ -7,7 +7,7 @@
 # 
 
 # Last modification date
-LAST_MOD_DATE="2024-11-15"
+LAST_MOD_DATE="2024-12-14"
 
 #setup some folders
 util_dir=$(dirname ${0:A})
@@ -42,7 +42,7 @@ if (( ${opts[(I)(-s|--script)]} )); then
     buildScript=1
 fi
 
-fragment_files=( header.sh version.sh functions.sh arguments.sh main.sh )
+fragment_files=( header.sh functions.sh arguments.sh main.sh )
 
 # check if fragment files exist (and are readable)
 for fragment in $fragment_files; do
@@ -63,9 +63,8 @@ mkdir -p $build_dir
 # add the header
 cat "$fragments_dir/header.sh" > $destination_file
 
-# add the version and builddate
-cat "$fragments_dir/version.sh" >> $destination_file
-currentdate=$(date)
+# add the builddate
+currentdate=$(date +%Y-%m-%d)
 echo "BUILD_DATE=\"$currentdate\"\n" >> $destination_file
 
 # add the functions
