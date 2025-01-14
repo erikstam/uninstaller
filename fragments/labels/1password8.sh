@@ -12,7 +12,6 @@
       appFiles+=("<<Users>>/Library/Containers/1Password Launcher")
       appFiles+=("<<Users>>/Library/Group Containers/2BUA8C4S2C.com.agilebits")
       appFiles+=("<<Users>>/Library/Logs/1Password")
-      appFiles+=("<<Users>>/Library/Application Support/")
       appFiles+=("<<Users>>/Library/Application Scripts/2BUA8C4S2C.com.agilebits")
       appFiles+=("<<Users>>/Library/Application Scripts/2BUA8C4S2C.com.agilebits.onepassword-helper")
       appFiles+=("<<Users>>/Library/Application Scripts/com.agilebits.onepassword")
