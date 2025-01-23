@@ -14,7 +14,6 @@
       appFiles+=("<<Users>>/Library/Group Containers/2BUA8C4S2C.com.agilebits")
       appFiles+=("<<Users>>/Library/HTTPStorages/com.agilebits.onepassword7-updater")
       appFiles+=("<<Users>>/Library/Logs/1Password")
-      appFiles+=("<<Users>>/Library/Application Support/")
       appFiles+=("<<Users>>/Library/Application Scripts/2BUA8C4S2C.com.agilebits")
       appFiles+=("<<Users>>/Library/Application Scripts/2BUA8C4S2C.com.agilebits.onepassword7-helper")
       appFiles+=("<<Users>>/Library/Application Scripts/com.agilebits.onepassword7")
