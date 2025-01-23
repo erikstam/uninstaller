@@ -41,7 +41,7 @@ IGNORE_USER_DIRS=0
 # options:
 # 0            delete files/directories in user directories
 # 1            ignore deletion of files in user directories, with exception of LaunchAgents
-BUILD_DATE="2025-01-03"
+BUILD_DATE="2025-01-23"
 
 # MARK: Functions
 
@@ -244,7 +244,6 @@ case $1 in
       appFiles+=("<<Users>>/Library/Group Containers/2BUA8C4S2C.com.agilebits")
       appFiles+=("<<Users>>/Library/HTTPStorages/com.agilebits.onepassword7-updater")
       appFiles+=("<<Users>>/Library/Logs/1Password")
-      appFiles+=("<<Users>>/Library/Application Support/")
       appFiles+=("<<Users>>/Library/Application Scripts/2BUA8C4S2C.com.agilebits")
       appFiles+=("<<Users>>/Library/Application Scripts/2BUA8C4S2C.com.agilebits.onepassword7-helper")
       appFiles+=("<<Users>>/Library/Application Scripts/com.agilebits.onepassword7")
@@ -269,7 +268,6 @@ case $1 in
       appFiles+=("<<Users>>/Library/Containers/1Password Launcher")
       appFiles+=("<<Users>>/Library/Group Containers/2BUA8C4S2C.com.agilebits")
       appFiles+=("<<Users>>/Library/Logs/1Password")
-      appFiles+=("<<Users>>/Library/Application Support/")
       appFiles+=("<<Users>>/Library/Application Scripts/2BUA8C4S2C.com.agilebits")
       appFiles+=("<<Users>>/Library/Application Scripts/2BUA8C4S2C.com.agilebits.onepassword-helper")
       appFiles+=("<<Users>>/Library/Application Scripts/com.agilebits.onepassword")
@@ -740,7 +738,18 @@ easyfind)
       appFiles+=("<<Users>>/Library/Application Support/EasyFind")
       appFiles+=("<<Users>>/Library/Preferences/org.grunenberg.EasyFind.plist")
       ;;
-elgatostreamdeck)
+elgatocamerahub)
+      appTitle="Elgato Camera Hub"
+      appProcesses+=("Elgato Camera Hub")
+      appProcesses+=("avconferenced")
+      appFiles+=("/Applications/Elgato Camera Hub.app")
+      appFiles+=("/Library/CoreMediaIO/Plug-Ins/DAL/elgatovirtualcamera.plugin")
+      appFiles+=("/Users/$loggedInUser/Library/Application Support/Elgato/Camera Hub")
+      appFiles+=("/Library/Application Support/Elgato/Camera Hub")
+      appFiles+=("/Users/$loggedInUser/Library/Preferences/com.elgato.CameraHub")
+      appFiles+=("/Users/$loggedInUser/Library/Logs/CameraHub")
+      appLaunchAgents+=("/Users/$loggedInUser/Library/LaunchAgents/com.elgato.CameraHub.plist")
+      ;;elgatostreamdeck)
       appTitle="Elgato Stream Deck"
       appFiles+=("/Applications/Elgato Stream Deck.app")
       appProcesses+=("Stream Deck")
@@ -804,6 +813,15 @@ firefox)
       appFiles+=("<<Users>>/Library/Caches/Mozilla/updates/Applications/Firefox/macAttributionData")
       appFiles+=("<<Users>>/Library/Caches/Firefox")
       appFiles+=("<<Users>>/Library/Saved Application State/org.mozilla.firefox.savedState")
+      ;;
+garageband)
+      appTitle="GarageBand"
+      appProcesses+=("GarageBand")
+      appFiles+=("/Applications/GarageBand.app")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.apple.garageband10")
+      appFiles+=("<<Users>>/Library/Caches/com.apple.helpd/Generated/com.apple.garageband10.help*10.4.11")
+      appFiles+=("<<Users>>/Library/Containers/com.apple.garageband10")
+      appReceipts+=("com.apple.pkg.GarageBand_AppStore")
       ;;
 gimp)
       # credit: pijpe00
@@ -959,8 +977,11 @@ imovie)
       appTitle="iMovie"
       appProcesses+=("iMovie")
       appFiles+=("/Applications/iMovie.app")
-      appFiles+=("<<Users>>/Library/Containers/com.apple.iMovieApp")
       appFiles+=("<<Users>>/Library/Application Scripts/com.apple.iMovieApp")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.apple.videoapps.OOPProResRawService")
+      appFiles+=("<<Users>>/Library/Application Support/iMovie")
+      appFiles+=("<<Users>>/Library/Containers/com.apple.iMovieApp")
+      appFiles+=("<<Users>>/Library/Containers/com.apple.videoapps.OOPProResRawService")
       ;;
 installomator)
       appTitle="Installomator"
@@ -1057,6 +1078,18 @@ jetbrainspycharm)
       appFiles+=("<<Users>>/Library/Logs/JetBrains/PyCharm2024.2")
       appFiles+=("<<Users>>/Library/Preferences/com.jetbrains.pycharm.plist")
       appFiles+=("<<Users>>/Library/Saved Application State/com.jetbrains.pycharm.savedState")
+      ;;
+keynote)
+      appTitle="Keynote"
+      appProcesses+=("Keynote")
+      appFiles+=("/Applications/Keynote.app")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.apple.iWork.Keynote")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.apple.iWork.Keynote.KeynoteNotificationServiceExtension")
+      appFiles+=("<<Users>>/Library/Caches/com.apple.helpd/Generated/com.apple.iWork.Keynote.remote.help*14.3")
+      appFiles+=("<<Users>>/Library/Containers/com.apple.iWork.Keynote")
+      appFiles+=("<<Users>>/Library/Containers/com.apple.iWork.Keynote.KeynoteNotificationServiceExtension")
+      appFiles+=("<<Users>>/Library/Group Containers/74J34U3R6X.com.apple.iWork")
+      appFiles+=("<<Users>>/Library/Saved Application State/com.apple.iWork.Keynote.savedState")
       ;;
 keyshot11)
       appTitle="KeyShot11"      
@@ -1439,6 +1472,16 @@ nudge)
       appFiles+=("<<Users>>/Library/Preferences/com.github.macadmins.Nudge.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.github.macadmins.Nudge.plist")
       ;;
+numbers)
+      appTitle="Numbers"
+      appProcesses+=("Numbers")
+      appFiles+=("//Applications/Numbers.app")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.apple.iWork.Numbers")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.apple.iWork.Numbers.NumbersNotificationServiceExtension")
+      appFiles+=("<<Users>>/Library/Caches/com.apple.helpd/Generated/com.apple.iWork.Numbers.remote.help*14.3")
+      appFiles+=("<<Users>>/Library/Containers/com.apple.iWork.Numbers")
+      appFiles+=("<<Users>>/Library/Containers/com.apple.iWork.Numbers.NumbersNotificationServiceExtension")
+      ;;
 obs)
       appTitle="OBS"
       appProcesses+=("OBS" "OBS Studio")
@@ -1453,6 +1496,16 @@ oktaverify)
       appFiles+=("/Applications/Okta Verify.app")
       appFiles+=("/Users/$loggedInUser/Library/Application Scripts/B7F62B65BN.group.okta.macverify.shared")
       appFiles+=("/Users/$loggedInUser/Library/Group Containers/B7F62B65BN.group.okta.macverify.shared")
+      ;;
+omnissahorizonclient)
+      appTitle="Omnissa Horizon Client"
+      appFiles+=("/Applications/Omnissa Horizon Client.app")
+      appFiles+=("/Library/Preferences/com.omnissa.horizon.client.mac.plist")
+      appFiles+=("<<Users>>/Library/Caches/com.omnissa.horizon.client.mac")
+      appFiles+=("<<Users>>/Library/Preferences/com.omnissa.horizon.keyboard.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.omnissa.horizon.client.mac.plist")
+      appFiles+=("<<Users>>/Library/WebKit/com.omnissa.horizon.client.mac")
+      appFiles+=("<<Users>>/Library/Application Support/Omnissa Horizon Client")
       ;;
 openvpnconnect)
       appTitle="OpenVPN Connect"
@@ -1492,6 +1545,16 @@ opera)
       appFiles+=("<<Users>>/Library/Caches/com.operasoftware.Opera")
       appFiles+=("<<Users>>/Library/Preferences/com.operasoftware.Opera.plist")
       appFiles+=("<<Users>>/Library/Application Support/com.operasoftware.Opera")
+      ;;
+pages)
+      appTitle="Pages"
+      appProcesses+=("Pages")
+      appFiles+=("/Applications/Pages.app")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.apple.iWork.Pages")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.apple.iWork.Pages.PagesNotificationServiceExtension")
+      appFiles+=("<<Users>>/Library/Caches/com.apple.helpd/Generated/com.apple.iork.Pages.remote.help*14.3")
+      appFiles+=("<<Users>>/Library/Containers/com.apple.iWork.Pages")
+      appFiles+=("<<Users>>/Library/Containers/com.apple.iWork.Pages.PagesNotificationServiceExtension")
       ;;
 parallelsdesktop)
       appTitle="Parallels Desktop"

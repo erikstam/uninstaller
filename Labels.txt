@@ -38,6 +38,7 @@ drawio
 dropbox
 dymoconnect
 easyfind
+elgatocamerahub
 elgatostreamdeck
 figma
 filemakerpro16
@@ -45,6 +46,7 @@ filemakerpro19
 filezilla
 findanyfile
 firefox
+garageband
 gimp
 githubdesktop
 gitkraken
@@ -64,6 +66,7 @@ jamftrust
 java8oracle
 jetbrainsintellijidea
 jetbrainspycharm
+keynote
 keyshot11
 keyshot12
 lanschoolstudent
@@ -89,11 +92,14 @@ mysqlworkbench
 nomad
 notion
 nudge
+numbers
 obs
 oktaverify
+omnissahorizonclient
 openvpnconnect
 openvpnconnect3
 opera
+pages
 parallelsdesktop
 parallelsrasclient
 postman
