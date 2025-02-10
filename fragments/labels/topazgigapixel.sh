@@ -1,0 +1,22 @@
+topazgigapixel|\
+topazgigapixelai)
+      appTitle="Topaz Gigapixel AI.app"
+      appFiles+=("/Applications/Topaz Gigapixel AI.app")
+      appFiles+=("/Applications/Adobe Photoshop 2024/Plug-ins/TopazGigapixelAI.plugin")
+      appFiles+=("/Applications/Adobe Photoshop 2024/Plug-ins/TopazGigapixelAIApply.plugin")
+      appFiles+=("/Applications/Adobe Photoshop 2024/Plug-ins/TopazGigapixelAIAutomate.plugin")
+      appFiles+=("/Applications/Adobe Photoshop 2024/Plug-ins/TopazGigapixelAIGather.plugin")
+      appFiles+=("/Applications/Adobe Photoshop 2025/Plug-ins/TopazGigapixelAI.plugin")
+      appFiles+=("/Applications/Adobe Photoshop 2025/Plug-ins/TopazGigapixelAIApply.plugin")
+      appFiles+=("/Applications/Adobe Photoshop 2025/Plug-ins/TopazGigapixelAIAutomate.plugin")
+      appFiles+=("/Applications/Adobe Photoshop 2025/Plug-ins/TopazGigapixelAIGather.plugin")
+      appFiles+=("/Library/Application Support/Adobe/Plug-Ins/CC/TopazGigapixelAI.plugin")
+      appFiles+=("/Library/Application Support/Adobe/Plug-Ins/CC/TopazGigapixelAIApply.plugin")
+      appFiles+=("/Library/Application Support/Adobe/Plug-Ins/CC/TopazGigapixelAIAutomate.plugin")
+      appFiles+=("/Library/Application Support/Adobe/Plug-Ins/CC/TopazGigapixelAIGather.plugin")
+      appFiles+=("<<Users>>/Library/Application Scripts/com.topazlabs.TopazGigapixelAIplugin")
+      appFiles+=("<<Users>>/Library/Application Support/Topaz Labs LLC/Topaz Gigapixel AI")
+      appFiles+=("<<Users>>/Library/Application Support/Adobe/Lightroom/External Editor Presets/TopazGigapixelAI.lrtemplate")
+      appFiles+=("<<Users>>/Library/Application Support/Affinity Photo/Plugins/TopazGigapixelAI.plugin")
+      appReceipts+=("com.topazlabs.TopazGigapixelAI")
+      ;;
