@@ -6,7 +6,6 @@ logioptions)
       appFiles+=("/Library/Application Support/Logitech.localized/Logitech Options.localized")
       appFiles+=("<<Users>>/Library/Application Support/Logitech/Options")
       appFiles+=("<<Users>>/Library/Application Support/com.logitech.logiaipromptbuilder")
-      appFiles+=("/Library/LaunchAgents/com.logitech.manager.daemon.plist")
       appLaunchAgents+=("/Library/LaunchAgents/com.logitech.manager.daemon.plist")
       appReceipts+=("com.logitech.manager.pkg")
       ;;
