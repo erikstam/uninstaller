@@ -1,0 +1,15 @@
+affinityphoto2)
+      appTitle="Affinity Photo 2"
+      appProcesses+=("Affinity Photo 2")
+      appProcesses+=("Affinity Photo 2 Affinity Store")
+      appFiles+=("/Applications/Affinity Photo 2.app")
+      appFiles+=("<<Users>>/Library/Application Support/Affinity Photo 2")
+      appFiles+=("<<Users>>/Library/Caches/com.seriflabs.affinityphoto2")
+      appFiles+=("<<Users>>/Library/Containers/com.seriflabs.affinityphoto2.AffinityExtension")
+      appFiles+=("<<Users>>/Library/Containers/com.seriflabs.affinityphoto2.QuickLookShareExtension")
+      appFiles+=("<<Users>>/Library/Containers/com.seriflabs.affinityphoto2.ThumbnailShareExtension")
+      appFiles+=("<<Users>>/Library/Group Containers/6LVTQB9699.com.seriflabs/v2/Affinity Photo 2/")
+      appFiles+=("<<Users>>/Library/Group Containers/6LVTQB9699.com.seriflabs/v2/appinfo/com.seriflabs.affinityphoto2.appinfo")
+      appFiles+=("<<Users>>/Library/Preferences/com.seriflabs.affinityphoto2.plist")
+      appFiles+=("<<Users>>/Library/WebKit/com.seriflabs.affinityphoto2/")
+      ;;
