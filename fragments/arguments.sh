@@ -39,3 +39,6 @@ fi
 
 # Check which event is triggered and add extra information.
 case $1 in
+valuesfromarguments)
+    # no action necessary, all values should be provided in arguments
+    ;;
