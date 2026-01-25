@@ -120,6 +120,14 @@ displayNotification() { # $1: message $2: title
         FallBacktoAS=true
       fi
     ;;
+    ws1)
+      if [ -x "$hubcli" ]; then
+        "$hubcli" -i "$message" -t "$title" -c "Dismiss"
+      else
+        printlog "ERROR: $hubcli not installed for showing notifications. Falling back to AppleScript"
+        FallBacktoAS=true
+      fi
+    ;;
     swiftdialog)
       if [ -x "$swiftDialog" ]; then
         "$swiftDialog" --message "$message" --title "$title" --$swiftDialogNotification
