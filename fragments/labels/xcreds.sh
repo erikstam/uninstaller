@@ -1,6 +1,6 @@
 xcreds)
       appTitle="XCreds"
-      appProcess+=("XCreds")
+      appProcesses+=("XCreds")
       appFiles+=("/Applications/XCreds.app")
       appFiles+=("/Library/Application Support/xcreds")
       appFiles+=("/Library/LaunchAgents/com.twocanoes.xcreds-overlay.plist")
