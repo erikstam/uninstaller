@@ -1,6 +1,7 @@
-# MARK: Arguments
+#########################################################################################
+# MARK: Arguments parsing
+#########################################################################################
 
-# Argument parsing
 if [ "$1" = "/" ]; then
   # jamf uses sends '/' as the first argument
   shift 3
@@ -40,5 +41,7 @@ if [ "$(whoami)" != "root" ]; then
 fi
 
 
-# Check which event is triggered and add extra information.
+# ***************************************************************************************
+# REVIEW: Check which event is triggered and add extra information.
+# ***************************************************************************************
 case $1 in

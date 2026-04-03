@@ -4,7 +4,12 @@
       ;;
 esac
 
-printlog "Uninstaller started - build $BUILD_DATE"
+
+#########################################################################################
+# MARK: - Start script
+#########################################################################################
+
+printlog "${scriptName} started - build $BUILD_DATE"
 
 # Parse arguments for changed variables
 while [[ -n $1 ]]; do
@@ -52,7 +57,7 @@ done
 # Remove LaunchAgents
 printlog "Uninstalling $appTitle - LaunchAgents"
 if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
-  displayNotification "Removing LaunchAgents..." "Uninstalling in progress"
+    displayNotification "Removing LaunchAgents..." "Uninstalling in progress"
 fi
 for launchAgent in "${appLaunchAgents[@]}"
 do
@@ -92,9 +97,7 @@ printlog "Uninstalling $appTitle - Files and Directories"
 if [[ $loggedInUser != "loginwindow" && $NOTIFY == "all" ]]; then
 	displayNotification "Removing $appTitle files..." "Uninstalling in progress"
 fi
-
-for file in "${appFiles[@]}"
-do
+for file in "${appFiles[@]}"; do
 	if [[ "$file" == *"<<Users>>"* ]]; then
 		if [[ $IGNORE_USER_DIRS == 0 ]]; then
 			for userfolder in /Users/*/
@@ -131,6 +134,23 @@ do
 		fi
 	fi
 done
+for folder in "${appFolders[@]}"; do
+	if [[ "$folder" == *"<<Users>>"* ]]; then
+		if [[ $IGNORE_USER_DIRS == 0 ]]; then
+			# remove path with expanded path for all available userfolders
+			for userfolder in $(ls /Users)
+				do
+					expandedPath=$(echo $folder | sed "s|<<Users>>|/Users/$userfolder|g")
+					removeEmptyDirectory "$expandedPath" silent
+			done
+		else
+			printlog "Ignoring deletion of user folder: $folder" 
+		fi
+	else
+		# remove real path 
+		removeEmptyDirectory "$folder"
+	fi
+done
 
 
 # Running postflight commands
@@ -138,19 +158,37 @@ printlog "Running $appTitle - postflightCommand"
 for postcommand in "${postflightCommand[@]}"
 do
     if [ "$DEBUG" -eq 0 ]; then
-      	zsh -c "$postcommand"
+      	printlog "$(zsh -c "$postcommand")"
     fi
 done
 
 
+# Investigate if app bundle exists as pkg receipt
 if [ -n "$appBundleIdentifier" ]; then
 	printlog "Checking for receipt.."
-	receipts=$(pkgutil --pkgs | grep -c "$appBundleIdentifier")
-	if [[ "$receipts" != "0" ]]; then
+	# receipts=$(pkgutil --pkgs | grep -c "$appBundleIdentifier")
+	if [[ "$(pkgutil --pkgs | grep -c "$appBundleIdentifier")" != "0" ]]; then
 	    if [ "$DEBUG" -eq 0 ]; then
-      		/usr/sbin/pkgutil --forget "$appBundleIdentifier"
+      		printlog "$(pkgutil --forget "$appBundleIdentifier")"
     	fi	
 	fi
+fi
+
+
+# If we are on a Jamf MDM, remove Jamf App Catalog receipt (Jamf Pro)
+# TODO: Detect Jamf now and Jamf School as they have same receipts
+if [[ -s "/Library/Application Support/JAMF/Jamf.app/Contents/Resources/AppIcon.icns" ]]; then
+	printlog "Jamf MDM found. Checking for Jamf App Catalog receipt: com.jamf.appinstallers.${appTitle}" 
+	receipts=$(pkgutil --pkgs | grep -io "com.jamf.appinstallers.${appTitle}")
+	arrayReceipts=( ${(f)receipts} )
+	for receipt in ${arrayReceipts[@]}
+	do
+		printlog "Found Jamf receipt: ${receipt}"
+		if [ "$DEBUG" -eq 0 ]; then
+      		printlog "$(pkgutil --forget "$receipt")"
+    	fi	
+	done
+	
 fi
 
 
@@ -160,17 +198,21 @@ if [ -n "${appReceipts[1]}" ]; then
 	for receipt in "${appReceipts[@]}"
 	do
 		if [ "$DEBUG" -eq 0 ]; then
-      		/usr/sbin/pkgutil --forget "$receipt"
+      		printlog "$(pkgutil --forget "$receipt")"
     	fi	
 	done
 fi
 
 
 # restart prefsd to ensure caches are cleared
-/usr/bin/killall -q cfprefsd
+killall -q cfprefsd
+
+
+#########################################################################################
+# MARK: Finishing
+#########################################################################################
 
 if [[ $loggedInUser != "loginwindow" && ( $NOTIFY == "success" || $NOTIFY == "all" ) ]]; then
 	displayNotification "$appTitle is uninstalled." "Uninstalling completed!"
 fi
-printlog "Uninstaller Finished"
-
+printlog "${scriptName} Finished" ALERT
