@@ -7,5 +7,5 @@ privileges2)
       appLaunchDaemons+=("/Library/LaunchDaemons/corp.sap.privileges.watcher.plist")
       appLaunchDaemons+=("/Library/LaunchDaemons/corp.sap.privileges.daemon.plist")
       appLaunchAgents+=("/Library/LaunchAgents/corp.sap.privileges.agent.plist")
-      appReceipts+=("com.sap.privileges")
+      appReceipts+=("corp.sap.privileges.pkg")
       ;;
