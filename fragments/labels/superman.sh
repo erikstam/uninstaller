@@ -1,8 +1,8 @@
 superman)
       appTitle="superman"
-      appProcesses+=("support")
-      appFiles+=("/Applications/Support.app")
+      appProcesses+=("super")
+      appFiles+=("/Library/Management/super")
       appFiles+=("/usr/local/bin/super")
       appFiles+=("/var/run/super.pid")
-      appLaunchAgents+=("/Library/LaunchAgents/com.macjutsu.super.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.macjutsu.super.plist")
       ;;
