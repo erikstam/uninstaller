@@ -53,7 +53,7 @@ NOTIFY=success ## [success|silent|all] How many notifications?
 #   - all          all notifications (great for Self Service installation)
 
 # notification type
-NOTIFICATIONTYPE=swiftdialog # [jamf|swiftdialog|applescript] Which binary for notifications?
+NOTIFICATIONTYPE=swiftdialog # [jamf|ws1|swiftdialog|applescript] Which binary for notifications?
 # options:
 #   - jamf				show notifications using the jamf Management Action binary
 #   - ws1               show notifications using the Workspace ONE hubcli binary
