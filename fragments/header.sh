@@ -20,11 +20,13 @@ NOTIFY=success
 NOTIFICATIONTYPE=jamf
 # options:
 #   - jamf				show notifications using the jamf Management Action binary
+#   - ws1               show notifications using the Workspace ONE hubcli binary
 #   - swiftdialog       show notifications using swiftdialog
 #   - applescript       show notifications using applescript
 
 # Notification Sources
 jamfManagementAction="/Library/Application Support/JAMF/bin/Management Action.app/Contents/MacOS/Management Action"
+hubcli="/usr/local/bin/hubcli"
 swiftDialog="/usr/local/bin/dialog"
 swiftDialogNotification=mini
 
