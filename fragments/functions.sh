@@ -68,9 +68,14 @@ removeLaunchDaemons() {
   # remove LaunchDaemon
   if [ -f "$launchDaemon" ]; then
     # LaunchDaemon exists and can be removed
-    printlog "Removing launchDaemon $launchDaemon..."
     if [ "$DEBUG" -eq 0 ]; then
-      /bin/launchctl unload "$launchDaemon"
+      service_name=$(defaults read "$launchDaemon" Label)
+      # unload using modern bootout
+      if launchctl print "system/${service_name}" &> /dev/null ; then
+        printlog "unloading $launchDaemon"
+        launchctl bootout system "$launchDaemon" &> /dev/null
+      fi
+      printlog "Removing launchDaemon $launchDaemon..."
       /bin/rm -Rf "$launchDaemon"
     fi
   fi
