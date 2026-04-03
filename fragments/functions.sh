@@ -134,10 +134,17 @@ removeLaunchDaemons() {
   # remove LaunchDaemon
   if [ -f "$launchDaemon" ]; then
     # LaunchDaemon exists and can be removed
-    printlog "Removing launchDaemon $launchDaemon..."
     if [ "$DEBUG" -eq 0 ]; then
       printlog "$(launchctl unload "$launchDaemon")"
       printlog "$(rm -Rfv "$launchDaemon")"
+      service_name=$(defaults read "$launchDaemon" Label)
+      # unload using modern bootout
+      if launchctl print "system/${service_name}" &> /dev/null ; then
+        printlog "unloading $launchDaemon"
+        launchctl bootout system "$launchDaemon" &> /dev/null
+      fi
+      printlog "Removing launchDaemon $launchDaemon..."
+      /bin/rm -Rf "$launchDaemon"
     fi
   fi
 }
@@ -189,6 +196,14 @@ displayNotification() { # $1: message $2: title
         "$jamfManagementAction" -message "$message" -title "$title"
       else
         printlog "ERROR: $jamfManagementAction not installed for showing notifications. Falling back to AppleScript"
+        FallBacktoAS=true
+      fi
+    ;;
+    ws1)
+      if [ -x "$hubcli" ]; then
+        "$hubcli" -i "$message" -t "$title" -c "Dismiss"
+      else
+        printlog "ERROR: $hubcli not installed for showing notifications. Falling back to AppleScript"
         FallBacktoAS=true
       fi
     ;;

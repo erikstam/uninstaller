@@ -16,7 +16,7 @@ while [[ -n $1 ]]; do
     if [[ $1 =~ ".*\=.*" ]]; then
         # if an argument contains an = character, send it to eval
         printlog "setting variable from argument $1"
-        eval $1
+        eval "$1"
     fi
     # shift to next argument
     shift 1
@@ -65,8 +65,8 @@ do
 		# remove launchAgent with expanded path
 		for userfolder in $(ls /Users)
 		do
-			expandedPath=$(echo $launchAgent | sed "s|<<Users>>|/Users/$userfolder|g")
-			removeLaunchAgents "$expandedPath"
+			expandedPath="${launchAgent//<<Users>>/${userfolder%/}}"
+    		removeLaunchAgents "$expandedPath"
 		done
 	else
 		# remove path without 
@@ -100,18 +100,38 @@ fi
 for file in "${appFiles[@]}"; do
 	if [[ "$file" == *"<<Users>>"* ]]; then
 		if [[ $IGNORE_USER_DIRS == 0 ]]; then
-			# remove path with expanded path for all available userfolders
-			for userfolder in $(ls /Users)
-				do
-					expandedPath=$(echo $file | sed "s|<<Users>>|/Users/$userfolder|g")
-					removeFileDirectory "$expandedPath" silent
+			for userfolder in /Users/*/
+			do
+				[[ -d "$userfolder" ]] || continue
+				expandedPath="${file//<<Users>>/${userfolder%/}}"
+
+				# always remove the original file/folder
+				removeFileDirectory "$expandedPath" silent
+
+				# if it's a normal preferences plist, also remove matching ByHost plist
+				if [[ $REMOVEBYHOSTFILES == 1 &&
+				      "$expandedPath" == */Library/Preferences/*.plist &&
+				      "$expandedPath" != */Library/Preferences/ByHost/* ]]; then
+					byHostDir="$(dirname "$expandedPath")/ByHost"
+					byHostBase="$(basename "$expandedPath" .plist)"
+					removeFileDirectory "${byHostDir}/${byHostBase}.${hardwareUUID}.plist" silent
+				fi
 			done
 		else
-			printlog "Ignoring deletion of user files: $file" 
+			printlog "Ignoring deletion of user files: $file"
 		fi
 	else
-		# remove real path 
-		removeFileDirectory "$file"
+		# always remove the original file/folder
+		removeFileDirectory "$file" silent
+
+		# if it's a normal preferences plist, also remove matching ByHost plist
+		if [[ $REMOVEBYHOSTFILES == 1 &&
+		      "$file" == */Library/Preferences/*.plist &&
+		      "$file" != */Library/Preferences/ByHost/* ]]; then
+			byHostDir="$(dirname "$file")/ByHost"
+			byHostBase="$(basename "$file" .plist)"
+			removeFileDirectory "${byHostDir}/${byHostBase}.${hardwareUUID}.plist" silent
+		fi
 	fi
 done
 for folder in "${appFolders[@]}"; do

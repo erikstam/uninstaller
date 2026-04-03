@@ -56,11 +56,13 @@ NOTIFY=success ## [success|silent|all] How many notifications?
 NOTIFICATIONTYPE=swiftdialog # [jamf|swiftdialog|applescript] Which binary for notifications?
 # options:
 #   - jamf				show notifications using the jamf Management Action binary
+#   - ws1               show notifications using the Workspace ONE hubcli binary
 #   - swiftdialog       show notifications using swiftdialog
 #   - applescript       show notifications using applescript
 
 # Notification Sources
 jamfManagementAction="/Library/Application Support/JAMF/bin/Management Action.app/Contents/MacOS/Management Action"
+hubcli="/usr/local/bin/hubcli"
 swiftDialog="/usr/local/bin/dialog"
 swiftDialogNotification=mini
 
@@ -84,3 +86,7 @@ logLocation="/private/var/log/uninstaller.log"
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
+REMOVEBYHOSTFILES=1
+# options:
+# 0            do not remove ByHost preference files
+# 1            automatically remove UUID-suffixed ByHost variants
