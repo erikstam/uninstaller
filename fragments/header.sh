@@ -41,3 +41,8 @@ IGNORE_USER_DIRS=0
 # options:
 # 0            delete files/directories in user directories
 # 1            ignore deletion of files in user directories, with exception of LaunchAgents
+
+REMOVEBYHOSTFILES=1
+# options:
+# 0            do not remove ByHost preference files
+# 1            automatically remove UUID-suffixed ByHost variants

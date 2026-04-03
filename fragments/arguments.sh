@@ -22,7 +22,10 @@ loggedInUserID=$( /usr/bin/id -u "$loggedInUser" )
 # Logging
 logLocation="/private/var/log/uninstaller.log"
 
-
+# for ByHost files
+if [[ $REMOVEBYHOSTFILES == 1 ]]; then
+    hardwareUUID=$(ioreg -rd1 -c IOPlatformExpertDevice | awk '/IOPlatformUUID/ { print $3 }' | tr -d '"')
+fi
 
 if [[ $# -eq 0 ]]; then
   # "no label as argument -> show all labels
