@@ -1,6 +1,6 @@
 androidstudio)
       appTitle="Android Studio"
-      appProcesses+=("Android Studio")
+      appProcesses+=("Android Studio" "studio")
       appFiles+=("/Applications/Android Studio.app")
       appFiles+=("<<Users>>/.android")
       appFiles+=("<<Users>>/Library/Saved Application State/com.google.android.studio.savedState")

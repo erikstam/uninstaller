@@ -9,4 +9,4 @@ filemakerpro19)
       appFiles+=("<<Users>>/Library/Saved Application State/com.filemaker.client.pro12.savedState")
       appFiles+=("<<Users>>/Library/WebKit/com.filemaker.client.pro12")
       appFiles+=("/Users/Shared/FileMaker/FileMaker Pro/19.0")
-      ;;      
+      ;;

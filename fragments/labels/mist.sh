@@ -1,0 +1,13 @@
+mist)
+      appTitle="Mist"      
+      appProcesses+=("Mist")
+      appFiles+=("/Applications/Mist.app")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.ninxsoft.mist.helper.plist")
+      appFiles+=("/Library/PrivilegedHelperTools/com.ninxsoft.mist.helper")
+      appFiles+=("<<Users>>/Library/Caches/com.ninxsoft.mist")
+      appFiles+=("<<Users>>/Library/Caches/mist")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.ninxsoft.mist")
+      appFiles+=("<<Users>>/Library/Preferences/com.ninxsoft.mist.plist")
+      appFiles+=("<<Users>>/Library/WebKit/com.ninxsoft.mist")
+      appReceipts+=("com.ninxsoft.pkg.mist")
+      ;;

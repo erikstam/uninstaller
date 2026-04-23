@@ -1,0 +1,18 @@
+openvpnconnect3)
+      appTitle="OpenVPN Connect"
+      appProcesses+=("OpenVPN Connect" "OpenVPN Connect Helper" "OpenVPNConnect")
+      appFiles+=("/Applications/OpenVPN Connect/OpenVPN Connect.app")
+      appFiles+=("/Applications/OpenVPN Connect")
+      appFiles+=("/Applications/OpenVPN Connect.app")
+      appFiles+=("<<Users>>/Library/Application Support/OpenVPN Connect")
+      appFiles+=("<<Users>>/Library/Preferences/org.openvpn.client.app.plist")
+      appFiles+=("/Library/Frameworks/OpenVPNConnect.framework")
+      appFiles+=("/Library/Frameworks/OVPNHelper.framework")
+      appLaunchDaemons+=("/Library/LaunchDaemons/org.openvpn.client.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/org.openvpn.helper.plist")
+      preflightCommand+=("/Applications/OpenVPN/Uninstall OpenVPN Connect.app/Contents/Resources/remove.sh")
+      appReceipts+=("org.openvpn.client.pkg")
+      appReceipts+=("org.openvpn.client_framework.pkg")
+      appReceipts+=("org.openvpn.client_launch.pkg")
+      appReceipts+=("org.openvpn.client_uninstall.pkg")
+      ;;

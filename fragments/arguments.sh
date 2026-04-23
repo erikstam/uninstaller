@@ -1,6 +1,7 @@
-# MARK: Arguments
+#########################################################################################
+# MARK: Arguments parsing
+#########################################################################################
 
-# Argument parsing
 if [ "$1" = "/" ]; then
   # jamf uses sends '/' as the first argument
   shift 3
@@ -20,9 +21,12 @@ loggedInUser=$( /usr/sbin/scutil <<< "show State:/Users/ConsoleUser" | /usr/bin/
 loggedInUserID=$( /usr/bin/id -u "$loggedInUser" )
 
 # Logging
-logLocation="/private/var/log/appAssassin.log"
+logLocation="/private/var/log/uninstaller.log"
 
-
+# for ByHost files
+if [[ $REMOVEBYHOSTFILES == 1 ]]; then
+    hardwareUUID=$(ioreg -rd1 -c IOPlatformExpertDevice | awk '/IOPlatformUUID/ { print $3 }' | tr -d '"')
+fi
 
 if [[ $# -eq 0 ]]; then
   # "no label as argument -> show all labels
@@ -37,5 +41,7 @@ if [ "$(whoami)" != "root" ]; then
 fi
 
 
-# Check which event is triggered and add extra information.
+# ***************************************************************************************
+# REVIEW: Check which event is triggered and add extra information.
+# ***************************************************************************************
 case $1 in

@@ -7,10 +7,11 @@
 # 
 
 # Last modification date
-LAST_MOD_DATE="2024-03-15"
+LAST_MOD_DATE="2024-12-14"
 
 #setup some folders
-repo_dir=$(dirname ${0:A})
+util_dir=$(dirname ${0:A})
+repo_dir="$util_dir/.."
 build_dir="$repo_dir/build"
 destination_file="$build_dir/uninstaller.sh"
 fragments_dir="$repo_dir/fragments"
@@ -21,7 +22,27 @@ label_paths+=$labels_dir
 
 #echo "label_paths: $label_paths"
 
-fragment_files=( header.sh version.sh functions.sh arguments.sh main.sh )
+
+zparseopts -D -E -a opts r -run s -script h -help -labels+:=label_args l+:=label_args
+
+if (( ${opts[(I)(-h|--help)]} )); then
+    echo "usage: assemble.sh [--script]"
+    echo
+    echo "Builds and runs the uninstaller script from the fragments."
+    echo 
+    echo "When --script is used the uninstaller script in the root of the project will be replaced. And labels.txt will be updated."
+    echo "Otherwise the uninstaller script will be built in the /built directory."
+    exit
+fi
+
+# Default Settings
+runScript=1
+
+if (( ${opts[(I)(-s|--script)]} )); then
+    buildScript=1
+fi
+
+fragment_files=( header.sh functions.sh arguments.sh main.sh )
 
 # check if fragment files exist (and are readable)
 for fragment in $fragment_files; do
@@ -42,9 +63,8 @@ mkdir -p $build_dir
 # add the header
 cat "$fragments_dir/header.sh" > $destination_file
 
-# add the version and builddate
-cat "$fragments_dir/version.sh" >> $destination_file
-currentdate=$(date)
+# add the builddate
+currentdate=$(date +%Y-%m-%d)
 echo "BUILD_DATE=\"$currentdate\"\n" >> $destination_file
 
 # add the functions
@@ -79,6 +99,8 @@ if [[ $buildScript -eq 1 ]]; then
     echo "# copying script to $repo_dir/uninstaller.sh"
     cp $destination_file $repo_dir/uninstaller.sh
     chmod 755 $repo_dir/uninstaller.sh
+    # also update Labels.txt
+    $repo_dir/uninstaller.sh | tail -n +2 > $repo_dir/Labels.txt
 fi
 
 exit $exit_code

@@ -1,0 +1,15 @@
+chatgpt)
+      appTitle="ChatGPT"      
+      appProcesses+=("ChatGPT")
+      appFiles+=("/Applications/ChatGPT.app")
+      appFiles+=("<<Users>>/Library/Application Support/ChatGPT")
+      appFiles+=("<<Users>>/Library/Application Support/com.openai.chat")
+      appFiles+=("<<Users>>/Library/Caches/com.openai.chat")
+      appFiles+=("<<Users>>/Library/Group Containers/group.com.openai.chat")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.openai.chat")
+      appFiles+=("<<Users>>/Library/HTTPStorages/com.openai.chat.binarycookies")
+      appFiles+=("<<Users>>/Library/Preferences/com.openai.chat.RemoteFeatureFlags.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.openai.chat.StatsigService.plist")
+      appFiles+=("<<Users>>/Library/Preferences/com.openai.chat.plist")
+      appFiles+=("<<Users>>/Library/WebKit/com.openai.chat")
+      ;;

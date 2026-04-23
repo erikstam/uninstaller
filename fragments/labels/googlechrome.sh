@@ -17,5 +17,4 @@ googlechrome)
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.xpcservice.plist")
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.agent.plist")
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.system.agent.plist")
-      appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.google.keystone.xpcservice.plist")
       ;;

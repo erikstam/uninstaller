@@ -12,6 +12,8 @@ microsoftedge)
       appFiles+=("<<Users>>/Library/Containers/com.microsoft.edgemac.wdgExtension")
       appFiles+=("/Library/Microsoft/Edge")
       appFiles+=("<<Users>>/Library/Application Support/Microsoft/EdgeUpdater")
+      appFiles+=("/Library/Application Support/Microsoft/EdgeUpdater")
       appLaunchAgents+=("<<Users>>/Library/LaunchAgents/com.microsoft.EdgeUpdater.update.plist")
+      appLaunchDaemons+=("/Library/LaunchDaemons/com.microsoft.EdgeUpdater.wake.system.plist")
       postflightCommand+=("rm /Users/$loggedInUser/Library/LaunchAgents/com.microsoft.EdgeUpdater.*")
       ;;

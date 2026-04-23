@@ -9,7 +9,6 @@ lanschoolstudent)
       appFiles+=("/Library/PrivilegedHelperTools/com.lanschool.StudentHelper")
       appFiles+=("<<Users>>/Library/Caches/com.lanschool.student")
       appFiles+=("<<Users>>/Library/HTTPStorages/com.lanschool.student")
-      appFiles+=("<<Users>>/Library/HTTPStorages/com.lanschool.student")
       appFiles+=("<<Users>>/Library/Preferences/com.lanschool.student.plist")
       appReceipts+=("com.lanschool.student.setup.pkg")
       ;;

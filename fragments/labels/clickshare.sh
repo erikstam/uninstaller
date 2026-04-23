@@ -1,0 +1,15 @@
+clickshare)
+		appTitle="ClickShare"
+		appProcesses+=("ClickShare App" "clickshare")
+		appFiles+=("/Applications/ClickShare.app")
+		appFiles+=("<<Users>>/.clickshare_button")
+		appFiles+=("<<Users>>/.clickshare")		
+		appFiles+=("<<Users>>/Library/Caches/com.barco.clickshare.updater")
+		appFiles+=("<<Users>>/Library/Caches/com.barco.clickshare.updater.Shiplt")
+		appFiles+=("<<Users>>/Library/HTTPStorages/com.barco.clickshare.updater")
+		appFiles+=("<<Users>>/Library/LaunchAgents/com.barco.clickshare.agent.plist")
+		appFiles+=("<<Users>>/Library/LaunchAgents/com.barco.clickshare.autorun.plist")
+		appFiles+=("<<Users>>/Library/Preferences/com.barco.ClickShare Client.plist")
+		appFiles+=("<<Users>>/Library/Preferences/com.barco.clickshare.updater.plist")
+		appReceipts+=("com.barco.clickshare.updater")
+		;;
