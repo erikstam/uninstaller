@@ -85,8 +85,7 @@ fi
 if [[ $ALTERNATIVE_PATH ]]; then
 	appFiles[1]="$ALTERNATIVE_PATH"
 fi
-for file in "${appFiles[@]}"
-do
+for file in "${appFiles[@]}"; do
 	if [[ "$file" == *"<<Users>>"* ]]; then
 		# remove path with expanded path for all available userfolders
 		for userfolder in $(ls /Users)
