@@ -6,5 +6,6 @@ displaylinkmanager)
       appFiles+=("<<Users>>/Library/Containers/com.displaylink.DisplayLinkLoginHelper")
       appFiles+=("<<Users>>/Library/Containers/com.displaylink.DisplayLinkUserAgent")
       appFiles+=("<<Users>>/Library/Group Containers/73YQY62QM3.com.displaylink.DisplayLinkShared")
+      appLaunchAgents+=("/Library/LaunchAgents/com.displaylink.loginscreen.plist")
       appReceipts+=("com.displaylink.displaylinkmanagerapp")
       ;;
