@@ -4,10 +4,16 @@
 # Assemble script is highly inspired by / mostlty copied from Installomator
 # https://github.com/Installomator/Installomator
 #
-# 
+#
 
 # Last modification date
 LAST_MOD_DATE="2024-12-14"
+
+zparseopts -D -E -a opts r -run s -script h -help -labels+:=label_args l+:=label_args
+
+label_flags=( -l --labels )
+# array subtraction to remove options text
+label_paths=(${label_args:|label_flags})
 
 #setup some folders
 util_dir=$(dirname ${0:A})
@@ -20,16 +26,11 @@ labels_dir="$fragments_dir/labels"
 # add default labels_dir to label_paths
 label_paths+=$labels_dir
 
-#echo "label_paths: $label_paths"
-
-
-zparseopts -D -E -a opts r -run s -script h -help -labels+:=label_args l+:=label_args
-
 if (( ${opts[(I)(-h|--help)]} )); then
-    echo "usage: assemble.sh [--script]"
+    echo "usage: assemble.sh [--script] [--labels path/to/labels ...]"
     echo
     echo "Builds and runs the uninstaller script from the fragments."
-    echo 
+    echo
     echo "When --script is used the uninstaller script in the root of the project will be replaced. And labels.txt will be updated."
     echo "Otherwise the uninstaller script will be built in the /built directory."
     exit
